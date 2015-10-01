@@ -1,0 +1,61 @@
+This is an advanced conversion documantation to rename the ZPanel database (zpanel_core) to Sentora (sentora_core) on Windows platforms.
+
+***NOTICE***: Make sure you have already successfully completed the ZPanel to Sentora Upgrade.txt included in this package FIRST!)
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Use at your OWN RISK!
+
+1) Using phpMyAdmin or your favorite database tool, login as ROOT user and make a backup of the zpanel_core database.
+
+2) Create a new database: SQL query: CREATE DATABASE sentora_core;
+
+3) Move/Rename all database tables to the new database:
+
+***NOTICE***: If you have any custom modules that use the zpanel_core database, you will need to reinstall them or rename them using the example query below:
+			  Ex: RENAME TABLE zpanel_core.table-name TO sentora_core.table_name;
+SQL Query:
+
+RENAME TABLE
+	zpanel_core.x_accounts TO sentora_core.x_accounts,
+	zpanel_core.x_aliases TO sentora_core.x_aliases,
+	zpanel_core.x_bandwidth TO sentora_core.x_bandwidth,
+	zpanel_core.x_cronjobs TO sentora_core.x_cronjobs,
+	zpanel_core.x_distlists TO sentora_core.x_distlists,
+	zpanel_core.x_distlistusers TO sentora_core.x_distlistusers,
+	zpanel_core.x_dns TO sentora_core.x_dns,
+	zpanel_core.x_dns_create TO sentora_core.x_dns_create,
+	zpanel_core.x_faqs TO sentora_core.x_faqs,
+	zpanel_core.x_forwarders TO sentora_core.x_forwarders,
+	zpanel_core.x_ftpaccounts TO sentora_core.x_ftpaccounts,
+	zpanel_core.x_groups TO sentora_core.x_groups,
+	zpanel_core.x_htaccess TO sentora_core.x_htaccess,
+	zpanel_core.x_htpasswd_file TO sentora_core.x_htpasswd_file,
+	zpanel_core.x_htpasswd_mapper TO sentora_core.x_htpasswd_mapper,
+	zpanel_core.x_htpasswd_user TO sentora_core.x_htpasswd_user,
+	zpanel_core.x_logs TO sentora_core.x_logs,
+	zpanel_core.x_mailboxes TO sentora_core.x_mailboxes,
+	zpanel_core.x_modcats TO sentora_core.x_modcats,
+	zpanel_core.x_modules TO sentora_core.x_modules,
+	zpanel_core.x_mysql_databases TO sentora_core.x_mysql_databases,
+	zpanel_core.x_mysql_dbmap TO sentora_core.x_mysql_dbmap,
+	zpanel_core.x_mysql_users TO sentora_core.x_mysql_users,
+	zpanel_core.x_packages TO sentora_core.x_packages,
+	zpanel_core.x_permissions TO sentora_core.x_permissions,
+	zpanel_core.x_profiles TO sentora_core.x_profiles,
+	zpanel_core.x_quotas TO sentora_core.x_quotas,
+	zpanel_core.x_settings TO sentora_core.x_settings,
+	zpanel_core.x_translations TO sentora_core.x_translations,
+	zpanel_core.x_vhosts TO sentora_core.x_vhosts;
+
+4) OPEN: c:/zpanel/panel/cnf/db.php and REPLACE zpanel_core with sentora_core and SAVE. (Sentora Config)
+
+5) OPEN: c:/zpanel/panel/etc/apps/phpmyadmin/??? and REPLACE zpanel_core with sentora_core and SAVE. (phpMyAdmin Config)
+
+???6) OPEN: c:/zpanel/panel/etc/apps/webmail/config/db.inc.php and REPLACE zpanel_roundcube with sentora_roundcube and SAVE. (RoundCube Config)
+
+7) Remove the old zpanel_core database: SQL Query: DROP DATABASE zpanel_core;
+
+Any questions, comments or support, please post in our forums here: http://forums.sentora.org/forumdisplay.php?fid=61
