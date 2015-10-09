@@ -6,7 +6,7 @@ This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of 
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-Use at your OWN RISK!
+Use at your OWN RISK! - Has NOT BEEN TESTED!
 
 1) Using phpMyAdmin or your favorite database tool, login as ROOT user and make a backup of the zpanel_core database.
 
@@ -56,6 +56,8 @@ RENAME TABLE
 
 ???6) OPEN: c:/zpanel/panel/etc/apps/webmail/config/db.inc.php and REPLACE zpanel_roundcube with sentora_roundcube and SAVE. (RoundCube Config)
 
-7) Remove the old zpanel_core database: SQL Query: DROP DATABASE zpanel_core;
+7) Also need to do the same conversion for hMailServer
+
+8) Remove the old zpanel_core database: SQL Query: DROP DATABASE zpanel_core;
 
 Any questions, comments or support, please post in our forums here: http://forums.sentora.org/forumdisplay.php?fid=61
