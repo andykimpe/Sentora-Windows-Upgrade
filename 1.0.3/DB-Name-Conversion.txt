@@ -1,3 +1,5 @@
+***NOTICE***: This is not yet completed or fully tested!
+
 This is an advanced conversion documantation to rename the ZPanel database (zpanel_core) to Sentora (sentora_core) on Windows platforms.
 
 ***NOTICE***: Make sure you have already successfully completed the ZPanel to Sentora Upgrade.txt included in this package FIRST!)
