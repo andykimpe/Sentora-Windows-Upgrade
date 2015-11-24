@@ -14,4 +14,6 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 Use at your OWN RISK!
 
+Follow the instructions in the /1.0.3/upgrade.txt file.
+
 Any questions, comments or support, please post in our forums here: http://forums.sentora.org/forumdisplay.php?fid=61
