@@ -37,24 +37,8 @@ Source: "{app}\bin\filezilla\FileZilla Server Interface.xml"; DestDir: "{app}\bi
 Source: "{app}\bin\filezilla\FileZilla server.exe"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FileZilla Server.xml"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FzGSS.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\filezilla\legal.htm"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\libeay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\filezilla\license.txt"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\filezilla\readme.htm"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\ssleay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\filezilla\Uninstall.exe"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\DBSetup.exe"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\DBSetupQuick.exe"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\DBUpdater.exe"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\hMailAdmin.exe"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\hMailServer.exe"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\hMailServer.INI"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\hMailServer.tlb"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\Interop.hMailServer.dll"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\libmysql.dll"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\License.rtf"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\Bin\tlds.txt"; DestDir: "{app}\bin\hmailserver\Bin"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\INSTALL\hMailServer-5.3.3-B1879.exe"; DestDir: "{app}\bin\hmailserver\INSTALL"; Flags: ignoreversion
 Source: "{app}\bin\hmailserver\INSTALL\zpanel_hmail.sql"; DestDir: "{app}\bin\hmailserver\INSTALL"; Flags: ignoreversion
 Source: "{app}\bin\php\php.ini"; DestDir: "{app}\bin\php"; Flags: ignoreversion
 Source: "{app}\bin\php\ext\php_suhosin,1.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 64bit
@@ -69,8 +53,6 @@ Source: "{app}\bin\wget\libintl3.dll"; DestDir: "{app}\bin\wget"; Flags: ignorev
 Source: "{app}\bin\wget\libssl32.dll"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
 Source: "{app}\bin\wget\wget.exe"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
 Source: "{app}\bin\zpss\install_services.bat"; DestDir: "{app}\bin\zpss"; Flags: ignoreversion
-Source: "{app}\bin\zpss\register_paths.bat"; DestDir: "{app}\bin\zpss"; Flags: ignoreversion
-Source: "{app}\bin\zpss\setenv.exe"; DestDir: "{app}\bin\zpss"; Flags: ignoreversion
 Source: "{app}\bin\zpss\setroute.exe"; DestDir: "{app}\bin\zpss"; Flags: ignoreversion
 Source: "{app}\bin\zpss\icons\addons.ico"; DestDir: "{app}\bin\zpss\icons"; Flags: ignoreversion
 Source: "{app}\bin\zpss\icons\backups.ico"; DestDir: "{app}\bin\zpss\icons"; Flags: ignoreversion
@@ -239,10 +221,22 @@ begin
     idpAddFile('https://home.apache.org/~steffenal/VC11/binaries/httpd-2.4.38-win32-VC11.zip', ExpandConstant('{tmp}\httpd-2.4.38-win32-VC11.zip'));
 end;
 begin
+
   if IsWin64 then
-    idpAddFile('https://download.microsoft.com/download/D/3/B/D3B72629-7D95-49ED-A4EC-7FF105754124/VSU4/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist_x64.exe'))
+    idpAddFile('https://download.microsoft.com/download/4/F/C/4FC241D7-EF92-46FA-80DE-3DF5841CE00E/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist5_x64.exe'))
   else
-    idpAddFile('https://download.microsoft.com/download/D/3/B/D3B72629-7D95-49ED-A4EC-7FF105754124/VSU4/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist_x86.exe'));
+    idpAddFile('https://download.microsoft.com/download/4/F/C/4FC241D7-EF92-46FA-80DE-3DF5841CE00E/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist5_x86.exe'));
+end;
+
+  if IsWin64 then
+    idpAddFile('https://download.microsoft.com/download/f/6/9/f6916186-6567-40fe-8d4c-ea4b29c84cbf/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist8_x64.exe'))
+  else
+    idpAddFile('https://download.microsoft.com/download/f/5/a/f5a61e7a-ddab-43f6-b3eb-0f329692472e/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist8_x86.exe'));
+end;
+  if IsWin64 then
+    idpAddFile('https://download.microsoft.com/download/D/3/B/D3B72629-7D95-49ED-A4EC-7FF105754124/VSU4/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist11_x64.exe'))
+  else
+    idpAddFile('https://download.microsoft.com/download/D/3/B/D3B72629-7D95-49ED-A4EC-7FF105754124/VSU4/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist11_x86.exe'));
 end;
 begin
   if IsWin64 then
@@ -262,6 +256,8 @@ begin
   else
     idpAddFile('https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x86.zip', ExpandConstant('{tmp}\BIND9.14.8.x86.zip'));
 end;
+    idpAddFile('https://www.hmailserver.com/files/hMailServer-5.3.3-B1879.exe', ExpandConstant('{tmp}\hMailServer-5.3.3-B1879.exe'));
+
     idpDownloadAfter(wpReady);
 end;
 
