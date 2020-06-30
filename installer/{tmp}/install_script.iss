@@ -93,8 +93,8 @@ Filename: "{win}\System32\net.exe"; StatusMsg: "Stoping Apache Service"; Paramet
 Filename: "{win}\System32\sc.exe"; StatusMsg: "Removing Apache Service"; Parameters: "delete apache"; WorkingDir: "{win}\System32"; Flags: runhidden
 Filename: "{win}\System32\net.exe"; StatusMsg: "Stoping MySQL Service"; Parameters: "stop MySQL"; WorkingDir: "{win}\System32"; Flags: runhidden
 Filename: "{win}\System32\sc.exe"; StatusMsg: "Removing MySQL Service"; Parameters: "delete MySQL"; WorkingDir: "{win}\System32"; Flags: runhidden
-Filename: "{win}\System32\net.exe"; StatusMsg: "Stoping FileZilla Server Service"; Parameters: "stop 'FileZilla Server'"; WorkingDir: "{win}\System32"; Flags: runhidden
-Filename: "{win}\System32\sc.exe"; Parameters: "delete 'FileZilla Server'"; WorkingDir: "{win}\System32"; Flags: runhidden
+Filename: "{win}\System32\net.exe"; StatusMsg: "Stoping FileZilla Server Service"; Parameters: "stop ""FileZilla Server"""; WorkingDir: "{win}\System32"; Flags: runhidden
+Filename: "{win}\System32\sc.exe"; Parameters: "delete ""FileZilla Server"""; WorkingDir: "{win}\System32"; Flags: runhidden
 Filename: "{win}\System32\net.exe"; Parameters: "stop cron"; WorkingDir: "{win}\System32"; Flags: runhidden
 Filename: "{win}\System32\sc.exe"; Parameters: "delete cron"; WorkingDir: "{win}\System32"; Flags: runhidden
 Filename: "{win}\System32\net.exe"; Parameters: "stop hMailServer"; WorkingDir: "{win}\System32"; Flags: runhidden
@@ -167,17 +167,6 @@ Root: "HKLM"; Subkey: "SOFTWARE\ISC\BIND"; ValueType: string; ValueName: "Instal
 Root: HKLM; SubKey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment\"; ValueType: string; ValueName: "Path"; ValueData: "{reg:HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\,Path};{app}\bin\apache\bin;{app}\bin\mysql\bin;{app}\bin\php;{app}\bin\wget;{app}\bin\bind\bin"
 
 [Code]
-//code preparing replace zpanel by sentora update
-//execute before installing it
-procedure CurStepChanged(CurStep: TSetupStep);
-begin
-  if CurStep = ssInstall then 
-  begin
-    if FileExists(ExpandConstant('C:\zpanel\panel\cnf\db.php')) then begin
-	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.bat', ExpandConstant('{tmp}\update.bat'));
-	end;
-  end;
-end;
 //code for configure PATH Variable
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
@@ -225,6 +214,10 @@ begin
   URLLabel.Left := ScaleX(20);
 //inno download plugin for download binary
 begin
+    if FileExists(ExpandConstant('C:\zpanel\panel\cnf\db.php')) then
+	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.bat', ExpandConstant('{tmp}\update.bat'));
+end;
+begin
   if IsWin64 then
     idpAddFile('https://home.apache.org/~steffenal/VC11/binaries/httpd-2.4.38-win64-VC11.zip', ExpandConstant('{tmp}\httpd-2.4.38-win64-VC11.zip'))
   else
@@ -248,6 +241,16 @@ begin
   else
     idpAddFile('https://download.microsoft.com/download/D/3/B/D3B72629-7D95-49ED-A4EC-7FF105754124/VSU4/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist11_x86.exe'));
 end;
+
+
+begin
+  if IsWin64 then
+    idpAddFile('https://download.microsoft.com/download/A/4/D/A4D9F1D3-6449-49EB-9A6E-902F61D8D14B/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist13_x64.exe'))
+  else
+    idpAddFile('https://download.microsoft.com/download/A/4/D/A4D9F1D3-6449-49EB-9A6E-902F61D8D14B/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist13_x86.exe'));
+end;
+
+
 begin
   if IsWin64 then
     idpAddFile('https://windows.php.net/downloads/releases/archives/php-5.6.40-Win32-VC11-x64.zip', ExpandConstant('{tmp}\php-5.6.40-Win32-VC11-x64.zip'))
