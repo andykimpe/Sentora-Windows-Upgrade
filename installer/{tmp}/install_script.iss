@@ -1,23 +1,29 @@
 #include <C:\Program Files (x86)\Inno Download Plugin\idp.iss>
 
 [Setup]
-AppName=ZPanel Server Stack
-AppVerName=ZPanel Server Stack v1.0.0
+AppName=Sentora For Windows
+AppVersion=1.0.3
 AppId={{21544337-695B-4B0E-827F-7E917B8B18C5}
-AppPublisher=ZPanel Project
-AppPublisherURL=http://www.zpanelcp.com/
-AppSupportURL=http://forums.zpanelcp.com/
-AppUpdatesURL=http://www.zpanelcp.com/
+AppPublisher=Sentora Project
+AppPublisherURL=http://www.sentora.com/
+AppSupportURL=http://forums.sentora.com/
+AppUpdatesURL=http://www.sentora.com/
 DefaultDirName=c:\zpanel
-DefaultGroupName=ZPanel
-OutputBaseFilename=zpanel-stack-1_0_0
-Compression=lzma
-DisableDirPage=yes
+DefaultGroupName=Sentora
+OutputBaseFilename=Sentora-1_0_3
+Compression=lzma2/ultra
+DisableDirPage=no
 DisableProgramGroupPage=yes
 LicenseFile=embedded\License.rtf
 InfoBeforeFile=embedded\InfoBefore.txt
 WizardImageFile=embedded\WizardImage0.bmp
 WizardSmallImageFile=embedded\WizardSmallImage0.bmp
+DisableWelcomePage=False
+AllowCancelDuringInstall=False
+ChangesEnvironment=True
+SetupIconFile=embedded\Sentora.ico
+InternalCompressLevel=ultra
+MinVersion=0,6.0sp2
 
 [Files]
 Source: "{tmp}\install_script.iss"; Flags: dontcopy
@@ -40,6 +46,7 @@ Source: "{app}\bin\filezilla\FzGSS.dll"; DestDir: "{app}\bin\filezilla"; Flags: 
 Source: "{app}\bin\filezilla\libeay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\ssleay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\hmailserver\INSTALL\zpanel_hmail.sql"; DestDir: "{app}\bin\hmailserver\INSTALL"; Flags: ignoreversion
+Source: "{app}\bin\mysql\my-sentora.ini"; DestDir: "{app}\bin\mysql"; Flags: ignoreversion
 Source: "{app}\bin\php\php.ini"; DestDir: "{app}\bin\php"; Flags: ignoreversion
 Source: "{app}\bin\php\ext\php_suhosin,1.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 64bit
 Source: "{app}\bin\php\ext\php_suhosin,2.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 32bit
@@ -85,7 +92,7 @@ Name: "{app}\temp\";
 ;PATH Variable installed and removed by innosetup ussing registery key and pascal code
 ;Filename: "{app}\bin\zpss\register_paths.bat"; Flags: runhidden; StatusMsg: "Registering application paths"
 ;install_services.bat updated for ussing parameter
-Filename: "{app}\bin\zpss\install_services.bat"; Parameters: "{app} {tmp}"; StatusMsg: "{cm:Installandregisterserver}"
+Filename: "{app}\bin\zpss\install_services.bat"; Parameters: "{app} {tmp} ""{code:GetParam1}"" ""{code:GetParam2}"" ""{code:GetParam3}"" ""{code:GetParam4}"""; StatusMsg: "{cm:Installandregisterserver}"
 ;Flags: runhidden;
 
 [UninstallRun]
@@ -117,6 +124,7 @@ Name: "{group}\Hostdata"; Filename: "{app}\hostdata"; IconFilename: "{app}\bin\z
 Name: "{group}\Tasks\Run ZPanel Daemon"; Filename: "{app}\bin\php\php.exe"; Parameters: "{app}\panel\bin\daemon.php"; IconFilename: "{app}\bin\zpanel\icons\runtasks.ico"; 
 
 [UninstallDelete]
+Type: filesandordirs; Name: "{app}\bin\*"; 
 Type: filesandordirs; Name: "{app}\*"; 
 
 [CustomMessages]
@@ -167,6 +175,70 @@ Root: "HKLM"; Subkey: "SOFTWARE\ISC\BIND"; ValueType: string; ValueName: "Instal
 Root: HKLM; SubKey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment\"; ValueType: string; ValueName: "Path"; ValueData: "{reg:HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\,Path};{app}\bin\apache\bin;{app}\bin\mysql\bin;{app}\bin\php;{app}\bin\wget;{app}\bin\bind\bin"
 
 [Code]
+Procedure URLLabelOnClick(Sender: TObject);
+var
+  ErrorCode: Integer;
+begin
+  ShellExec('open', 'http://www.sentora.org', '', '', SW_SHOWNORMAL, ewNoWait, ErrorCode);
+end;
+
+
+var
+  PageParam: TInputQueryWizardPage;
+
+// Créer les Pages Personnalisées
+procedure CreateTheWizardPages;
+
+begin
+// Create the page
+PageParam := CreateInputQueryPage(wpInfoBefore,
+  ExpandConstant('Configure your Sentora Installation'), ExpandConstant('Information of your installation'),
+  ExpandConstant('please fill in the information requested to configure your Setora installation'));
+
+// Add items (False means it's not a password edit)
+    PageParam.Add(ExpandConstant('Your Full name:'), False);
+    PageParam.Add(ExpandConstant('Your Email:'), False);
+    PageParam.Values[0]:= '';
+    PageParam.Values[1]:= '';
+end;
+
+// Fonctions de retour
+function GetParam1(Param: String): String;
+begin
+    Result := PageParam.Values[0];
+end;
+function GetParam2(Param: String): String;
+begin
+    Result := PageParam.Values[1];
+end;
+
+
+var
+  PageParamm: TInputQueryWizardPage;
+
+procedure CreateTheWizardPages1;
+begin
+// Create the page
+PageParamm := CreateInputQueryPage(wpUserInfo,
+  ExpandConstant('Configure your Sentora Installation'), ExpandConstant('Information of your installation'),
+  ExpandConstant('please fill in the information requested to configure your Setora installation'));
+
+// Add items (False means it's not a password edit)
+    PageParamm.Add(ExpandConstant('Your FQDN:'), False);
+    PageParamm.Add(ExpandConstant('Password For Zadmin:'), False);
+    PageParamm.Values[0]:= '';
+    PageParamm.Values[1]:= '';
+end;
+
+// Fonctions de retour
+function GetParam3(Paramm: String): String;
+begin
+    Result := PageParamm.Values[0];
+end;
+function GetParam4(Paramm: String): String;
+begin
+    Result := PageParamm.Values[1];
+end;
 //code for configure PATH Variable
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
@@ -189,16 +261,7 @@ begin
   end;
 end;
 //end path config
-
-//annd sentora url to installer
-Procedure URLLabelOnClick(Sender: TObject);
-var
-  ErrorCode: Integer;
-begin
-  ShellExec('open', 'http://www.sentora.org', '', '', SW_SHOWNORMAL, ewNoWait, ErrorCode);
-end;
 procedure InitializeWizard();
-//begin
 var
   URLLabel: TNewStaticText;
 begin
@@ -212,10 +275,19 @@ begin
   URLLabel.Font.Color := clBlue;
   URLLabel.Top := WizardForm.ClientHeight - URLLabel.Height - 15;
   URLLabel.Left := ScaleX(20);
-//inno download plugin for download binary
+//end;
+//begin
+  CreateTheWizardPages;
+  CreateTheWizardPages1;
+//end;
 begin
-    if FileExists(ExpandConstant('C:\zpanel\panel\cnf\db.php')) then
+if FileExists(ExpandConstant('C:\zpanel\panel\cnf\db.php')) then
 	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.bat', ExpandConstant('{tmp}\update.bat'));
+	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update2.bat', ExpandConstant('{tmp}\update2.bat'));
+			idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.php', ExpandConstant('{tmp}\update.php'));
+			idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update2.php', ExpandConstant('{tmp}\update2.php'));
+			idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.sql', ExpandConstant('{tmp}\update.sql'));
+			idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/db.php', ExpandConstant('{tmp}\db.php'));
 end;
 begin
   if IsWin64 then
@@ -270,7 +342,7 @@ begin
     idpAddFile('https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x86.zip', ExpandConstant('{tmp}\BIND9.14.8.x86.zip'));
 end;
     idpAddFile('https://www.hmailserver.com/files/hMailServer-5.3.3-B1879.exe', ExpandConstant('{tmp}\hMailServer-5.3.3-B1879.exe'));
+    idpAddFile('http://download.microsoft.com/download/2/0/E/20E90413-712F-438C-988E-FDAA79A8AC3D/dotnetfx35.exe', ExpandConstant('{tmp}\dotnetfx35.exe'));
 
     idpDownloadAfter(wpReady);
 end;
-
