@@ -85,7 +85,7 @@ Name: "{app}\temp\";
 ;PATH Variable installed and removed by innosetup ussing registery key and pascal code
 ;Filename: "{app}\bin\zpss\register_paths.bat"; Flags: runhidden; StatusMsg: "Registering application paths"
 ;install_services.bat updated for ussing parameter
-Filename: "{app}\bin\zpss\install_services.bat"; Parameters: "{app} {tmp}"; Flags: runhidden; StatusMsg: "{cm:Installandregisterserver}"
+Filename: "{app}\bin\zpss\install_services.bat"; Parameters: "{app} {tmp}"; StatusMsg: "{cm:Installandregisterserver}"
 ;Flags: runhidden;
 
 [UninstallRun]
@@ -167,8 +167,18 @@ Root: "HKLM"; Subkey: "SOFTWARE\ISC\BIND"; ValueType: string; ValueName: "Instal
 Root: HKLM; SubKey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment\"; ValueType: string; ValueName: "Path"; ValueData: "{reg:HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\,Path};{app}\bin\apache\bin;{app}\bin\mysql\bin;{app}\bin\php;{app}\bin\wget;{app}\bin\bind\bin"
 
 [Code]
+//code preparing replace zpanel by sentora update
+//execute before installing it
+procedure CurStepChanged(CurStep: TSetupStep);
+begin
+  if CurStep = ssInstall then 
+  begin
+    if FileExists(ExpandConstant('C:\zpanel\panel\cnf\db.php')) then begin
+	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.bat', ExpandConstant('{tmp}\update.bat'));
+	end;
+  end;
+end;
 //code for configure PATH Variable
-
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
   Path, AppDir: string;
