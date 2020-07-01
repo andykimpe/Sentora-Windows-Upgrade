@@ -204,6 +204,7 @@ fclose($handle);
 }
 #set permissions on bind directory
 system('CACLS ' . $install_phpdir . '/bin/bind/*.* /T /E /C /G "Users":C');
+unlink('' . $install_phpdir . '/bin/apache/conf/httpd.conf');
 $handle = fopen('' . $install_phpdir . '/bin/apache/conf/httpd.conf', 'w');
 	if(!$handle){
 	exit;
