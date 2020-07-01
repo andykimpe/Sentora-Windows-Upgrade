@@ -7,7 +7,7 @@ $your_fqdn = $argv[4];
 $password_for_zadmin = $argv[5];
 $install_phpdir = str_replace("\\", "/", $install_folder);
 $install_slash = str_replace("\\", "\\\\", $install_folder);
-$glob = vardump($GLOBALS);
+$glob = var_dump($GLOBALS);
 //debug
 fwrite(STDOUT, "\r
 global\r
