@@ -7,6 +7,18 @@ $your_fqdn = $argv[4];
 $password_for_zadmin = $argv[5];
 $install_phpdir = str_replace("\\", "/", $install_folder);
 $install_slash = str_replace("\\", "\\\\", $install_folder);
+//debug
+fwrite(STDOUT, "\r
+install folder " . $install_folder . "\r
+install php dir " . $install_phpdir . "\r
+install slash " . $install_slash . "\r
+temp dir " . $temp_dir . "\r
+full name " . $your_full_name . "\r
+email " . $your_email . "\r
+fqdn " . $your_fqdn . "\r
+zadmin password " . $password_for_zadmin . "\r);
+
+
 ##########################################################################################################
 # Set up environment                                                                                     #
 ##########################################################################################################
