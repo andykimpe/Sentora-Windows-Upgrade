@@ -1,7 +1,11 @@
 Inno Setup installer and updatter Development version
+
 Please do not use on a production server
+
 to compile this installer you would need to
+
 Download the installer folder of this git
+
 Install Inno Setup
 
 https://jrsoftware.org/isdl.php#stable
