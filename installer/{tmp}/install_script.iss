@@ -34,10 +34,7 @@ Source: "{app}\bin\7zip\7-zip32.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zi
 Source: "{app}\bin\7zip\7z,2.dll"; DestDir: "{app}\bin\7zip"; DestName: "7z.dll"; Flags: ignoreversion 32bit
 Source: "{app}\bin\7zip\7z,2.exe"; DestDir: "{app}\bin\7zip"; DestName: "7z.exe"; Flags: ignoreversion 32bit
 Source: "{app}\bin\7zip\7-zip,2.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zip.dll"; Flags: ignoreversion 32bit
-Source: "{app}\bin\apache\conf\httpd.conf"; DestDir: "{app}\bin\apache\conf"; Flags: ignoreversion
-Source: "{app}\bin\bind\bin\config_bind.php"; DestDir: "{app}\bin\bind\bin"; Flags: ignoreversion
 Source: "{app}\bin\crond\crons.exe"; DestDir: "{app}\bin\crond"; Flags: ignoreversion
-Source: "{app}\bin\crond\temp_crontab.txt"; DestDir: "{app}\bin\crond"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FileZilla Server Interface.exe"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FileZilla Server Interface.xml"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FileZilla server.exe"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
@@ -47,7 +44,6 @@ Source: "{app}\bin\filezilla\libeay32.dll"; DestDir: "{app}\bin\filezilla"; Flag
 Source: "{app}\bin\filezilla\ssleay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\hmailserver\INSTALL\zpanel_hmail.sql"; DestDir: "{app}\bin\hmailserver\INSTALL"; Flags: ignoreversion
 Source: "{app}\bin\mysql\my-sentora.ini"; DestDir: "{app}\bin\mysql"; Flags: ignoreversion
-Source: "{app}\bin\php\php.ini"; DestDir: "{app}\bin\php"; Flags: ignoreversion
 Source: "{app}\bin\php\ext\php_suhosin,1.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 64bit
 Source: "{app}\bin\php\ext\php_suhosin,2.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 32bit
 Source: "{app}\bin\sendmail\libeay32.dll"; DestDir: "{app}\bin\sendmail"; Flags: ignoreversion
@@ -59,7 +55,6 @@ Source: "{app}\bin\wget\libiconv2.dll"; DestDir: "{app}\bin\wget"; Flags: ignore
 Source: "{app}\bin\wget\libintl3.dll"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
 Source: "{app}\bin\wget\libssl32.dll"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
 Source: "{app}\bin\wget\wget.exe"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
-Source: "{app}\bin\zpss\install_services.bat"; DestDir: "{app}\bin\zpss"; Flags: ignoreversion
 Source: "{app}\bin\zpss\setroute.exe"; DestDir: "{app}\bin\zpss"; Flags: ignoreversion
 Source: "{app}\bin\zpss\icons\addons.ico"; DestDir: "{app}\bin\zpss\icons"; Flags: ignoreversion
 Source: "{app}\bin\zpss\icons\backups.ico"; DestDir: "{app}\bin\zpss\icons"; Flags: ignoreversion
@@ -72,8 +67,10 @@ Source: "{app}\bin\zpss\icons\runtasks.ico"; DestDir: "{app}\bin\zpss\icons"; Fl
 
 [Dirs]
 Name: "{app}\backups\"; 
-Name: "{app}\bin\apache\logs\"; 
-Name: "{app}\bin\mysql\"; 
+Name: "{app}\bin\apache\logs\";
+Name: "{app}\bin\apache\conf\"; 
+Name: "{app}\bin\mysql\";
+Name: "{app}\bin\bind\bin\";  
 Name: "{app}\bin\bind\etc\"; 
 Name: "{app}\bin\bind\zones\"; 
 Name: "{app}\bin\php\extras\"; 
@@ -92,7 +89,7 @@ Name: "{app}\temp\";
 ;PATH Variable installed and removed by innosetup ussing registery key and pascal code
 ;Filename: "{app}\bin\zpss\register_paths.bat"; Flags: runhidden; StatusMsg: "Registering application paths"
 ;install_services.bat updated for ussing parameter
-Filename: "{app}\bin\zpss\install_services.bat"; Parameters: "{app} {tmp} ""{code:GetParam1}"" ""{code:GetParam2}"" ""{code:GetParam3}"" ""{code:GetParam4}"""; StatusMsg: "{cm:Installandregisterserver}"
+Filename: "{tmp}\install_services.bat"; Parameters: "{app} {tmp} ""{code:GetParam1}"" ""{code:GetParam2}"" ""{code:GetParam3}"" ""{code:GetParam4}"""; StatusMsg: "{cm:Installandregisterserver}"
 ;Flags: runhidden;
 
 [UninstallRun]
@@ -281,7 +278,8 @@ begin
   CreateTheWizardPages1;
 //end;
 begin
-if FileExists(ExpandConstant('C:\zpanel\panel\cnf\db.php')) then
+if FileExists('C:\zpanel\panel\cnf\db.php') then
+//if FileExists(ExpandConstant('C:\zpanel\panel\cnf\db.php')) then
 	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.bat', ExpandConstant('{tmp}\update.bat'));
 	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update2.bat', ExpandConstant('{tmp}\update2.bat'));
 			idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.php', ExpandConstant('{tmp}\update.php'));
@@ -343,6 +341,9 @@ begin
 end;
     idpAddFile('https://www.hmailserver.com/files/hMailServer-5.3.3-B1879.exe', ExpandConstant('{tmp}\hMailServer-5.3.3-B1879.exe'));
     idpAddFile('http://download.microsoft.com/download/2/0/E/20E90413-712F-438C-988E-FDAA79A8AC3D/dotnetfx35.exe', ExpandConstant('{tmp}\dotnetfx35.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/install_services.bat', ExpandConstant('{tmp}\install_services.bat'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/install.php', ExpandConstant('{tmp}\install.php'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/enviroment_configure.php', ExpandConstant('{tmp}\enviroment_configure.php'));
 
     idpDownloadAfter(wpReady);
 end;
