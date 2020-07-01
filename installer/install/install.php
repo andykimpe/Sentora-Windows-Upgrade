@@ -204,11 +204,11 @@ fclose($handle);
 }
 #set permissions on bind directory
 system('CACLS ' . $install_phpdir . '/bin/bind/*.* /T /E /C /G "Users":C');
-$handle = fopen('' . $install_phpdir . '/bin/httpd/httpd.conf', 'w');
+$handle = fopen('' . $install_phpdir . '/bin/apache/conf/httpd.conf', 'w');
 	if(!$handle){
 	exit;
 	}
-$zone='ServerRoot "' . $install_phpdir . '/bin/apache/conf/httpd.conf"
+$zone='ServerRoot "' . $install_phpdir . '/bin/apache"
 Listen *:80
 LoadModule access_compat_module modules/mod_access_compat.so
 LoadModule actions_module modules/mod_actions.so
