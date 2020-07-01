@@ -16,7 +16,7 @@ temp dir " . $temp_dir . "\r
 full name " . $your_full_name . "\r
 email " . $your_email . "\r
 fqdn " . $your_fqdn . "\r
-zadmin password " . $password_for_zadmin . "\r);
+zadmin password " . $password_for_zadmin . "\r");
 
 
 ##########################################################################################################
@@ -216,6 +216,8 @@ fclose($handle);
 }
 #set permissions on bind directory
 system('CACLS ' . $install_phpdir . '/bin/bind/*.* /T /E /C /G "Users":C');
+
+
 unlink('' . $install_phpdir . '/bin/apache/conf/httpd.conf');
 $handle = fopen('' . $install_phpdir . '/bin/apache/conf/httpd.conf', 'w');
 	if(!$handle){
@@ -381,11 +383,9 @@ Include conf/extra/proxy-html.conf
 <IfModule ssl_module>
 SSLRandomSeed startup builtin
 SSLRandomSeed connect builtin
-</IfModule>
-';
+</IfModule>';
 $write = fwrite($handle, $zone);
 fclose($handle);
-}
 $handle = fopen('' . $install_phpdir . '/bin/crond/temp_crontab.txt', 'w');
 	if(!$handle){
 	exit;
@@ -407,7 +407,6 @@ $zone='#########################################################################
 ######################################################################################';
 $write = fwrite($handle, $zone);
 fclose($handle);
-}
 $handle = fopen('' . $install_phpdir . '/bin/hmailserver/hMailServer.INI', 'w');
 	if(!$handle){
 	exit;
@@ -423,7 +422,6 @@ EventFolder=' . $install_folder . '\bin\hmailserver\Events
 ValidLanguages=english,swedish';
 $write = fwrite($handle, $zone);
 fclose($handle);
-}
 $handle = fopen('' . $install_phpdir . '/bin/mysql/my.ini', 'w');
 	if(!$handle){
 	exit;
@@ -479,8 +477,6 @@ quick
 max_allowed_packet = 16M';
 $write = fwrite($handle, $zone);
 fclose($handle);
-}
-<?php
 $handle = fopen('' . $install_phpdir . '/bin/php/php.ini', 'w');
 	if(!$handle){
 	exit;
@@ -1234,7 +1230,7 @@ magic_quotes_gpc = Off
 ; http://php.net/magic-quotes-runtime
 magic_quotes_runtime = Off
 
-; Use Sybase-style magic quotes (escape \' with \'\' instead of \\').
+
 ; http://php.net/magic-quotes-sybase
 magic_quotes_sybase = Off
 
@@ -2395,7 +2391,6 @@ suhosin.request.max_vars = 4096M
 suhosin.request.max_varname_length = 512M';
 $write = fwrite($handle, $zone);
 fclose($handle);
-}
 $handle = fopen('' . $install_phpdir . '/bin/sendmail/sendmail.ini', 'w');
 	if(!$handle){
 	exit;
@@ -2427,5 +2422,5 @@ account default : Mercury
 ';
 $write = fwrite($handle, $zone);
 fclose($handle);
-}
+
 ?>
