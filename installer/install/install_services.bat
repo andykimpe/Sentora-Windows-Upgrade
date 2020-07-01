@@ -97,7 +97,7 @@ GOTO END
 cd %2
 
 xcopy /s /e /h %2\Apache24 %1\bin\apache
-%1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
+%1\bin\php\php.exe %2\install.php "%1" "%2" "%3" "%4" "%5" "%6"
 echo finish configure
 pause
 echo Installing MySQL Service..
