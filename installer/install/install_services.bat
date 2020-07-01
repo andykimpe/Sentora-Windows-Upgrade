@@ -7,6 +7,8 @@ echo your_full_name %3
 echo your_email %4
 echo your_fqdn %5
 echo password_for_zadmin %6
+rem cygtools (cygwin) link bin = usr\bin
+mklink /D %1\bin\cygtools\bin %1\bin\cygtools\usr\bin
 IF EXIST "%2\update.bat" (
 echo "update" > %1\update
 )
