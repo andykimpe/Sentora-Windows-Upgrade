@@ -36,13 +36,10 @@ Source: "{app}\bin\7zip\7z,2.exe"; DestDir: "{app}\bin\7zip"; DestName: "7z.exe"
 Source: "{app}\bin\7zip\7-zip,2.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zip.dll"; Flags: ignoreversion 32bit
 Source: "{app}\bin\crond\crons.exe"; DestDir: "{app}\bin\crond"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FileZilla Server Interface.exe"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\filezilla\FileZilla Server Interface.xml"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FileZilla server.exe"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\filezilla\FileZilla Server.xml"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FzGSS.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\libeay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\ssleay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\hmailserver\INSTALL\zpanel_hmail.sql"; DestDir: "{app}\bin\hmailserver\INSTALL"; Flags: ignoreversion
 Source: "{app}\bin\mysql\my-sentora.ini"; DestDir: "{app}\bin\mysql"; Flags: ignoreversion
 Source: "{app}\bin\php\ext\php_suhosin,1.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 64bit
 Source: "{app}\bin\php\ext\php_suhosin,2.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 32bit
