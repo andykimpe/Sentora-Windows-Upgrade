@@ -8,12 +8,12 @@ AppPublisher=Sentora Project
 AppPublisherURL=http://www.sentora.com/
 AppSupportURL=http://forums.sentora.com/
 AppUpdatesURL=http://www.sentora.com/
-DefaultDirName=c:\zpanel
+DefaultDirName=c:\sentora
 DefaultGroupName=Sentora
 OutputBaseFilename=Sentora-1_0_3
 Compression=lzma2/ultra
 DisableDirPage=no
-DisableProgramGroupPage=yes
+DisableProgramGroupPage=no
 LicenseFile=embedded\License.rtf
 InfoBeforeFile=embedded\InfoBefore.txt
 WizardImageFile=embedded\WizardImage0.bmp
@@ -24,6 +24,7 @@ ChangesEnvironment=True
 SetupIconFile=embedded\Sentora.ico
 InternalCompressLevel=ultra
 MinVersion=0,6.0sp2
+ChangesAssociations=True
 
 [Files]
 Source: "{tmp}\install_script.iss"; Flags: dontcopy
@@ -40,7 +41,6 @@ Source: "{app}\bin\filezilla\FileZilla server.exe"; DestDir: "{app}\bin\filezill
 Source: "{app}\bin\filezilla\FzGSS.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\libeay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\ssleay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\mysql\my-sentora.ini"; DestDir: "{app}\bin\mysql"; Flags: ignoreversion
 Source: "{app}\bin\php\ext\php_suhosin,1.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 64bit
 Source: "{app}\bin\php\ext\php_suhosin,2.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 32bit
 Source: "{app}\bin\sendmail\libeay32.dll"; DestDir: "{app}\bin\sendmail"; Flags: ignoreversion
@@ -135,6 +135,8 @@ english.Installandregisterserver=Installing services and registering application
 french.Installandregisterserver=Installation de services et enregistrement de l'applications
 english.IDP_Downloading=Downloading...
 french.IDP_Downloading=Telechargement...
+english.Configure_your_Sentora_Installation=Configure your Sentora Installation
+french.Configure_your_Sentora_Installation=Configurtion de votre Installation de Sentora
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -186,7 +188,7 @@ procedure CreateTheWizardPages;
 begin
 // Create the page
 PageParam := CreateInputQueryPage(wpInfoBefore,
-  ExpandConstant('Configure your Sentora Installation'), ExpandConstant('Information of your installation'),
+  ExpandConstant('{cm:Configure_your_Sentora_Installation}'), ExpandConstant('Information of your installation'),
   ExpandConstant('please fill in the information requested to configure your Setora installation'));
 
 // Add items (False means it's not a password edit)
@@ -214,7 +216,7 @@ procedure CreateTheWizardPages1;
 begin
 // Create the page
 PageParamm := CreateInputQueryPage(wpUserInfo,
-  ExpandConstant('Configure your Sentora Installation'), ExpandConstant('Information of your installation'),
+  ExpandConstant('{cm:Configure_your_Sentora_Installation}'), ExpandConstant('Information of your installation'),
   ExpandConstant('please fill in the information requested to configure your Setora installation'));
 
 // Add items (False means it's not a password edit)
