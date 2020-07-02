@@ -456,21 +456,21 @@ innodb_log_buffer_size=3498K
 innodb_buffer_pool_size=339M
 innodb_log_file_size=170M
 innodb_thread_concurrency=8
-innodb_data_home_dir            = "' . $install_folder . '/bin/mysql/data/"
+innodb_data_home_dir            = "' . $install_phpdir . '/bin/mysql/data/"
 innodb_data_file_path           = ibdata1:10M:autoextend
-innodb_log_group_home_dir       = "' . $install_folder . '/bin/mysql/data/"
+innodb_log_group_home_dir       = "' . $install_phpdir . '/bin/mysql/data/"
 innodb_lock_wait_timeout        = 50
 tmpdir= "' . $install_folder . '/temp/"
 enable-named-pipe
 skip-federated
 server-id = 1
 default-time-zone   = "SYSTEM"
-log_error           = "' . $install_folder . '/logs/mysql/mysql.err"
+log_error           = "' . $install_phpdir . '/logs/mysql/mysql.err"
 pid_file            = "mysql.pid"
 general_log         = 0
-general_log_file    = "' . $install_folder . '/logs/mysql/mysql.log"
+general_log_file    = "' . $install_phpdir . '/logs/mysql/mysql.log"
 slow_query_log      = 0
-slow_query_log_file = "' . $install_folder . '/logs/mysql/mysql-slow.log"
+slow_query_log_file = "' . $install_phpdir . '/logs/mysql/mysql-slow.log"
 [mysqldump]
 quick
 max_allowed_packet = 16M';
