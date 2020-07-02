@@ -435,8 +435,8 @@ socket= "MySQL"
 no-auto-rehash
 [mysqld]
 port=3306
-basedir="' . $install_folder . '/bin/mysql/"
-datadir="' . $install_folder . '/bin/mysql/data/"
+basedir="' . $install_phpdir . '/bin/mysql/"
+datadir="' . $install_phpdir . '/bin/mysql/data/"
 character-set-server=latin1
 default-storage-engine=INNODB
 max_connections=100
