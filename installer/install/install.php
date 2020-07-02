@@ -1,10 +1,10 @@
 <?php
-$install_folder = $argv[0];
-$temp_dir = $argv[1];
-$your_full_name = $argv[2];
-$your_email = $argv[3];
-$your_fqdn = $argv[4];
-$password_for_zadmin = $argv[5];
+$install_folder = $argv[1];
+$temp_dir = $argv[2];
+$your_full_name = $argv[3];
+$your_email = $argv[4];
+$your_fqdn = $argv[5];
+$password_for_zadmin = $argv[6];
 $install_phpdir = str_replace("\\", "/", $install_folder);
 $install_slash = str_replace("\\", "\\\\", $install_folder);
 $glob = var_dump($GLOBALS);
