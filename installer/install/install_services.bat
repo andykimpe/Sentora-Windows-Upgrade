@@ -97,7 +97,7 @@ GOTO END
 cd %2
 
 xcopy /s /e /h %2\Apache24 %1\bin\apache
-%1\bin\php\php.exe %2\install.php "%1" "%2" "%3" "%4" "%5" "%6"
+%1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
 pause
 echo Installing MySQL Service..
@@ -140,7 +140,7 @@ if ERRORLEVEL 1 %DIR%\bind\bin\sc.exe create named binpath= %1\bin\bind\bin\name
 echo Starting BIND
 net stop named
 net start named
-
+pause
 echo Done installing Services!
 echo All done!
 exit
