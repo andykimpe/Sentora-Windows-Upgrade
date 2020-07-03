@@ -120,7 +120,7 @@ $location = trim(fgets(STDIN));
 
 @mysql_select_db('sentoa_core', $db);
 exec("setso --set dbversion " . $version . "");
-exec("setso --set zpanel_domain " . $location . "");
+exec("setso --set sentora_domain " . $location . "");
 exec("setso --set email_from_address " . $email . "");
 exec("setso --set email_from_address " . $email . "");
 exec("setso --set daemon_lastrun 0");
