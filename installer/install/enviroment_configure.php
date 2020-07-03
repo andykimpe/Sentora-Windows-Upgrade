@@ -17,12 +17,6 @@ full name " . $your_full_name . "\r
 email " . $your_email . "\r
 fqdn " . $your_fqdn . "\r
 zadmin password " . $password_for_zadmin . "\r");
-
-fwrite(STDOUT, "\r
-##################################################\r
-# SENTORA CONFIG WIZARD FOR WINDOWS              #\r
-##################################################\r");
-
 // ZPanel version (Sent to ZPanel)
 $version = "1.0.3";
 
@@ -69,7 +63,6 @@ $password_db = $p1;
 $db = mysql_pconnect($hostname_db, $username_db, $password_db) or trigger_error('Unable to connect to database server.');
 
 // Create databases (zpanel_core, zpanel_roundcube and zpanel_hmail)
-fwrite(STDOUT, "Creating databases...\r");
 $sql = "CREATE DATABASE `sentora_roundcube` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
 $sql = "CREATE DATABASE `sentora_hmail` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
@@ -99,7 +92,6 @@ function RunSQL($sqlFileToExecute) {
 function GetServerIPFromZWS() {
     $response = @file_get_contents('http://api.sentora.org/ip.txt');
     return $response;
-    $decoded = json_decode($response, true);
 }
 
 // Insert Roundcube inital SQL into the zpanel_roundcube database.
