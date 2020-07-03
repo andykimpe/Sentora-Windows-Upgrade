@@ -323,7 +323,7 @@ LoadModule setenvif_module modules/mod_setenvif.so
 #LoadModule xml2enc_module modules/mod_xml2enc.so
 #PHP5
 LoadModule php5_module "' . $install_phpdir . '/bin/php/php5apache2_4.dll"
-PHPIniDir "c:/zpanel/bin/php"
+PHPIniDir "" . $install_phpdir . "/bin/php"
 
 <IfModule unixd_module>
 User daemon
