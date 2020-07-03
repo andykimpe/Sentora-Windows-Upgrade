@@ -7,6 +7,8 @@ echo your_full_name %3
 echo your_email %4
 echo your_fqdn %5
 echo password_for_zadmin %6
+rem disable Windows Firewall
+NetSh Advfirewall set allprofiles state off
 IF EXIST "%2\update.bat" (
 echo "update" > %1\update
 )
