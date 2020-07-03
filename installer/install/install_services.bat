@@ -159,5 +159,10 @@ cd %2\
 rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
 xcopy %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
+echo Importing Sentoa database..
+mysql -uroot < %1\bin\zpss\zpanel_core.sql
+echo Cleaning up MySQL users (securing MySQL server)..
+mysql -uroot < %1\bin\zpss\MySQL_User_Cleanup.sql
+%1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 pause
 exit
