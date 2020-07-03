@@ -59,7 +59,7 @@ cd %1\bin\cygtools
 %1\bin\7zip\7z.exe x %2\cygtools-64bit.zip
 GOTO END
 :32BIT
-%2\vcredist5_x86.exe /qn
+%2\vcredist5_x86.exe /q
 %2\vcredist8_x86.exe /q /norestart
 %2\vcredist11_x86.exe /q /norestart
 %2\vcredist13_x86.exe /q /norestart
