@@ -100,6 +100,9 @@ xcopy /s /e /h %2\Apache24 %1\bin\apache
 %1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
 pause
+%1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize-insecure=on --lower-case-table-names=1
+echo finish init mysql
+pause
 echo Installing MySQL Service..
 %1\bin\mysql\bin\mysqld.exe --install
 echo Starting MySQL Service..
