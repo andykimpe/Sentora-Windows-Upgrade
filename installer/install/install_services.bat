@@ -160,9 +160,9 @@ rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
 xcopy %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
 echo Importing Sentoa database..
-%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_core.sql
+%1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_core.sql
 echo Cleaning up MySQL users (securing MySQL server)..
-%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
+%1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 pause
