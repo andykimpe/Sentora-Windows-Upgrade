@@ -68,7 +68,7 @@ VALUES
     1,
     1,
     1,
-    'sentora',
+    'Sentora_Default',
     'default',
     1,
     0,
