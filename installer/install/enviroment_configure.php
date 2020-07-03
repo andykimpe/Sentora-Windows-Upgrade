@@ -1,20 +1,31 @@
 <?php
-/*
-############################################################
-# Enviroment configuration script for ZPI                  #
-# Developedy by Bobby Allen, 18th November 2009            #
-############################################################
-# Last updated by Bobby Allen 09/03/2012                   #
-############################################################
- */
+<?php
+$install_folder = $argv[1];
+$temp_dir = $argv[2];
+$temp_phpdir = str_replace("\\", "/", $temp_dir);
+$your_full_name = $argv[3];
+$your_email = $argv[4];
+$your_fqdn = $argv[5];
+$password_for_zadmin = $argv[6];
+$install_phpdir = str_replace("\\", "/", $install_folder);
+$install_slash = str_replace("\\", "\\\\", $install_folder);
+fwrite(STDOUT, "\r
+install folder " . $install_folder . "\r
+install php dir " . $install_phpdir . "\r
+install slash " . $install_slash . "\r
+temp dir " . $temp_dir . "\r
+full name " . $your_full_name . "\r
+email " . $your_email . "\r
+fqdn " . $your_fqdn . "\r
+zadmin password " . $password_for_zadmin . "\r");
 
 fwrite(STDOUT, "\r
 ##################################################\r
-# ZPANELX CONFIG WIZARD FOR WINDOWS              #\r
+# SENTORA CONFIG WIZARD FOR WINDOWS              #\r
 ##################################################\r");
 
 // ZPanel version (Sent to ZPanel)
-$version = "10.0.2";
+$version = "1.0.3";
 
 // Set default MySQL account details etc...
 $hostname_db = "localhost";
@@ -34,15 +45,15 @@ $sql = "FLUSH PRIVILEGES;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
 
 // Create system.php file for database access:-
-$db_settings_file = fopen("c:/zpanel/panel/cnf/db.php", "w");
+$db_settings_file = fopen("" . $install_phpdir . "/panel/cnf/db.php", "w");
 fwrite($db_settings_file, "<?php\n");
 fwrite($db_settings_file, "/**\n");
 fwrite($db_settings_file, " * Database configuration file.\n");
-fwrite($db_settings_file, " * @package zpanelx\n");
+fwrite($db_settings_file, " * @package sentora\n");
 fwrite($db_settings_file, " * @subpackage core -> config\n");
 fwrite($db_settings_file, " * @author Bobby Allen (ballen@zpanelcp.com)\n");
-fwrite($db_settings_file, " * @copyright ZPanel Project (http://www.zpanelcp.com/)\n");
-fwrite($db_settings_file, " * @link http://www.zpanelcp.com/\n");
+fwrite($db_settings_file, " * @copyright Sentora Project (http://www.sentora.org/)\n");
+fwrite($db_settings_file, " * @link http://www.sentora.org/\n");
 fwrite($db_settings_file, " * @license GPL (http://www.gnu.org/licenses/gpl.html)\n");
 fwrite($db_settings_file, " */\n");
 fwrite($db_settings_file, "\$host = \"localhost\";\n");
@@ -60,9 +71,9 @@ $db = mysql_pconnect($hostname_db, $username_db, $password_db) or trigger_error(
 
 // Create databases (zpanel_core, zpanel_roundcube and zpanel_hmail)
 fwrite(STDOUT, "Creating databases...\r");
-$sql = "CREATE DATABASE `zpanel_roundcube` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
+$sql = "CREATE DATABASE `sentora_roundcube` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
-$sql = "CREATE DATABASE `zpanel_hmail` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
+$sql = "CREATE DATABASE `sentora_hmail` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
 
 // SQL script executor...
@@ -87,7 +98,7 @@ function RunSQL($sqlFileToExecute) {
 // Get the 'true' server IP address.
 
 function GetServerIPFromZWS() {
-    $response = @file_get_contents('http://api.zpanelcp.com/ip.json');
+    $response = @file_get_contents('http://api.sentora.org/ip.txt');
     $decoded = json_decode($response, true);
     if ($decoded['ipaddress']) {
         return $decoded['ipaddress'];
@@ -97,48 +108,30 @@ function GetServerIPFromZWS() {
 }
 
 // Insert Roundcube inital SQL into the zpanel_roundcube database.
-mysql_select_db('zpanel_roundcube', $db);
-$sqlFileToExecute = "C:/zpanel/panel/etc/apps/webmail/SQL/mysql.initial.sql";
+mysql_select_db('sentoa_roundcube', $db);
+$sqlFileToExecute = "" . $install_phpdir . "/panel/etc/apps/webmail/SQL/mysql.initial.sql";
 $res = RunSQL($sqlFileToExecute);
 
 // Insert hMailServer inital SQL into the zpanel_hmail database.
-mysql_select_db('zpanel_hmail', $db);
-$sqlFileToExecute = "c:/zpanel/bin/hmailserver/INSTALL/zpanel_hmail.sql";
+mysql_select_db('sentora_hmail', $db);
+$sqlFileToExecute = "" . $temp_phpdir . "/Sentora-Windows-Upgrade-master/installer/{app}/bin/zpps/bin/zpps/sentora_hmail.sql";
 $res = RunSQL($sqlFileToExecute);
 
 // Set database back to ZPanel core to continue with the install.
-@mysql_select_db('zpanel_core', $db);
+@mysql_select_db('sentora_core', $db);
 
 // Update the current Apache Config to include the new Apache configs as part of the 'config_packs':-
-$db_settings_file = fopen("c:/zpanel/bin/apache/conf/extra/httpd-vhosts.conf", "w");
+$db_settings_file = fopen("" . $install_phpdir . "/bin/apache/conf/extra/httpd-vhosts.conf", "w");
 fwrite($db_settings_file, "# Include the ZPanel managed http-vhosts file.\r\n");
-fwrite($db_settings_file, "Include c:/zpanel/configs/apache/httpd-vhosts.conf");
+fwrite($db_settings_file, "Include " . $install_phpdir . "/configs/apache/httpd-vhosts.conf");
 fclose($db_settings_file);
-
-
 // Ask user what domain they will be hosting the control panel on and then create it and add entries to the hosts file...
-fwrite(STDOUT, "\r
-##################################################\r
-# ZPANELX CONFIG WIZARD FOR WINDOWS              #\r
-##################################################\r
-\r
-Please enter details when asked below for the main\r
-admin account.\r
-\r
-Full name: ");
-$fullname = trim(fgets(STDIN));
-fwrite(STDOUT, "Email address: ");
-$email = trim(fgets(STDIN));
-fwrite(STDOUT, "\r\r
-Please now tell us where you want to access your\r
-control panel from (eg. zpanel.yourdomain.com)\r
-this should be a domain or sub-domain (FQDN).\r
-\r\r
-FQDN: ");
+$fullname = $your_full_name;
+$email = $your_email;
 $location = trim(fgets(STDIN));
 
-fwrite(STDOUT, "\r\r");
-@mysql_select_db('zpanel_core', $db);
+
+@mysql_select_db('sentoa_core', $db);
 exec("setso --set dbversion " . $version . "");
 exec("setso --set zpanel_domain " . $location . "");
 exec("setso --set email_from_address " . $email . "");
@@ -150,7 +143,7 @@ exec("setso --set daemon_monthrun 0");
 exec("setso --set apache_changed true");
 exec("setso --set server_ip " . GetServerIPFromZWS() . "");
 
-@mysql_select_db('zpanel_core', $db);
+@mysql_select_db('sentora_core', $db);
 // We now update the MySQL user for the default 'zadmin' account..
 $log = "UPDATE x_accounts SET ac_pass_vc='" . md5($p2) . "', ac_email_vc='" . $email . "', ac_created_ts=" . time() . " WHERE ac_user_vc='zadmin'";
 $do = @mysql_query($log, $db) or die(mysql_error());
@@ -160,10 +153,10 @@ $sql = "UPDATE x_profiles SET ud_created_ts=" . time() . ", ud_fullname_vc='" . 
 mysql_query($sql, $db);
 
 // Create db.inc.php for Roundcube webmail:-
-$db_settings_file = fopen("c:/zpanel/panel/etc/apps/webmail/config/db.inc.php", "w");
+$db_settings_file = fopen("" . $install_phpdir . "/panel/etc/apps/webmail/config/db.inc.php", "w");
 fwrite($db_settings_file, "<?php\n");
 fwrite($db_settings_file, "\$rcmail_config = array();\n");
-fwrite($db_settings_file, "\$rcmail_config['db_dsnw'] = 'mysql://root:" . $p1 . "@localhost/zpanel_roundcube';\n");
+fwrite($db_settings_file, "\$rcmail_config['db_dsnw'] = 'mysql://root:" . $p1 . "@localhost/sentora_roundcube';\n");
 fwrite($db_settings_file, "\$rcmail_config['db_dsnr'] = '';\n");
 fwrite($db_settings_file, "\$rcmail_config['db_max_length'] = 512000;\n");
 fwrite($db_settings_file, "\$rcmail_config['db_persistent'] = FALSE;\n");
@@ -182,20 +175,20 @@ fwrite($db_settings_file, "?>");
 fclose($db_settings_file);
 
 // Create hMailServer.INI for hMailServer MySQL configuration:-
-$db_settings_file = @fopen("c:/zpanel/bin/hmailserver/Bin/hMailServer.ini", "w");
+$db_settings_file = @fopen("" . $install_phpdir . "/bin/hmailserver/Bin/hMailServer.ini", "w");
 fwrite($db_settings_file, "\r
 ################################################################\r
 # hMailServer configuration file                               #\r
-# Automatically generated by ZPanelX installer for Windows     #\r
+# Automatically generated by Sentora installer for Windows     #\r
 ################################################################\r
 \r");
 fwrite($db_settings_file, "\r\n");
 fwrite($db_settings_file, "[Directories]\r\n");
-fwrite($db_settings_file, "ProgramFolder=c:\zpanel\bin\hmailserver\r\n");
-fwrite($db_settings_file, "DataFolder=c:\zpanel\bin\hmailserver\Data\r\n");
-fwrite($db_settings_file, "LogFolder=c:\zpanel\logs\r\n");
-fwrite($db_settings_file, "TempFolder=c:\zpanel\bin\hmailserver\Temp\r\n");
-fwrite($db_settings_file, "EventFolder=c:\zpanel\bin\hmailserver\Events\r\n");
+fwrite($db_settings_file, "ProgramFolder=" . $install_folder . "\bin\hmailserver\r\n");
+fwrite($db_settings_file, "DataFolder=" . $install_folder . "\bin\hmailserver\Data\r\n");
+fwrite($db_settings_file, "LogFolder=" . $install_folder . "\logs\r\n");
+fwrite($db_settings_file, "TempFolder=" . $install_folder . "\bin\hmailserver\Temp\r\n");
+fwrite($db_settings_file, "EventFolder=" . $install_folder . "\bin\hmailserver\Events\r\n");
 fwrite($db_settings_file, "\r\n");
 fwrite($db_settings_file, "[GUILanguages]\r\n");
 fwrite($db_settings_file, "ValidLanguages=english,swedish\r\n");
@@ -207,7 +200,7 @@ fwrite($db_settings_file, "Password=" . $p1 . "\r\n");
 fwrite($db_settings_file, "PasswordEncryption=0\r\n");
 fwrite($db_settings_file, "Port=3306\r\n");
 fwrite($db_settings_file, "Server=localhost\r\n");
-fwrite($db_settings_file, "Database=zpanel_hmail\r\n");
+fwrite($db_settings_file, "Database=sentora_hmail\r\n");
 fwrite($db_settings_file, "Internal=0\r\n");
 fwrite($db_settings_file, "\r\n");
 fwrite($db_settings_file, "[Security]\r\n");
@@ -216,13 +209,13 @@ fclose($db_settings_file);
 
 fwrite(STDOUT, "\r
 ################################################################\r
-# YOUR ZPANEL SERVER LOGIN DETAILS                             #\r
+# YOUR SENTORA SERVER LOGIN DETAILS                             #\r
 ################################################################\r
 \r
 \r
 Your new MySQL 'root' password is: " . $p1 . "\r
 \r
-Your new ZPanel details are as follows:-\r
+Your new Sentora details are as follows:-\r
 \r
 URL: http://" . $location . "/\r
 Username: zadmin\r
@@ -230,16 +223,16 @@ Password: " . $p2 . "\r
 \r
 These details can also be found in c:\zpanel\login_details.txt\r
 \r
-Thank you for installing ZPanel!\r\r");
+Thank you for installing Sentora!\r\r");
 
 // Now we add a static route so the server admin can instantly access the control panel, and reboot Apache so VHOST is activated.
-exec("c:/zpanel/bin/zpss/setroute.exe " . $location . "");
+exec("" . $install_phpdir . "/bin/zpss/setroute.exe " . $location . "");
 
 // Add the password details to a file in C:\zpanel
-$db_settings_file = fopen("c:/zpanel/login_details.txt", "w");
+$db_settings_file = fopen("" . $install_phpdir . "/login_details.txt", "w");
 fwrite($db_settings_file, "MySQL Root Password: " .$p1. "\r\n");
-fwrite($db_settings_file, "ZPanel URL: http://" .$location. "\r\n");
-fwrite($db_settings_file, "ZPanel account: zadmin\r\n");
-fwrite($db_settings_file, "ZPanel password: ");
+fwrite($db_settings_file, "Sentora URL: http://" .$location. "\r\n");
+fwrite($db_settings_file, "Sentora account: zadmin\r\n");
+fwrite($db_settings_file, "Sentora and Hmail password: ");
 fclose($db_settings_file);
 ?>
