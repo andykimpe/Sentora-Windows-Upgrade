@@ -54,6 +54,8 @@ rmdir /S /Q mysql-5.7.29-winx64
 xcopy /s /e /h %2\mysql-5.7.29-winx64 %1\bin\mysql
 cd %1\bin\bind\bin\
 %1\bin\7zip\7z.exe x %2\BIND9.14.8.x64.zip
+cd %1\bin\cygtools
+%1\bin\7zip\7z.exe x %2\cygtools-64bit.zip
 GOTO END
 :32BIT
 %2\vcredist5_x86.exe /qn
@@ -94,6 +96,8 @@ rmdir /S /Q mysql-5.7.29-win32
 xcopy /s /e /h %2\mysql-5.7.29-win32 %1\bin\mysql
 cd %1\bin\bind\bin\
 %1\bin\7zip\7z.exe x %2\BIND9.14.8.x86.zip
+cd %1\bin\cygtools
+%1\bin\7zip\7z.exe x %2\cygtools-32bit.zip
 GOTO END
 :END
 cd %2
