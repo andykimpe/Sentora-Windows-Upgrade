@@ -198,4 +198,5 @@ DEL c:\zpanel\bin\zpss\*.php /Q
 DEL c:\zpanel\configs\bind\zones\*.* /Q
 echo install finish
 rem pause
+net start apache
 exit
