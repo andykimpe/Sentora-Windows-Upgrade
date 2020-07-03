@@ -152,4 +152,11 @@ net start named
 rem pause
 echo Done installing Services!
 echo All done!
+rem pack install finish
+rem continue panel install
+cd %2\
+%1\bin\7zip\7z.exe x %2\master.zip
+rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
+mkdir %1\panel
+xcopy %2\Sentora-Windows-Upgrade-master\1.0.3\panel\ %1\panel /E /H /C /I.
 exit
