@@ -98,12 +98,8 @@ function RunSQL($sqlFileToExecute) {
 
 function GetServerIPFromZWS() {
     $response = @file_get_contents('http://api.sentora.org/ip.txt');
+    return $response;
     $decoded = json_decode($response, true);
-    if ($decoded['ipaddress']) {
-        return $decoded['ipaddress'];
-    } else {
-        return "127.0.0.1";
-    }
 }
 
 // Insert Roundcube inital SQL into the zpanel_roundcube database.
