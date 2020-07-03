@@ -164,5 +164,37 @@ mysql -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentor
 echo Cleaning up MySQL users (securing MySQL server)..
 mysql -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
+echo end configure
+pause
+echo The installer will now finalise the install...
+echo Restarting services..
+echo Stopping Apache
+net stop Apache 
+echo Starting Apache
+net start Apache
+echo Stopping hMailServer
+net stop hMailServer 
+echo Starting hMailServer
+net start hMailServer
+echo Stopping BIND
+net stop named
+echo Starting BIND
+net start named
+
+echo Running the daemon for the first time..
+%1\bin\php\php.exe %1\panel\bin\daemon.php
+echo Done!
+pause
+%1\bin\php\php.exe %1/panel/bin/setzadmin --set %6
+echo Password successfully set!
+echo %6 >>c:\zpanel\login_details.txt
+
+pause
+
+echo Cleaning up..
+DEL c:\zpanel\bin\zpss\*.bat /Q
+DEL c:\zpanel\bin\zpss\*.php /Q
+DEL c:\zpanel\configs\bind\zones\*.* /Q
+echo install finish
 pause
 exit
