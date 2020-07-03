@@ -56,7 +56,7 @@ fwrite($db_settings_file, " * @link http://www.sentora.org/\n");
 fwrite($db_settings_file, " * @license GPL (http://www.gnu.org/licenses/gpl.html)\n");
 fwrite($db_settings_file, " */\n");
 fwrite($db_settings_file, "\$host = \"localhost\";\n");
-fwrite($db_settings_file, "\$dbname = \"zpanel_core\";\n");
+fwrite($db_settings_file, "\$dbname = \"sentora_core\";\n");
 fwrite($db_settings_file, "\$user = \"root\";\n");
 fwrite($db_settings_file, "\$pass = \"" . $p1 . "\";\n");
 fwrite($db_settings_file, "?>");
