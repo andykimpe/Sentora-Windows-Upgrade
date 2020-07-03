@@ -1,5 +1,4 @@
 <?php
-<?php
 $install_folder = $argv[1];
 $temp_dir = $argv[2];
 $temp_phpdir = str_replace("\\", "/", $temp_dir);
