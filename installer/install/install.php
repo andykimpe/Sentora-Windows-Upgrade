@@ -215,9 +215,6 @@ fclose($handle);
 }
 #set permissions on bind directory
 system('CACLS ' . $install_phpdir . '/bin/bind/*.* /T /E /C /G "Users":C');
-
-
-unlink('' . $install_phpdir . '/bin/apache/conf/httpd.conf');
 $handle = fopen('' . $install_phpdir . '/bin/apache/conf/httpd.conf', 'w');
 	if(!$handle){
 	exit;
@@ -460,7 +457,7 @@ innodb_data_home_dir            = "' . $install_phpdir . '/bin/mysql/data/"
 innodb_data_file_path           = ibdata1:10M:autoextend
 innodb_log_group_home_dir       = "' . $install_phpdir . '/bin/mysql/data/"
 innodb_lock_wait_timeout        = 50
-tmpdir= "' . $install_folder . '/temp/"
+tmpdir= "' . $install_phpdir . '/temp/"
 enable-named-pipe
 skip-federated
 server-id = 1
