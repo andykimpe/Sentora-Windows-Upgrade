@@ -1,4 +1,16 @@
+;inno download plugin
 #include <C:\Program Files (x86)\Inno Download Plugin\idp.iss>
+;inno download plugin translation
+; Language files must be included after idp.iss and after [Languages] section
+#include <idplang\czech.iss>
+#include <idplang\german.iss>
+#include <idplang\finnish.iss>
+#include <idplang\french.iss>
+#include <idplang\italian.iss>
+#include <idplang\polish.iss>
+#include <idplang\brazilianportuguese.iss>
+#include <idplang\russian.iss>
+#include <idplang\spanish.iss>
 
 [Setup]
 AppName=Sentora For Windows
@@ -28,30 +40,24 @@ ChangesAssociations=True
 
 [Files]
 Source: "{tmp}\install_script.iss"; Flags: dontcopy
-Source: "{app}\bin\7zip\7z,1.dll"; DestDir: "{app}\bin\7zip"; DestName: "7z.dll"; Flags: ignoreversion 64bit
-Source: "{app}\bin\7zip\7z,1.exe"; DestDir: "{app}\bin\7zip"; DestName: "7z.exe"; Flags: ignoreversion 64bit
-Source: "{app}\bin\7zip\7-zip,1.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zip.dll"; Flags: ignoreversion 64bit
-Source: "{app}\bin\7zip\7-zip32.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zip32.dll"; Flags: ignoreversion 64bit
-Source: "{app}\bin\7zip\7z,2.dll"; DestDir: "{app}\bin\7zip"; DestName: "7z.dll"; Flags: ignoreversion 32bit
-Source: "{app}\bin\7zip\7z,2.exe"; DestDir: "{app}\bin\7zip"; DestName: "7z.exe"; Flags: ignoreversion 32bit
-Source: "{app}\bin\7zip\7-zip,2.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zip.dll"; Flags: ignoreversion 32bit
+Source: "{app}\bin\7zip\7z,1.dll"; DestDir: "{app}\bin\7zip"; DestName: "7z.dll"; Flags: 64bit
+Source: "{app}\bin\7zip\7z,1.exe"; DestDir: "{app}\bin\7zip"; DestName: "7z.exe"; Flags: 64bit
+Source: "{app}\bin\7zip\7-zip,1.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zip.dll"; Flags: 64bit
+Source: "{app}\bin\7zip\7-zip32.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zip32.dll"; Flags: 64bit
+Source: "{app}\bin\7zip\7z,2.dll"; DestDir: "{app}\bin\7zip"; DestName: "7z.dll"; Flags: 32bit
+Source: "{app}\bin\7zip\7z,2.exe"; DestDir: "{app}\bin\7zip"; DestName: "7z.exe"; Flags: 32bit
+Source: "{app}\bin\7zip\7-zip,2.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zip.dll"; Flags: 32bit
 Source: "{app}\bin\crond\crons.exe"; DestDir: "{app}\bin\crond"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FileZilla Server Interface.exe"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FileZilla server.exe"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\FzGSS.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\libeay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
 Source: "{app}\bin\filezilla\ssleay32.dll"; DestDir: "{app}\bin\filezilla"; Flags: ignoreversion
-Source: "{app}\bin\php\ext\php_suhosin,1.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 64bit
-Source: "{app}\bin\php\ext\php_suhosin,2.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: ignoreversion 32bit
+Source: "{app}\bin\php\ext\php_suhosin,1.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: 64bit
+Source: "{app}\bin\php\ext\php_suhosin,2.dll"; DestDir: "{app}\bin\php\ext"; DestName: "php_suhosin.dll"; Flags: 32bit
 Source: "{app}\bin\sendmail\libeay32.dll"; DestDir: "{app}\bin\sendmail"; Flags: ignoreversion
 Source: "{app}\bin\sendmail\sendmail.exe"; DestDir: "{app}\bin\sendmail"; Flags: ignoreversion
-Source: "{app}\bin\sendmail\sendmail.ini"; DestDir: "{app}\bin\sendmail"; Flags: ignoreversion
 Source: "{app}\bin\sendmail\ssleay32.dll"; DestDir: "{app}\bin\sendmail"; Flags: ignoreversion
-Source: "{app}\bin\wget\libeay32.dll"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
-Source: "{app}\bin\wget\libiconv2.dll"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
-Source: "{app}\bin\wget\libintl3.dll"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
-Source: "{app}\bin\wget\libssl32.dll"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
-Source: "{app}\bin\wget\wget.exe"; DestDir: "{app}\bin\wget"; Flags: ignoreversion
 Source: "{app}\bin\zpss\setroute.exe"; DestDir: "{app}\bin\zpss"; Flags: ignoreversion
 Source: "{app}\bin\zpss\icons\addons.ico"; DestDir: "{app}\bin\zpss\icons"; Flags: ignoreversion
 Source: "{app}\bin\zpss\icons\backups.ico"; DestDir: "{app}\bin\zpss\icons"; Flags: ignoreversion
@@ -66,13 +72,16 @@ Source: "{app}\bin\zpss\icons\runtasks.ico"; DestDir: "{app}\bin\zpss\icons"; Fl
 Name: "{app}\backups\"; 
 Name: "{app}\bin\apache\logs\";
 Name: "{app}\bin\apache\conf\"; 
-Name: "{app}\bin\mysql\";
+Name: "{app}\bin\mysql\data\";
 Name: "{app}\bin\bind\bin\";  
 Name: "{app}\bin\bind\etc\"; 
 Name: "{app}\bin\bind\zones\"; 
 Name: "{app}\bin\php\extras\"; 
 Name: "{app}\configs\"; 
-Name: "{app}\hostdata\zadmin\public_html\"; 
+Name: "{app}\bin\cygtools\etc\pki\ca-trust\source\anchors"; 
+Name: "{app}\bin\cygtools\etc\pki\ca-trust\source\blacklist"; 
+Name: "{app}\hostdata\zadmin\public_html\";
+Name: "{app}\bin\hmailserver\";
 Name: "{app}\logs\apache\"; 
 Name: "{app}\logs\bind\"; 
 Name: "{app}\logs\hmailserver\"; 
@@ -86,7 +95,7 @@ Name: "{app}\temp\";
 ;PATH Variable installed and removed by innosetup ussing registery key and pascal code
 ;Filename: "{app}\bin\zpss\register_paths.bat"; Flags: runhidden; StatusMsg: "Registering application paths"
 ;install_services.bat updated for ussing parameter
-Filename: "{tmp}\install_services.bat"; Parameters: "{app} {tmp} ""{code:GetParam1}"" ""{code:GetParam2}"" ""{code:GetParam3}"" ""{code:GetParam4}"""; StatusMsg: "{cm:Installandregisterserver}"
+Filename: "{tmp}\install_services.bat"; Parameters: "{app} {tmp} ""{code:GetParam1}"" {code:GetParam2} {code:GetParam3} {code:GetParam4}"; StatusMsg: "{cm:Installandregisterserver}"
 ;Flags: runhidden;
 
 [UninstallRun]
@@ -106,9 +115,9 @@ Filename: "{win}\System32\cmd.exe"; Parameters: "/c 'timeout /t 30"; WorkingDir:
 
 
 [Icons]
-Name: "{group}\Support\ZPanel website"; Filename: "http://www.zpanelcp.com/"; IconFilename: "{app}\bin\zpss\icons\internet.ico"; 
-Name: "{group}\Support\ZPanel forums"; Filename: "http://forums.zpanelcp.com/"; IconFilename: "{app}\bin\zpss\icons\forums.ico"; 
-Name: "{group}\Support\ZPanel bug database"; Filename: "http://bugs.zpanelcp.com/"; IconFilename: "{app}\bin\zpss\icons\bugs.ico"; 
+Name: "{group}\Support\Sentora website"; Filename: "http://www.sentora.org/"; IconFilename: "{app}\bin\zpss\icons\internet.ico"; 
+Name: "{group}\Support\Sentora forums"; Filename: "http://forums.sentora.org/"; IconFilename: "{app}\bin\zpss\icons\forums.ico"; 
+Name: "{group}\Support\Sentora bug database"; Filename: "https://github.com/sentora/sentora-core/issues"; IconFilename: "{app}\bin\zpss\icons\bugs.ico"; 
 Name: "{group}\Management\hMailServer Console"; Filename: "{app}\bin\hmailserver\Bin\hMailAdmin.exe"; 
 Name: "{group}\Management\FileZilla Console"; Filename: "{app}\bin\filezilla\FileZilla Server Interface.exe"; 
 Name: "{group}\Management\Apache Monitor"; Filename: "{app}\bin\apache\bin\ApacheMonitor.exe"; 
@@ -122,53 +131,63 @@ Type: filesandordirs; Name: "{app}\bin\*";
 Type: filesandordirs; Name: "{app}\*"; 
 
 [CustomMessages]
-english.NameAndVersion=%1 version %2
-english.AdditionalIcons=Additional icons:
-english.CreateDesktopIcon=Create a &desktop icon
-english.CreateQuickLaunchIcon=Create a &Quick Launch icon
-english.ProgramOnTheWeb=%1 on the Web
-english.UninstallProgram=Uninstall %1
-english.LaunchProgram=Launch %1
-english.AssocFileExtension=&Associate %1 with the %2 file extension
-english.AssocingFileExtension=Associating %1 with the %2 file extension...
-english.Installandregisterserver=Installing services and registering applications
-french.Installandregisterserver=Installation de services et enregistrement de l'applications
-english.IDP_Downloading=Downloading...
-french.IDP_Downloading=Telechargement...
-english.Configure_your_Sentora_Installation=Configure your Sentora Installation
-french.Configure_your_Sentora_Installation=Configurtion de votre Installation de Sentora
+; default inno setup line
+en.NameAndVersion=%1 version %2
+en.AdditionalIcons=Additional icons:
+en.CreateDesktopIcon=Create a &desktop icon
+en.CreateQuickLaunchIcon=Create a &Quick Launch icon
+en.ProgramOnTheWeb=%1 on the Web
+en.UninstallProgram=Uninstall %1
+en.LaunchProgram=Launch %1
+en.AssocFileExtension=&Associate %1 with the %2 file extension
+en.AssocingFileExtension=Associating %1 with the %2 file extension...
+;custom translation
+;english original
+en.Installandregisterserver=Installing services and registering applications
+en.Configure_your_Sentora_Installation=Configure your Sentora Installation
+;french
+fr.Installandregisterserver=Installation des services et enregistrement de l'application
+fr.Configure_your_Sentora_Installation=Configurtion de votre Installation de Sentora
+
+
+
+
+
+
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
-Name: "armenian"; MessagesFile: "compiler:Languages\Armenian.isl"
-Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
-Name: "catalan"; MessagesFile: "compiler:Languages\Catalan.isl"
-Name: "corsican"; MessagesFile: "compiler:Languages\Corsican.isl"
-Name: "czech"; MessagesFile: "compiler:Languages\Czech.isl"
-Name: "danish"; MessagesFile: "compiler:Languages\Danish.isl"
-Name: "dutch"; MessagesFile: "compiler:Languages\Dutch.isl"
-Name: "finnish"; MessagesFile: "compiler:Languages\Finnish.isl"
-Name: "french"; MessagesFile: "compiler:Languages\French.isl"; LicenseFile: "embedded\License-french.rtf"
-Name: "german"; MessagesFile: "compiler:Languages\German.isl"
-Name: "hebrew"; MessagesFile: "compiler:Languages\Hebrew.isl"
-Name: "icelandic"; MessagesFile: "compiler:Languages\Icelandic.isl"
-Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
-Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"
-Name: "norwegian"; MessagesFile: "compiler:Languages\Norwegian.isl"
-Name: "polish"; MessagesFile: "compiler:Languages\Polish.isl"
-Name: "portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
-Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
-Name: "slovak"; MessagesFile: "compiler:Languages\Slovak.isl"
-Name: "slovenian"; MessagesFile: "compiler:Languages\Slovenian.isl"
-Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
-Name: "turkish"; MessagesFile: "compiler:Languages\Turkish.isl"
-Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
+;english
+Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "ar"; MessagesFile: "compiler:Languages\Armenian.isl"
+Name: "pt_br"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
+Name: "ca"; MessagesFile: "compiler:Languages\Catalan.isl"
+Name: "co"; MessagesFile: "compiler:Languages\Corsican.isl"
+Name: "cz"; MessagesFile: "compiler:Languages\Czech.isl"
+Name: "da"; MessagesFile: "compiler:Languages\Danish.isl"
+Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
+Name: "fi"; MessagesFile: "compiler:Languages\Finnish.isl"
+Name: "fr"; MessagesFile: "compiler:Languages\French.isl"; LicenseFile: "embedded\License-french.rtf"
+Name: "de"; MessagesFile: "compiler:Languages\German.isl"
+Name: "he"; MessagesFile: "compiler:Languages\Hebrew.isl"
+Name: "ic"; MessagesFile: "compiler:Languages\Icelandic.isl"
+Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "jp"; MessagesFile: "compiler:Languages\Japanese.isl"
+Name: "no"; MessagesFile: "compiler:Languages\Norwegian.isl"
+Name: "pl"; MessagesFile: "compiler:Languages\Polish.isl"
+Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "ru"; MessagesFile: "compiler:Languages\Russian.isl"
+Name: "sk"; MessagesFile: "compiler:Languages\Slovak.isl"
+Name: "sl"; MessagesFile: "compiler:Languages\Slovenian.isl"
+Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "tr"; MessagesFile: "compiler:Languages\Turkish.isl"
+Name: "uk"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 
 [Registry]
 ; Imported Registry File: "C:\zpanel\bin\bind\bin\bind.reg"
+Root: "HKLM64"; Subkey: "SOFTWARE\ISC\BIND"; ValueType: string; ValueName: "InstallDir"; ValueData: "{app}\bin\bind"; Flags: uninsdeletekey
 Root: "HKLM"; Subkey: "SOFTWARE\ISC\BIND"; ValueType: string; ValueName: "InstallDir"; ValueData: "{app}\bin\bind"; Flags: uninsdeletekey
 ;configuration for PATH Variable
-Root: HKLM; SubKey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment\"; ValueType: string; ValueName: "Path"; ValueData: "{reg:HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\,Path};{app}\bin\apache\bin;{app}\bin\mysql\bin;{app}\bin\php;{app}\bin\wget;{app}\bin\bind\bin"
+Root: "HKLM"; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment\"; ValueType: string; ValueName: "Path"; ValueData: "{reg:HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\,Path};{app}\bin\apache\bin;{app}\bin\mysql\bin;{app}\bin\php;{app}\bin\cygtools\bin;{app}\bin\bind\bin"
 
 [Code]
 Procedure URLLabelOnClick(Sender: TObject);
@@ -192,13 +211,12 @@ PageParam := CreateInputQueryPage(wpInfoBefore,
   ExpandConstant('please fill in the information requested to configure your Setora installation'));
 
 // Add items (False means it's not a password edit)
-    PageParam.Add(ExpandConstant('Your Full name:'), False);
+    PageParam.Add(ExpandConstant('Your Full Name:'), False);
     PageParam.Add(ExpandConstant('Your Email:'), False);
     PageParam.Values[0]:= '';
     PageParam.Values[1]:= '';
 end;
 
-// Fonctions de retour
 function GetParam1(Param: String): String;
 begin
     Result := PageParam.Values[0];
@@ -247,7 +265,7 @@ begin
       'SYSTEM\CurrentControlSet\Control\Session Manager\Environment\',
       'Path', Path) then
     begin
-      AppDir := ExpandConstant('{app}\bin\apache\bin;{app}\bin\mysql\bin;{app}\bin\php;{app}\bin\wget;{app}\bin\bind\bin');
+      AppDir := ExpandConstant('{app}\bin\apache\bin;{app}\bin\mysql\bin;{app}\bin\php;{app}\bin\cygtools\bin;{app}\bin\bind\bin');
       Index := Pos(AppDir, Path);
       Delete(Path, Index-1, Length(AppDir)+1);
       RegWriteStringValue(HKEY_LOCAL_MACHINE,
@@ -338,11 +356,47 @@ begin
   else
     idpAddFile('https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x86.zip', ExpandConstant('{tmp}\BIND9.14.8.x86.zip'));
 end;
+
+begin
+  if IsWin64 then
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/cygtools/cygtools-64bit.zip', ExpandConstant('{tmp}\cygtools-64bit.zip'))
+  else
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/cygtools/cygtools-32bit.zip', ExpandConstant('{tmp}\cygtools-32bit.zip'));
+end;
     idpAddFile('https://www.hmailserver.com/files/hMailServer-5.3.3-B1879.exe', ExpandConstant('{tmp}\hMailServer-5.3.3-B1879.exe'));
     idpAddFile('http://download.microsoft.com/download/2/0/E/20E90413-712F-438C-988E-FDAA79A8AC3D/dotnetfx35.exe', ExpandConstant('{tmp}\dotnetfx35.exe'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/install_services.bat', ExpandConstant('{tmp}\install_services.bat'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/install.php', ExpandConstant('{tmp}\install.php'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/enviroment_configure.php', ExpandConstant('{tmp}\enviroment_configure.php'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/archive/master.zip', ExpandConstant('{tmp}\master.zip'));
 
     idpDownloadAfter(wpReady);
+end;
+function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;
+begin
+    Result := ''
+
+    if MemoUserInfoInfo <> '' then begin
+        Result := MemoUserInfoInfo + Newline + NewLine;
+    end;
+    if MemoDirInfo <> '' then begin
+        Result := Result + MemoDirInfo + Newline + NewLine;
+    end;
+    if MemoTypeInfo <> '' then begin
+        Result := Result + MemoTypeInfo + Newline + NewLine;
+    end;
+    if MemoComponentsInfo <> '' then begin
+        Result := Result + MemoComponentsInfo + Newline + NewLine;
+    end;
+    if MemoGroupInfo <> '' then begin
+        Result := Result + MemoGroupInfo + Newline + NewLine;
+    end;
+    if MemoTasksInfo <> '' then begin
+        Result := Result + MemoTasksInfo + Newline + NewLine;
+    end;
+    Result := Result + 'Your Sentora install Configure:' + NewLine + NewLine;	
+    Result := Result + 'Your Full Name: ' + PageParam.Values[0] + NewLine;	
+    Result := Result + 'Your Email: ' + PageParam.Values[1] + NewLine;	
+    Result := Result + 'Your FQDN: ' + PageParamm.Values[0] + NewLine;	
+    Result := Result + 'Password For Zadmin: ' + PageParamm.Values[1] + NewLine;
 end;
