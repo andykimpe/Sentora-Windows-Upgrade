@@ -192,10 +192,12 @@ echo %6 >>c:\zpanel\login_details.txt
 rem pause
 
 echo Cleaning up..
-DEL c:\zpanel\bin\zpss\*.bat /Q
-DEL c:\zpanel\bin\zpss\*.php /Q
-DEL c:\zpanel\configs\bind\zones\*.* /Q
+DEL %1\bin\zpss\*.bat /Q
+DEL %1\bin\zpss\*.php /Q
+DEL %1\configs\bind\zones\*.* /Q
 echo install finish
 rem pause
+net stop apache
+mklink /D C:\zpanel %1
 net start apache
 exit
