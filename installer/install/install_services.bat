@@ -14,7 +14,6 @@ echo "update" > %1\update
 )
 cd %2
 rmdir /S /Q Apache24
-GOTO 32BIT
 IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BIT) ELSE (GOTO 32BIT)
 :64BIT
 %2\vcredist5_x64.exe /q
