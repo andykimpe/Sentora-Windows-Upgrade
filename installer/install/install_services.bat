@@ -101,10 +101,10 @@ cd %2
 xcopy /s /e /h %2\Apache24 %1\bin\apache
 %1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
-pause
+rem pause
 %1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize-insecure=on --lower-case-table-names=1
 echo finish init mysql
-pause
+rem pause
 echo Installing MySQL Service..
 %1\bin\mysql\bin\mysqld.exe --install
 echo Starting MySQL Service..
@@ -145,7 +145,7 @@ if ERRORLEVEL 1 %DIR%\bind\bin\sc.exe create named binpath= %1\bin\bind\bin\name
 echo Starting BIND
 net stop named
 net start named
-pause
+rem pause
 echo Done installing Services!
 echo All done!
 exit
