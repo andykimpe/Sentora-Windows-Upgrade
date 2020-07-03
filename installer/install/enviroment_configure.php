@@ -115,7 +115,7 @@ fclose($db_settings_file);
 // Ask user what domain they will be hosting the control panel on and then create it and add entries to the hosts file...
 $fullname = $your_full_name;
 $email = $your_email;
-$location = trim(fgets(STDIN));
+$location = $your_fqdn;
 
 
 @mysql_select_db('sentoa_core', $db);
