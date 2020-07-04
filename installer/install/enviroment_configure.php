@@ -99,11 +99,6 @@ mysql_select_db('sentoa_roundcube', $db);
 $sqlFileToExecute = "" . $install_phpdir . "/panel/etc/apps/webmail/SQL/mysql.initial.sql";
 $res = RunSQL($sqlFileToExecute);
 
-// Insert hMailServer inital SQL into the zpanel_hmail database.
-mysql_select_db('sentora_hmail', $db);
-$sqlFileToExecute = "" . $temp_phpdir . "/Sentora-Windows-Upgrade-master/installer/{app}/bin/zpps/bin/zpps/sentora_hmail.sql";
-$res = RunSQL($sqlFileToExecute);
-
 // Set database back to ZPanel core to continue with the install.
 @mysql_select_db('sentora_core', $db);
 
