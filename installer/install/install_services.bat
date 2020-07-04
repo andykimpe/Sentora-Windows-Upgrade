@@ -17,13 +17,14 @@ net stop named
 sc delete named
 net stop cron
 sc delete cron
-net stop "Fizilla Server"
-sc delete "Fizilla Server"
+net stop "Filezilla Server"
+sc delete "Filezilla Server"
 net stop mysql
 sc delete mysql
-del C:\Windows\System32\zppy.bat
-del C:\Windows\System32\setso.bat
-del C:\Windows\System32\zppy.bat
+del C:\Windows\zppy.bat
+del C:\Windows\setso.bat
+del C:\Windows\zppy.bat
+del C:\Windows\System32\crontabs
 rmdir /S /Q C:\zpanel
 )
 cd %2
