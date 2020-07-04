@@ -190,7 +190,24 @@ exec("" . $install_folder . "\bin\cygtools\bin\setso --set log_dir " . $install_
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_budir " . $install_phpdir . "/backups/");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set zsudo " . $install_phpdir . "/panel/bin/zsudo");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_exer " . $install_phpdir . "/panel/bin/daemon.php");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set cron_reload_command ");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set server_ip " . GetServerIPFromZWS() . "");
+//update cron config
+$sql = "UPDATE sentora_core.x_settings SET so_name_vc = 'cron_file' WHERE x_settings.so_id_pk =117;";
+$resault = @mysql_query($sql, $db) or die(mysql_error());
+$sql = "UPDATE sentora_core.x_settings SET so_cleanname_vc = 'Cron File' WHERE x_settings.so_id_pk =117;";
+$resault = @mysql_query($sql, $db) or die(mysql_error());
+$sql = "UPDATE sentora_core.x_settings SET so_value_tx = 'C:/Windows/System32/crontab' WHERE x_settings.so_id_pk =117;";
+$resault = @mysql_query($sql, $db) or die(mysql_error());
+$sql = "UPDATE sentora_core.x_settings SET so_desc_tx = 'Path to the user cron file' WHERE x_settings.so_id_pk =117;";
+$resault = @mysql_query($sql, $db) or die(mysql_error());
+$sql = "UPDATE sentora_core.x_settings SET so_value_tx = '' WHERE x_settings.so_id_pk =116;";
+$resault = @mysql_query($sql, $db) or die(mysql_error());
+$sql = "DELETE FROM sentora_core.x_settings WHERE x_settings.so_id_pk = 118;";
+$resault = @mysql_query($sql, $db) or die(mysql_error());
+$sql = "DELETE FROM sentora_core.x_settings WHERE x_settings.so_id_pk = 119;";
+$resault = @mysql_query($sql, $db) or die(mysql_error());
+
 
 @mysql_select_db('sentora_core', $db);
 // We now update the MySQL user for the default 'zadmin' account..
