@@ -51,6 +51,9 @@ rem for windows 8 and 10 net framework 3.5 install online using dism
 DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
 rem msu dependencie for windows 8 and windows server 2012
 rem read https://github.com/Dravion/hmailserver/releases
+mkdir %2\updates
+rename %2\Windows8.1-KB2919442-x64.msu %2\updates\Windows8.1-KB2919442-x64.msu
+rename %2\Windows8.1-KB2919355-x64.msu %2\updates\Windows8.1-KB2919355-x64.msu
 dism /online /add-package /packagepath:%2\updates
 :W10
 rem for windows 8 and 10 net framework 3.5 install online using dism
