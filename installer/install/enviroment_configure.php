@@ -62,10 +62,9 @@ $username_db = "root";
 $password_db = $p1;
 $db = mysql_pconnect($hostname_db, $username_db, $password_db) or trigger_error('Unable to connect to database server.');
 
-// Create databases (zpanel_core, zpanel_roundcube and zpanel_hmail)
+// Create databases (sentora_roundcube)
 $sql = "CREATE DATABASE `sentora_roundcube` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
-$sql = "CREATE DATABASE `sentora_hmail` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
 
 // SQL script executor...
