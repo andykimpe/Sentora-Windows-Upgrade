@@ -368,11 +368,11 @@ begin
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://download.microsoft.com/download/C/F/8/CF821C31-38C7-4C5C-89BB-B283059269AF/Windows8.1-KB2919442-x64.msu', ExpandConstant('{tmp}\updates\Windows8.1-KB2919442-x64.msu'))
+    idpAddFile('https://download.microsoft.com/download/C/F/8/CF821C31-38C7-4C5C-89BB-B283059269AF/Windows8.1-KB2919442-x64.msu', ExpandConstant('{tmp}\Windows8.1-KB2919442-x64.msu'))
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://download.microsoft.com/download/D/B/1/DB1F29FC-316D-481E-B435-1654BA185DCF/Windows8.1-KB2919355-x64.msu', ExpandConstant('{tmp}\updates\'))
+    idpAddFile('https://download.microsoft.com/download/D/B/1/DB1F29FC-316D-481E-B435-1654BA185DCF/Windows8.1-KB2919355-x64.msu', ExpandConstant('{tmp}\Windows8.1-KB2919355-x64.msu'))
 end;
     idpAddFile('http://download.microsoft.com/download/2/0/E/20E90413-712F-438C-988E-FDAA79A8AC3D/dotnetfx35.exe', ExpandConstant('{tmp}\dotnetfx35.exe'));
     idpAddFile('https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe', ExpandConstant('{tmp}\NDP452-KB2901907-x86-x64-AllOS-ENU.exe'));
