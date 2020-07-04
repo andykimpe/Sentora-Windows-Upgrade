@@ -65,7 +65,6 @@ $db = mysql_pconnect($hostname_db, $username_db, $password_db) or trigger_error(
 // Create databases (sentora_roundcube)
 $sql = "CREATE DATABASE `sentora_roundcube` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
-$resault = @mysql_query($sql, $db) or die(mysql_error());
 
 // SQL script executor...
 
