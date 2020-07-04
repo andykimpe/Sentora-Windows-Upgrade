@@ -140,6 +140,34 @@ exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/s
 exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_exer " . $install_phpdir . "/panel/bin/daemon.php");
 exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set server_ip " . GetServerIPFromZWS() . "");
 
+
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set dbversion " . $version . "");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set sentora_domain " . $location . "");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set email_from_address " . $email . "");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set email_from_address " . $email . "");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_lastrun 0");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_dayrun 0");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_weekrun 0");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_monthrun 0");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set apache_changed true");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set sentora_root " . $install_phpdir . "/panel/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set temp_dir " . $install_phpdir . "/temp/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set logfile " . $install_phpdir . "/logs/sentora.log");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set named_dir " . $install_phpdir . "/configs/bind/etc/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set zone_dir " . $install_phpdir . "/configs/bind/zones/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set bind_log " . $install_phpdir . "/logs/bind/bind.log");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set hosted_dir " . $install_phpdir . "/hostdata/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set apache_vhost " . $install_phpdir . "/configs/apache/httpd-vhosts.conf");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set static_dir " . $install_phpdir . "/panel/etc/static/'");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set parking_path " . $install_phpdir . "/panel/etc/static/parking/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set upload_temp_dir " . $install_phpdir . "/temp/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set openbase_temp " . $install_phpdir . "/temp/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set log_dir " . $install_phpdir . "/logs/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set apache_budir " . $install_phpdir . "/backups/");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set zsudo " . $install_phpdir . "/panel/bin/zsudo");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_exer " . $install_phpdir . "/panel/bin/daemon.php");
+exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set server_ip " . GetServerIPFromZWS() . "");
+
 @mysql_select_db('sentora_core', $db);
 // We now update the MySQL user for the default 'zadmin' account..
 $log = "UPDATE x_accounts SET ac_pass_vc='" . md5($p2) . "', ac_email_vc='" . $email . "', ac_created_ts=" . time() . " WHERE ac_user_vc='zadmin'";
