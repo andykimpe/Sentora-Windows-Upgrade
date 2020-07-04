@@ -21,6 +21,8 @@ net stop "Filezilla Server"
 sc delete "Filezilla Server"
 net stop mysql
 sc delete mysql
+net stop hmailserver
+sc delete hmailserver
 del C:\Windows\zppy.bat
 del C:\Windows\setso.bat
 del C:\Windows\zppy.bat
