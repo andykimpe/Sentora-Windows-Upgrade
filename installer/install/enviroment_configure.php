@@ -110,34 +110,87 @@ $fullname = $your_full_name;
 $email = $your_email;
 $location = $your_fqdn;
 
+//add service command parameter for permit use reload ,force-reload and restart fonction
+$db_settings_file = fopen("" . $install_phpdir . "/cygtools/bin/service.bat", "w");
+fwrite($db_settings_file, "@echo off\r\n");
+fwrite($db_settings_file, "if %1 equ reload (goto restart)\r\n");
+fwrite($db_settings_file, "if %1 equ force-reload (goto restart)\r\n");
+fwrite($db_settings_file, "if %1 equ restart (goto restart)\r\n");
+fwrite($db_settings_file, "if %1 equ start (goto start)\r\n");
+fwrite($db_settings_file, "if %1 equ stop (goto stop)\r\n");
+fwrite($db_settings_file, ":restart\r\n");
+fwrite($db_settings_file, "net stop %2\r\n");
+fwrite($db_settings_file, "net start %2\r\n");
+fwrite($db_settings_file, "goto exit\r\n");
+fwrite($db_settings_file, ":stop\r\n");
+fwrite($db_settings_file, "net stop %2\r\n");
+fwrite($db_settings_file, "goto exit\r\n");
+fwrite($db_settings_file, ":start\r\n");
+fwrite($db_settings_file, "net start %2\r\n");
+fwrite($db_settings_file, "goto exit\r\n");
+fwrite($db_settings_file, ":exit");
+fclose($db_settings_file);
 
-@mysql_select_db('sentoa_core', $db);
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set dbversion " . $version . "");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set sentora_domain " . $location . "");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set email_from_address " . $email . "");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set email_from_address " . $email . "");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_lastrun 0");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_dayrun 0");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_weekrun 0");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_monthrun 0");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set apache_changed true");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set sentora_root " . $install_phpdir . "/panel/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set temp_dir " . $install_phpdir . "/temp/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set logfile " . $install_phpdir . "/logs/sentora.log");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set named_dir " . $install_phpdir . "/configs/bind/etc/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set zone_dir " . $install_phpdir . "/configs/bind/zones/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set bind_log " . $install_phpdir . "/logs/bind/bind.log");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set hosted_dir " . $install_phpdir . "/hostdata/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set apache_vhost " . $install_phpdir . "/configs/apache/httpd-vhosts.conf");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set static_dir " . $install_phpdir . "/panel/etc/static/'");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set parking_path " . $install_phpdir . "/panel/etc/static/parking/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set upload_temp_dir " . $install_phpdir . "/temp/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set openbase_temp " . $install_phpdir . "/temp/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set log_dir " . $install_phpdir . "/logs/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set apache_budir " . $install_phpdir . "/backups/");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set zsudo " . $install_phpdir . "/panel/bin/zsudo");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_exer " . $install_phpdir . "/panel/bin/daemon.php");
-exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set server_ip " . GetServerIPFromZWS() . "");
+//register zppy
+$db_settings_file = fopen("" . $install_phpdir . "/cygtools/bin/zppy.bat", "w");
+fwrite($db_settings_file, "@echo off\r\n");
+fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\zppy %*");
+fclose($db_settings_file);
+//register setso
+$db_settings_file = fopen("" . $install_phpdir . "/cygtools/bin/zppy.bat", "w");
+fwrite($db_settings_file, "@echo off\r\n");
+fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\setso %*");
+fclose($db_settings_file);
+//register setzadmin
+$db_settings_file = fopen("" . $install_phpdir . "/cygtools/bin/setzadmin.bat", "w");
+fwrite($db_settings_file, "@echo off\r\n");
+fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\setso %*");
+fclose($db_settings_file);
+
+
+//setso update install directory to database
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set dbversion " . $version . "");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set sentora_domain " . $location . "");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set email_from_address " . $email . "");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_lastrun 0");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_dayrun 0");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_weekrun 0");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_monthrun 0");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_changed true");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set sentora_root " . $install_phpdir . "/panel/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set root_drive C:/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set php_exer " . $install_phpdir . "/bin/php/php.exe");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set zip_exe " . $install_phpdir . "/bin/cygtools/bin/zip.exe");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set ftp_php filezilla.php");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set ftp_config_file " . $install_phpdir . "/bin/filezilla/FileZilla Server.xml");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set ftp_service \"Filezilla Server\" ");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set ftp_service_root service");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set ftp_config_file filezilla.php");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set mailserver_db sentora_hmail");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set mailserver_php hmail.php");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set httpd_exe " . $install_phpdir . "/bin/apache/bin/httpd.exe");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_sn apache");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_restart restart");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set mysqldump_exe " . $install_phpdir . "/bin/mysql/bin/mysqldump.exe");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set named_checkconf " . $install_phpdir . "/bin/bind/bin/named-checkconf.exe");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set named_checkzone " . $install_phpdir . "/bin/bind/bin/named-checkzone.exe");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set named_compilezone " . $install_phpdir . "/bin/bind/bin/named-compilezone.exe");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set temp_dir " . $install_phpdir . "/temp/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set logfile " . $install_phpdir . "/logs/sentora.log");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set named_dir " . $install_phpdir . "/configs/bind/etc/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set zone_dir " . $install_phpdir . "/configs/bind/zones/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set bind_log " . $install_phpdir . "/logs/bind/bind.log");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set hosted_dir " . $install_phpdir . "/hostdata/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_vhost " . $install_phpdir . "/configs/apache/httpd-vhosts.conf");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set static_dir " . $install_phpdir . "/panel/etc/static/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set parking_path " . $install_phpdir . "/panel/etc/static/parking/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set upload_temp_dir " . $install_phpdir . "/temp/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set openbase_temp " . $install_phpdir . "/temp/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set log_dir " . $install_phpdir . "/logs/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_budir " . $install_phpdir . "/backups/");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set zsudo " . $install_phpdir . "/panel/bin/zsudo");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_exer " . $install_phpdir . "/panel/bin/daemon.php");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set server_ip " . GetServerIPFromZWS() . "");
 
 @mysql_select_db('sentora_core', $db);
 // We now update the MySQL user for the default 'zadmin' account..
