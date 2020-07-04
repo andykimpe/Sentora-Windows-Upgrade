@@ -170,7 +170,7 @@ exec("" . $install_folder . "\bin\cygtools\bin\setso --set mailserver_db sentora
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set mailserver_php hmail.php");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set httpd_exe " . $install_phpdir . "/bin/apache/bin/httpd.exe");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_sn apache");
-exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_restart restart");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_restart \"-n apache -k restart\"");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set mysqldump_exe " . $install_phpdir . "/bin/mysql/bin/mysqldump.exe");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set named_checkconf " . $install_phpdir . "/bin/bind/bin/named-checkconf.exe");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set named_checkzone " . $install_phpdir . "/bin/bind/bin/named-checkzone.exe");
