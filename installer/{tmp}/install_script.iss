@@ -13,7 +13,7 @@
 #include <idplang\spanish.iss>
 
 [Setup]
-AppName=Sentora For Windows
+AppName={cm:Sentora_For_Windows}
 AppVersion=1.0.3
 AppId={{21544337-695B-4B0E-827F-7E917B8B18C5}
 AppPublisher=Sentora Project
@@ -77,7 +77,7 @@ Name: "{app}\bin\bind\bin\";
 Name: "{app}\bin\bind\etc\"; 
 Name: "{app}\bin\bind\zones\"; 
 Name: "{app}\bin\php\extras\"; 
-Name: "{app}\configs\"; 
+Name: "{app}\configs\apache\"; 
 Name: "{app}\bin\cygtools\etc\pki\ca-trust\source\anchors"; 
 Name: "{app}\bin\cygtools\etc\pki\ca-trust\source\blacklist"; 
 Name: "{app}\hostdata\zadmin\public_html\";
@@ -88,7 +88,7 @@ Name: "{app}\logs\hmailserver\";
 Name: "{app}\logs\mysql\"; 
 Name: "{app}\logs\php\"; 
 Name: "{app}\logs\sendmail\"; 
-Name: "{app}\panel\"; 
+Name: "{app}\panel\cnf"; 
 Name: "{app}\temp\"; 
 
 [Run]
@@ -143,11 +143,13 @@ en.AssocFileExtension=&Associate %1 with the %2 file extension
 en.AssocingFileExtension=Associating %1 with the %2 file extension...
 ;custom translation
 ;english original
+en.Sentora_For_Windows=Sentora For Windows
 en.Installandregisterserver=Installing services and registering applications
 en.Configure_your_Sentora_Installation=Configure your Sentora Installation
 ;french
 fr.Installandregisterserver=Installation des services et enregistrement de l'application
 fr.Configure_your_Sentora_Installation=Configurtion de votre Installation de Sentora
+fr.Sentora_For_Windows=Sentora Pour Windows
 
 
 
@@ -213,8 +215,8 @@ PageParam := CreateInputQueryPage(wpInfoBefore,
 // Add items (False means it's not a password edit)
     PageParam.Add(ExpandConstant('Your Full Name:'), False);
     PageParam.Add(ExpandConstant('Your Email:'), False);
-    PageParam.Values[0]:= '';
-    PageParam.Values[1]:= '';
+    PageParam.Values[0]:= 'Sentora Panel';
+    PageParam.Values[1]:= 'contact@sentora.org';
 end;
 
 function GetParam1(Param: String): String;
@@ -240,8 +242,8 @@ PageParamm := CreateInputQueryPage(wpUserInfo,
 // Add items (False means it's not a password edit)
     PageParamm.Add(ExpandConstant('Your FQDN:'), False);
     PageParamm.Add(ExpandConstant('Password For Zadmin:'), False);
-    PageParamm.Values[0]:= '';
-    PageParamm.Values[1]:= '';
+    PageParamm.Values[0]:= 'localhost.com';
+    PageParamm.Values[1]:= 'password';
 end;
 
 // Fonctions de retour
@@ -296,13 +298,12 @@ begin
 //end;
 begin
 if FileExists('C:\zpanel\panel\cnf\db.php') then
-//if FileExists(ExpandConstant('C:\zpanel\panel\cnf\db.php')) then
 	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.bat', ExpandConstant('{tmp}\update.bat'));
 	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update2.bat', ExpandConstant('{tmp}\update2.bat'));
-			idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.php', ExpandConstant('{tmp}\update.php'));
-			idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update2.php', ExpandConstant('{tmp}\update2.php'));
-			idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.sql', ExpandConstant('{tmp}\update.sql'));
-			idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/db.php', ExpandConstant('{tmp}\db.php'));
+	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.php', ExpandConstant('{tmp}\update.php'));
+	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update2.php', ExpandConstant('{tmp}\update2.php'));
+	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/update.sql', ExpandConstant('{tmp}\update.sql'));
+	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/db.php', ExpandConstant('{tmp}\db.php'));
 end;
 begin
   if IsWin64 then
@@ -328,21 +329,18 @@ begin
   else
     idpAddFile('https://download.microsoft.com/download/D/3/B/D3B72629-7D95-49ED-A4EC-7FF105754124/VSU4/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist11_x86.exe'));
 end;
-
-
 begin
   if IsWin64 then
     idpAddFile('https://download.microsoft.com/download/A/4/D/A4D9F1D3-6449-49EB-9A6E-902F61D8D14B/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist13_x64.exe'))
   else
     idpAddFile('https://download.microsoft.com/download/A/4/D/A4D9F1D3-6449-49EB-9A6E-902F61D8D14B/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist13_x86.exe'));
 end;
-
-
 begin
   if IsWin64 then
     idpAddFile('https://windows.php.net/downloads/releases/archives/php-5.6.40-Win32-VC11-x64.zip', ExpandConstant('{tmp}\php-5.6.40-Win32-VC11-x64.zip'))
   else
-    idpAddFile('https://windows.php.net/downloads/releases/archives/php-5.6.40-Win32-VC11-x86.zip', ExpandConstant('{tmp}\php-5.6.40-Win32-VC11-x86.zip'));
+
+      idpAddFile('https://windows.php.net/downloads/releases/archives/php-5.6.40-Win32-VC11-x86.zip', ExpandConstant('{tmp}\php-5.6.40-Win32-VC11-x86.zip'));
 end;
 begin
   if IsWin64 then
@@ -356,15 +354,28 @@ begin
   else
     idpAddFile('https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x86.zip', ExpandConstant('{tmp}\BIND9.14.8.x86.zip'));
 end;
-
 begin
   if IsWin64 then
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/cygtools/cygtools-64bit.zip', ExpandConstant('{tmp}\cygtools-64bit.zip'))
   else
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Bapp%7D/bin/cygtools/cygtools-32bit.zip', ExpandConstant('{tmp}\cygtools-32bit.zip'));
 end;
-    idpAddFile('https://www.hmailserver.com/files/hMailServer-5.3.3-B1879.exe', ExpandConstant('{tmp}\hMailServer-5.3.3-B1879.exe'));
+begin
+  if IsWin64 then
+    idpAddFile('https://github.com/Dravion/hmailserver/releases/download/5.7.0-B2519/hMailServer-5.7.0-B2519-x64.exe', ExpandConstant('{tmp}\hMailServer-5.7.0-B2519-x64.exe'))
+  else
+    idpAddFile('https://www.hmailserver.com/files/hMailServer-5.6.7-B2425.exe', ExpandConstant('{tmp}\hMailServer-5.6.7-B2425.exe'));
+end;
+begin
+  if IsWin64 then
+    idpAddFile('https://download.microsoft.com/download/C/F/8/CF821C31-38C7-4C5C-89BB-B283059269AF/Windows8.1-KB2919442-x64.msu', ExpandConstant('{tmp}\updates\Windows8.1-KB2919442-x64.msu'))
+end;
+begin
+  if IsWin64 then
+    idpAddFile('https://download.microsoft.com/download/D/B/1/DB1F29FC-316D-481E-B435-1654BA185DCF/Windows8.1-KB2919355-x64.msu', ExpandConstant('{tmp}\updates\'))
+end;
     idpAddFile('http://download.microsoft.com/download/2/0/E/20E90413-712F-438C-988E-FDAA79A8AC3D/dotnetfx35.exe', ExpandConstant('{tmp}\dotnetfx35.exe'));
+    idpAddFile('https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe', ExpandConstant('{tmp}\NDP452-KB2901907-x86-x64-AllOS-ENU.exe'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/install_services.bat', ExpandConstant('{tmp}\install_services.bat'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/install.php', ExpandConstant('{tmp}\install.php'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/enviroment_configure.php', ExpandConstant('{tmp}\enviroment_configure.php'));
