@@ -16,15 +16,17 @@ cd %2
 rmdir /S /Q Apache24
 IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BIT) ELSE (GOTO 32BIT)
 :64BIT
+rem install Visual C++ redistributable 2005 2008 2011 2013 require for apache php and mysql
 %2\vcredist5_x64.exe /q
 %2\vcredist8_x64.exe /q /norestart
 %2\vcredist11_x64.exe /q /norestart
 %2\vcredist13_x64.exe /q /norestart
+rem install microsoft net framework 3.5 and 4.5 require for hmailserver
 setlocal
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
-if "%version%" == "10.0" goto W810
-if "%version%" == "6.3" goto W810
-if "%version%" == "6.2" goto W810
+if "%version%" == "10.0" goto W10
+if "%version%" == "6.3" goto W8
+if "%version%" == "6.2" goto W8
 if "%version%" == "6.1" goto W7
 if "%version%" == "6.0" goto W7
 if "%version%" == "5.9" goto W7
@@ -41,8 +43,17 @@ rem etc etc
 endlocal
 :W7
 %2\dotnetfx35.exe /q /norestart
+%2\NDP452-KB2901907-x86-x64-AllOS-ENU.exe /q /norestart
+rem require add net 4.5 here
 goto ENDNET
-:W810
+:W8
+rem for windows 8 and 10 net framework 3.5 install online using dism
+DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
+rem msu dependencie for windows 8 and windows server 2012
+rem read https://github.com/Dravion/hmailserver/releases
+dism /online /add-package /packagepath:%2\updates
+:W10
+rem for windows 8 and 10 net framework 3.5 install online using dism
 DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
 :ENDNET
 %1\bin\7zip\7z.exe x httpd-2.4.38-win64-VC11.zip
@@ -83,12 +94,18 @@ rem etc etc
 endlocal
 :W7
 %2\dotnetfx35.exe /q /norestart
+%2\NDP452-KB2901907-x86-x64-AllOS-ENU.exe /q /norestart
+rem require add net 4.5 here
 goto ENDNET
 :W8
-dism  /online  /add-package  /packagepath:%2\updates
+rem for windows 8 and 10 net framework 3.5 install online using dism
 DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
-goto ENDNET
+rem msu dependencie for windows 8 and windows server 2012
+rem read https://github.com/Dravion/hmailserver/releases
+rem not require en 32 bit version
+rem dism /online /add-package /packagepath:%2\updates
 :W10
+rem for windows 8 and 10 net framework 3.5 install online using dism
 DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
 :ENDNET
 %1\bin\7zip\7z.exe x httpd-2.4.38-win32-VC11.zip
@@ -159,7 +176,7 @@ if ERRORLEVEL 1 %DIR%\bind\bin\sc.exe create named binpath= %1\bin\bind\bin\name
 echo Starting BIND
 net stop named
 net start named
-rem pause
+pause
 echo Done installing Services!
 echo All done!
 rem pack install finish
@@ -183,7 +200,7 @@ echo Cleaning up MySQL users (securing MySQL server)..
 %1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
-rem pause
+pause
 echo The installer will now finalise the install...
 echo Restarting services..
 echo Stopping Apache
@@ -207,13 +224,13 @@ rem pause
 echo Password successfully set!
 echo %6 >>c:\zpanel\login_details.txt
 
-rem pause
+pause
 
 echo Cleaning up..
 DEL %1\bin\zpss\*.bat /Q
 DEL %1\bin\zpss\*.php /Q
 DEL %1\configs\bind\zones\*.* /Q
 echo install finish
-rem pause
 net start apache
+pause
 exit
