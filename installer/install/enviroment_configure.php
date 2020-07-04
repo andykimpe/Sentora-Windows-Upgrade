@@ -111,7 +111,7 @@ $email = $your_email;
 $location = $your_fqdn;
 
 //add service command parameter for permit use reload ,force-reload and restart fonction
-$db_settings_file = fopen("" . $install_phpdir . "/cygtools/bin/service.bat", "w");
+$db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/service.bat", "w");
 fwrite($db_settings_file, "@echo off\r\n");
 fwrite($db_settings_file, "if %1 equ reload (goto restart)\r\n");
 fwrite($db_settings_file, "if %1 equ force-reload (goto restart)\r\n");
@@ -132,17 +132,17 @@ fwrite($db_settings_file, ":exit");
 fclose($db_settings_file);
 
 //register zppy
-$db_settings_file = fopen("" . $install_phpdir . "/cygtools/bin/zppy.bat", "w");
+$db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/zppy.bat", "w");
 fwrite($db_settings_file, "@echo off\r\n");
 fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\zppy %*");
 fclose($db_settings_file);
 //register setso
-$db_settings_file = fopen("" . $install_phpdir . "/cygtools/bin/zppy.bat", "w");
+$db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/zppy.bat", "w");
 fwrite($db_settings_file, "@echo off\r\n");
 fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\setso %*");
 fclose($db_settings_file);
 //register setzadmin
-$db_settings_file = fopen("" . $install_phpdir . "/cygtools/bin/setzadmin.bat", "w");
+$db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/setzadmin.bat", "w");
 fwrite($db_settings_file, "@echo off\r\n");
 fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\setso %*");
 fclose($db_settings_file);
