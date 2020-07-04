@@ -139,7 +139,7 @@ exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/s
 exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_exer " . $install_phpdir . "/panel/bin/daemon.php");
 exec("" . $install_folder ."\bin\php\php.exe " . $install_phpdir . "/panel/bin/setso --set server_ip " . GetServerIPFromZWS() . "");
 
-
+/*
 exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set dbversion " . $version . "");
 exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set sentora_domain " . $location . "");
 exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set email_from_address " . $email . "");
@@ -166,6 +166,7 @@ exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/s
 exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set zsudo " . $install_phpdir . "/panel/bin/zsudo");
 exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set daemon_exer " . $install_phpdir . "/panel/bin/daemon.php");
 exec("" . $install_phpdir ."/bin/php/php.exe " . $install_phpdir . "/panel/bin/setso --set server_ip " . GetServerIPFromZWS() . "");
+*/
 
 @mysql_select_db('sentora_core', $db);
 // We now update the MySQL user for the default 'zadmin' account..
