@@ -64,9 +64,9 @@ GOTO END
 %2\vcredist13_x86.exe /q /norestart
 setlocal
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
-if "%version%" == "10.0" goto W810
-if "%version%" == "6.3" goto W810
-if "%version%" == "6.2" goto W810
+if "%version%" == "10.0" goto W10
+if "%version%" == "6.3" goto W8
+if "%version%" == "6.2" goto W8
 if "%version%" == "6.1" goto W7
 if "%version%" == "6.0" goto W7
 if "%version%" == "5.9" goto W7
@@ -84,7 +84,11 @@ endlocal
 :W7
 %2\dotnetfx35.exe /q /norestart
 goto ENDNET
-:W810
+:W8
+dism  /online  /add-package  /packagepath:%2\updates
+DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
+goto ENDNET
+:W10
 DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
 :ENDNET
 %1\bin\7zip\7z.exe x httpd-2.4.38-win32-VC11.zip
@@ -133,8 +137,14 @@ net start "Cron Service"
 
 
 echo Installing hMailServer...
+IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BITHMAIL) ELSE (GOTO 32BITHMAIL)
+:64BITHMAIL
+%2\hMailServer-5.7.0-B2519-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT
+goto ENDHMAIL
+:32BITHMAIL
+%2\hMailServer-5.6.7-B2425.exe /DIR="%1\bin\hmailserver" /VERYSILENT
+:ENDHMAIL
 
-%2\hMailServer-5.3.3-B1879.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 echo Starting hMailServer
 net stop hMailServer
 net start hMailServer
@@ -161,6 +171,14 @@ mkdir %1\panel
 xcopy %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
 echo Importing Sentoa database..
 %1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_core.sql
+echo Importing hmailserver database..
+IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BITHMAILDB) ELSE (GOTO 32BITHMAILDB)
+:64BITHMAILDB
+%1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_hmail64.sql
+goto ENDHMAILDB
+:32BITHMAILDB
+%1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_hmail.sql
+:ENDHMAILDB
 echo Cleaning up MySQL users (securing MySQL server)..
 %1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
