@@ -137,7 +137,7 @@ fwrite($db_settings_file, "@echo off\r\n");
 fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\zppy %*");
 fclose($db_settings_file);
 //register setso
-$db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/zppy.bat", "w");
+$db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/setso.bat", "w");
 fwrite($db_settings_file, "@echo off\r\n");
 fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\setso %*");
 fclose($db_settings_file);
