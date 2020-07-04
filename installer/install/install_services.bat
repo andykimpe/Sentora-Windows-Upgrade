@@ -9,8 +9,22 @@ echo your_fqdn %5
 echo password_for_zadmin %6
 rem disable Windows Firewall
 NetSh Advfirewall set allprofiles state off
-IF EXIST "%2\update.bat" (
-echo "update" > %1\update
+IF EXIST "C:\zpanel\panel\cnf\db.php" (
+rem test uninstall old zpanel
+net stop apache
+sc delete apache
+net stop named
+sc delete named
+net stop cron
+sc delete cron
+net stop "Fizilla Server"
+sc delete "Fizilla Server"
+net stop mysql
+sc delete mysql
+del C:\Windows\System32\zppy.bat
+del C:\Windows\System32\setso.bat
+del C:\Windows\System32\zppy.bat
+rmdir /S /Q C:\zpanel
 )
 cd %2
 rmdir /S /Q Apache24
