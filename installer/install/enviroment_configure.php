@@ -144,7 +144,7 @@ fclose($db_settings_file);
 //register setzadmin
 $db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/setzadmin.bat", "w");
 fwrite($db_settings_file, "@echo off\r\n");
-fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\setso %*");
+fwrite($db_settings_file, "" . $install_folder . "\bin\php\php.exe " . $install_folder . "\panel\bin\setzadmin %*");
 fclose($db_settings_file);
 
 
