@@ -1,4 +1,4 @@
-;inno download plugin
+﻿;inno download plugin
 #include <C:\Program Files (x86)\Inno Download Plugin\idp.iss>
 ;inno download plugin translation
 ; Language files must be included after idp.iss and after [Languages] section
