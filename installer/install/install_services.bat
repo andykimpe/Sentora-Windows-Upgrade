@@ -168,12 +168,9 @@ echo Starting Filezilla service..
 C:\Windows\System32\net.exe start "FileZilla Server"
 
 echo install crond
-"%1\bin\crond\crons.exe" /install
-echo Creating crontab file in 'C:\WINDOWS\System32'
-COPY "%1\bin\crond\temp_crontab.txt" "C:\WINDOWS\System32\crontab.txt"
+"%1\bin\crond\cron.exe" -q -install
 echo Starting Cron Service
 C:\Windows\System32\net.exe start "Cron Service"
-
 
 echo Installing hMailServer...
 IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BITHMAIL) ELSE (GOTO 32BITHMAIL)
@@ -210,8 +207,14 @@ mkdir %1\panel
 C:\Windows\System32\xcopy.exe %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
 IF EXIST "%1\all_databases.sql" (
 echo Restorinng Sentora database..
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
 %1\bin\mysql\bin\mysql.exe -uroot < %1\all_databases.sql
-rem here hmailupdate
+
+IF EXIST "%PROGRAMFILES(X86)%" (
+%1\bin\php\php.exe %2\update.php %1 %2 %3 %4 %5 %6 32
+) ELSE (
+%1\bin\php\php.exe %2\update.php %1 %2 %3 %4 %5 %6 64
+)
 goto endconfigure
 )
 echo Importing Sentora database..
