@@ -11,18 +11,18 @@ rem disable Windows Firewall
 C:\windows\System32\netsh.exe Advfirewall set allprofiles state off
 IF EXIST "C:\zpanel\panel\cnf\db.php" (
 rem test uninstall old zpanel
-C:\Windows\System32\net stop apache
-C:\Windows\System32\sc delete apache
-C:\Windows\System32\net stop named
-C:\Windows\System32\sc delete named
-C:\Windows\System32\net stop cron
-C:\Windows\System32\sc delete cron
-C:\Windows\System32\net stop "Filezilla Server"
-C:\Windows\System32\sc delete "Filezilla Server"
-C:\Windows\System32\net stop mysql
-C:\Windows\System32\sc delete mysql
-C:\Windows\System32\net stop hmailserver
-C:\Windows\System32\sc delete hmailserver
+C:\Windows\System32\net.exe stop apache
+C:\Windows\System32\sc.exe delete apache
+C:\Windows\System32\net.exe stop named
+C:\Windows\System32\sc.exe delete named
+C:\Windows\System32\net.exe stop cron
+C:\Windows\System32\sc.exe delete cron
+C:\Windows\System32\net.exe stop "Filezilla Server"
+C:\Windows\System32\sc.exe delete "Filezilla Server"
+C:\Windows\System32\net.exe stop mysql
+C:\Windows\System32\sc.exe delete mysql
+C:\Windows\System32\net.exe stop hmailserver
+C:\Windows\System32\sc.exe delete hmailserver
 del C:\Windows\zppy.bat
 del C:\Windows\setso.bat
 del C:\Windows\zppy.bat
