@@ -9,6 +9,7 @@ echo your_fqdn %5
 echo password_for_zadmin %6
 rem disable Windows Firewall
 C:\windows\System32\netsh.exe Advfirewall set allprofiles state off
+rem code test for backup and update all database
 IF EXIST "C:\zpanel\panel\cnf\db.php" (
 rem test uninstall old zpanel
 C:\Windows\System32\net.exe stop apache
@@ -22,7 +23,6 @@ C:\Windows\System32\sc.exe delete "Filezilla Server"
 C:\Windows\System32\net.exe stop hmailserver
 C:\Windows\System32\sc.exe delete hmailserver
 C:\zpanel\bin\hmailserver\unins000.exe /VERYSILENT
-rem code test for backup and update all database
 C:\Windows\System32\net.exe start mysql
 C:\zpanel\bin\php\php.exe %2\db.php %1 %2
 C:\Windows\System32\net.exe stop mysql
@@ -31,7 +31,10 @@ del C:\Windows\zppy.bat
 del C:\Windows\setso.bat
 del C:\Windows\zppy.bat
 del C:\Windows\System32\crontab.txt
+IF %1 neq C:\zpanel (
 rmdir /S /Q C:\zpanel
+)
+pause
 )
 cd %2
 rmdir /S /Q Apache24
