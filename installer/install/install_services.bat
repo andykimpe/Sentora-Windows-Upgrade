@@ -170,16 +170,14 @@ C:\Windows\System32\net.exe start "FileZilla Server"
 echo install crond
 "%1\bin\crond\cron.exe" -q -install
 echo Starting Cron Service
-C:\Windows\System32\net.exe start "Cron Service"
+C:\Windows\System32\net.exe start cron
 
 echo Installing hMailServer...
-IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BITHMAIL) ELSE (GOTO 32BITHMAIL)
-:64BITHMAIL
+IF EXIST "%PROGRAMFILES(X86)%" (
 %2\hMailServer-5.7.0-B2519-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT
-goto ENDHMAIL
-:32BITHMAIL
+) ELSE (
 %2\hMailServer-5.6.7-B2425.exe /DIR="%1\bin\hmailserver" /VERYSILENT
-:ENDHMAIL
+)
 
 echo Starting hMailServer
 C:\Windows\System32\net.exe stop hMailServer
@@ -209,7 +207,6 @@ IF EXIST "%1\all_databases.sql" (
 echo Restorinng Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
 %1\bin\mysql\bin\mysql.exe -uroot < %1\all_databases.sql
-
 IF EXIST "%PROGRAMFILES(X86)%" (
 %1\bin\php\php.exe %2\update.php %1 %2 %3 %4 %5 %6 32
 ) ELSE (
