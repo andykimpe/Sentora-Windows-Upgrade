@@ -382,7 +382,7 @@ SSLRandomSeed connect builtin
 </IfModule>';
 $write = fwrite($handle, $zone);
 fclose($handle);
-$handle = fopen('' . $install_phpdir . '/bin/crond/temp_crontab.txt', 'w');
+$handle = fopen('' . $install_phpdir . '/bin/crond/cron.tab', 'w');
 	if(!$handle){
 	exit;
 	}
@@ -396,11 +396,28 @@ $zone='#########################################################################
 # CronW Debug infomation can be found in this file here:- 
 # C:\WINDOWS\System32\crontab.txt   
 ######################################################################################
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * php ' . $install_phpdir . '/panel/bin/daemon.php
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * ' . $install_phpdir . 'bin/php/php.exe ' . $install_phpdir . '/panel/bin/daemon.php
 ######################################################################################
 # DO NOT MANUALLY REMOVE ANY OF THE CRON ENTRIES FROM THIS FILE, USE ZPANEL
 # INSTEAD! THE ABOVE ENTRIES ARE USED FOR ZPANEL TASKS, DO NOT REMOVE THEM! 
 ######################################################################################';
+$write = fwrite($handle, $zone);
+fclose($handle);
+$handle = fopen('' . $install_phpdir . '/bin/crond/cron.ini', 'w');
+	if(!$handle){
+	exit;
+	}
+$zone='\ This file contains nnCron's options
+\ Restart nnCron after changing of the file.
+\ All items are case sensitive. After a keyword the 'blank' is required.
+
+Cronlog: "' . $install_folder .'\logs\cron\cron.log"
+LogTimeFormat: "%hh%:%mm%:%ss% %ThreadId%"
+YearField OFF
+DefaultOpenMode: SWHide
+DefaultPriority: NormalPriority
+AsLoggedUser ON
+DefaultRunMissedTime: 15';
 $write = fwrite($handle, $zone);
 fclose($handle);
 $handle = fopen('' . $install_phpdir . '/bin/hmailserver/hMailServer.INI', 'w');
