@@ -36,7 +36,7 @@ exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " zpanel_hmail
 exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_core';\"");
 exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_roundcube';\"");
 exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_hmail';\"");
-exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . "mysqldump -u root -p --all-databases > " . $install_folder . "\all_databases.sql");
+exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " --all-databases > " . $install_folder . "\all_databases.sql");
 if ($install_folder != "C:\zpanel") {
 exec("mkdir " . $install_folder . "\hostdata");
 exec("move /Y c:\zpanel\hostdata " . $install_folder . "\hostdata");
