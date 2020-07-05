@@ -197,7 +197,7 @@ $sql = "UPDATE sentora_core.x_settings SET so_name_vc = 'cron_file' WHERE x_sett
 $resault = @mysql_query($sql, $db) or die(mysql_error());
 $sql = "UPDATE sentora_core.x_settings SET so_cleanname_vc = 'Cron File' WHERE x_settings.so_id_pk =117;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
-$sql = "UPDATE sentora_core.x_settings SET so_value_tx = 'C:\WINDOWS\System32\crontab.txt' WHERE x_settings.so_id_pk =117;";
+$sql = "UPDATE sentora_core.x_settings SET so_value_tx = '" . $install_phpdir . "bin/crond/cron.tab' WHERE x_settings.so_id_pk =117;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
 $sql = "UPDATE sentora_core.x_settings SET so_desc_tx = 'Path to the user cron file' WHERE x_settings.so_id_pk =117;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
