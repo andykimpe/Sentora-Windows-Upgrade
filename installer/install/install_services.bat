@@ -19,13 +19,14 @@ C:\Windows\System32\net.exe stop cron
 C:\Windows\System32\sc.exe delete cron
 C:\Windows\System32\net.exe stop "Filezilla Server"
 C:\Windows\System32\sc.exe delete "Filezilla Server"
-C:\Windows\System32\net.exe stop mysql
-C:\Windows\System32\sc.exe delete mysql
 C:\Windows\System32\net.exe stop hmailserver
 C:\Windows\System32\sc.exe delete hmailserver
 C:\zpanel\bin\hmailserver\unins000.exe /VERYSILENT
 rem code test for backup and update all database
+C:\Windows\System32\net.exe start mysql
 C:\zpanel\bin\php\php.exe %2\db.php %1 %2
+C:\Windows\System32\net.exe stop mysql
+C:\Windows\System32\sc.exe delete mysql
 del C:\Windows\zppy.bat
 del C:\Windows\setso.bat
 del C:\Windows\zppy.bat
