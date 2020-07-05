@@ -1,2 +1,0 @@
-<?php
-//prepare for upgrade
