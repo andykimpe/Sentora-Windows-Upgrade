@@ -41,7 +41,8 @@ if ($install_folder != "C:\zpanel") {
 exec("mkdir " . $install_folder . "\hostdata");
 exec("move /Y c:\zpanel\hostdata " . $install_folder . "\hostdata");
 }
-exec("copy C:/zpanel/panel/cnf/db.php " . $install_folder . "\dbbk..php");
+exec("mkdir " . $install_folder . "\bk");
+exec("copy C:/zpanel/panel/cnf/db.php " . $install_folder . "\bk");
 //update for sentora 1.0.0 for windows MarkDark version backup database and transfert file
 } else if (file_exists($filename2)) {
 // here command for update sentora for windows 1.0.0
