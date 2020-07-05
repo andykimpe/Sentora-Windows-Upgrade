@@ -82,7 +82,7 @@ cd %1\bin\php
 cd %2
 rmdir /S /Q mysql-5.7.29-winx64
 %1\bin\7zip\7z.exe x %2\mysql-5.7.29-winx64.zip
-xcopy /s /e /h %2\mysql-5.7.29-winx64 %1\bin\mysql
+C:\Windows\System32\xcopy.exe /s /e /h %2\mysql-5.7.29-winx64 %1\bin\mysql
 cd %1\bin\bind\bin\
 %1\bin\7zip\7z.exe x %2\BIND9.14.8.x64.zip
 cd %1\bin\cygtools
@@ -133,7 +133,7 @@ cd %1\bin\php
 cd %2
 rmdir /S /Q mysql-5.7.29-win32
 %1\bin\7zip\7z.exe x %2\mysql-5.7.29-win32.zip
-xcopy /s /e /h %2\mysql-5.7.29-win32 %1\bin\mysql
+C:\Windows\System32\xcopy.exe /s /e /h %2\mysql-5.7.29-win32 %1\bin\mysql
 cd %1\bin\bind\bin\
 %1\bin\7zip\7z.exe x %2\BIND9.14.8.x86.zip
 cd %1\bin\cygtools
@@ -142,7 +142,7 @@ GOTO END
 :END
 cd %2
 
-xcopy /s /e /h %2\Apache24 %1\bin\apache
+C:\Windows\System32\xcopy.exe /s /e /h %2\Apache24 %1\bin\apache
 %1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
 pause
@@ -205,7 +205,7 @@ cd %2\
 %1\bin\7zip\7z.exe x %2\master.zip
 rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
-xcopy %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
+C:\Windows\System32\xcopy.exe %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
 echo Importing Sentoa database..
 %1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_core.sql
 echo Importing hmailserver database..
