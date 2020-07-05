@@ -209,10 +209,12 @@ rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
 C:\Windows\System32\xcopy.exe %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
 IF EXIST "%1\all_databases.sql" (
-echo "update zpanelx and sentora 1.0.0"
+echo Restorinng Sentora database..
+%1\bin\mysql\bin\mysql.exe -uroot < %1\all_databases.sql
+rem here hmailupdate
 goto endconfigure
 )
-echo Importing Sentoa database..
+echo Importing Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_core.sql
 echo Importing hmailserver database..
 IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BITHMAILDB) ELSE (GOTO 32BITHMAILDB)
