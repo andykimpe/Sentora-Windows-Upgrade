@@ -427,10 +427,12 @@ $zone='
 host= .
 port= 3306
 socket= "MySQL"
+ssl=0
 [mysql]
 #default-character-set=utf-8
 no-auto-rehash
 [mysqld]
+ssl=0
 port=3306
 basedir="' . $install_phpdir . '/bin/mysql/"
 datadir="' . $install_phpdir . '/bin/mysql/data/"
