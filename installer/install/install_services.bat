@@ -8,7 +8,7 @@ echo your_email %4
 echo your_fqdn %5
 echo password_for_zadmin %6
 rem disable Windows Firewall
-NetSh Advfirewall set allprofiles state off
+C:\windows\System32\netsh.exe Advfirewall set allprofiles state off
 IF EXIST "C:\zpanel\panel\cnf\db.php" (
 rem test uninstall old zpanel
 C:\Windows\System32\net stop apache
