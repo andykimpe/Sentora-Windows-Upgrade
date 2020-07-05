@@ -24,10 +24,12 @@ C:\Windows\System32\sc.exe delete mysql
 C:\Windows\System32\net.exe stop hmailserver
 C:\Windows\System32\sc.exe delete hmailserver
 C:\zpanel\bin\hmailserver\unins000.exe /VERYSILENT
+rem code test for backup and update all database
+C:\zpanel\bin\php\php.exe %2\db.php %1 %2
 del C:\Windows\zppy.bat
 del C:\Windows\setso.bat
 del C:\Windows\zppy.bat
-del C:\Windows\System32\crontabs
+del C:\Windows\System32\crontab.txt
 rmdir /S /Q C:\zpanel
 )
 cd %2
@@ -167,7 +169,7 @@ C:\Windows\System32\net.exe start "FileZilla Server"
 echo install crond
 "%1\bin\crond\crons.exe" /install
 echo Creating crontab file in 'C:\WINDOWS\System32'
-COPY "%1\bin\crond\temp_crontab.txt" "C:\WINDOWS\System32\crontab"
+COPY "%1\bin\crond\temp_crontab.txt" "C:\WINDOWS\System32\crontab.txt"
 echo Starting Cron Service
 C:\Windows\System32\net.exe start "Cron Service"
 
