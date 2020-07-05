@@ -147,7 +147,7 @@ C:\Windows\System32\xcopy.exe /s /e /h %2\Apache24 %1\bin\apache
 echo finish configure
 pause
 %1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize --lower-case-table-names=1
-rem
+%1\bin\mysql\bin\mysql_ssl_rsa_setup.exe
 echo finish init mysql
 pause
 echo Installing MySQL Service..
@@ -207,17 +207,17 @@ rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
 C:\Windows\System32\xcopy.exe %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
 echo Importing Sentoa database..
-%1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_core.sql
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_core.sql
 echo Importing hmailserver database..
 IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BITHMAILDB) ELSE (GOTO 32BITHMAILDB)
 :64BITHMAILDB
-%1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_hmail64.sql
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_hmail64.sql
 goto ENDHMAILDB
 :32BITHMAILDB
-%1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_hmail.sql
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_hmail.sql
 :ENDHMAILDB
 echo Cleaning up MySQL users (securing MySQL server)..
-%1\bin\mysql\bin\mysql.exe --skip-ssl -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 pause
