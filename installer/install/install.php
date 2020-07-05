@@ -21,7 +21,7 @@ zadmin password " . $password_for_zadmin . "\r");
 ##########################################################################################################
 # Set up environment                                                                                     #
 ##########################################################################################################
-$stopnamed="C:\Windows\System32\net.exe stop named";
+$stopnamed="net stop named";
 $rndcconfgen="" . $install_phpdir . "/bin/bind/bin/rndc-confgen.exe";
 $rcnd="" . $install_phpdir . "/bin/bind/etc/rndc.conf";
 $logdir='' . $install_phpdir . '/logs/bind/';
