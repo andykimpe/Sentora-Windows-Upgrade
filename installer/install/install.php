@@ -407,9 +407,9 @@ $handle = fopen('' . $install_phpdir . '/bin/crond/cron.ini', 'w');
 	if(!$handle){
 	exit;
 	}
-$zone='\ This file contains nnCron's options
+$zone='\ This file contains nnCron\'s options
 \ Restart nnCron after changing of the file.
-\ All items are case sensitive. After a keyword the 'blank' is required.
+\ All items are case sensitive. After a keyword the \'blank\' is required.
 
 Cronlog: "' . $install_folder .'\logs\cron\cron.log"
 LogTimeFormat: "%hh%:%mm%:%ss% %ThreadId%"
