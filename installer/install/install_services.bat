@@ -208,6 +208,10 @@ cd %2\
 rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
 C:\Windows\System32\xcopy.exe %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
+IF EXIST "%1\all_databases.sql" (
+echo "update zpanelx and sentora 1.0.0"
+goto endconfigure
+)
 echo Importing Sentoa database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_core.sql
 echo Importing hmailserver database..
@@ -222,6 +226,7 @@ echo Cleaning up MySQL users (securing MySQL server)..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
+:endconfigure
 pause
 echo The installer will now finalise the install...
 echo Restarting services..
