@@ -206,9 +206,10 @@ cd %2\
 rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
 C:\Windows\System32\xcopy.exe %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
+pause
 IF EXIST "%1\all_databases.sql" (
 echo Restorinng Sentora database..
-%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\MySQL_User_Cleanup.sql
 %1\bin\mysql\bin\mysql.exe -uroot < %1\all_databases.sql
 IF EXIST "%PROGRAMFILES(X86)%" (
 %1\bin\php\php.exe %2\update.php %1 %2 %3 %4 %5 %6 32
@@ -217,18 +218,20 @@ IF EXIST "%PROGRAMFILES(X86)%" (
 )
 goto endconfigure
 )
+echo not update test
+pause
 echo Importing Sentora database..
-%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_core.sql
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\sentora_core.sql
 echo Importing hmailserver database..
 IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BITHMAILDB) ELSE (GOTO 32BITHMAILDB)
 :64BITHMAILDB
-%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_hmail64.sql
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\sentora_hmail64.sql
 goto ENDHMAILDB
 :32BITHMAILDB
-%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\sentora_hmail.sql
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\sentora_hmail.sql
 :ENDHMAILDB
 echo Cleaning up MySQL users (securing MySQL server)..
-%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpps\MySQL_User_Cleanup.sql
+%1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\MySQL_User_Cleanup.sql
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 :endconfigure
