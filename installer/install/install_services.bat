@@ -11,18 +11,18 @@ rem disable Windows Firewall
 NetSh Advfirewall set allprofiles state off
 IF EXIST "C:\zpanel\panel\cnf\db.php" (
 rem test uninstall old zpanel
-net stop apache
-sc delete apache
-net stop named
-sc delete named
-net stop cron
-sc delete cron
-net stop "Filezilla Server"
-sc delete "Filezilla Server"
-net stop mysql
-sc delete mysql
-net stop hmailserver
-sc delete hmailserver
+C:\Windows\System32\net stop apache
+C:\Windows\System32\sc delete apache
+C:\Windows\System32\net stop named
+C:\Windows\System32\sc delete named
+C:\Windows\System32\net stop cron
+C:\Windows\System32\sc delete cron
+C:\Windows\System32\net stop "Filezilla Server"
+C:\Windows\System32\sc delete "Filezilla Server"
+C:\Windows\System32\net stop mysql
+C:\Windows\System32\sc delete mysql
+C:\Windows\System32\net stop hmailserver
+C:\Windows\System32\sc delete hmailserver
 del C:\Windows\zppy.bat
 del C:\Windows\setso.bat
 del C:\Windows\zppy.bat
@@ -61,20 +61,19 @@ endlocal
 :W7
 %2\dotnetfx35.exe /q /norestart
 %2\NDP452-KB2901907-x86-x64-AllOS-ENU.exe /q /norestart
-rem require add net 4.5 here
 goto ENDNET
 :W8
 rem for windows 8 and 10 net framework 3.5 install online using dism
-DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
+C:\Windows\System32\dism.exe /Online /Enable-Feature /FeatureName:NetFx3 /All
 rem msu dependencie for windows 8 and windows server 2012
 rem read https://github.com/Dravion/hmailserver/releases
 mkdir %2\updates
 rename %2\Windows8.1-KB2919442-x64.msu %2\updates\Windows8.1-KB2919442-x64.msu
 rename %2\Windows8.1-KB2919355-x64.msu %2\updates\Windows8.1-KB2919355-x64.msu
-dism /online /add-package /packagepath:%2\updates
+C:\Windows\System32\dism.exe /online /add-package /packagepath:%2\updates
 :W10
 rem for windows 8 and 10 net framework 3.5 install online using dism
-DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
+C:\Windows\System32\dism.exe /Online /Enable-Feature /FeatureName:NetFx3 /All
 :ENDNET
 %1\bin\7zip\7z.exe x httpd-2.4.38-win64-VC11.zip
 cd %1\bin\php
@@ -115,18 +114,17 @@ endlocal
 :W7
 %2\dotnetfx35.exe /q /norestart
 %2\NDP452-KB2901907-x86-x64-AllOS-ENU.exe /q /norestart
-rem require add net 4.5 here
 goto ENDNET
 :W8
 rem for windows 8 and 10 net framework 3.5 install online using dism
-DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
+C:\Windows\System32\dism.exe /Online /Enable-Feature /FeatureName:NetFx3 /All
 rem msu dependencie for windows 8 and windows server 2012
 rem read https://github.com/Dravion/hmailserver/releases
 rem not require en 32 bit version
 rem dism /online /add-package /packagepath:%2\updates
 :W10
 rem for windows 8 and 10 net framework 3.5 install online using dism
-DISM /Online /Enable-Feature /FeatureName:NetFx3 /All
+C:\Windows\System32\dism.exe /Online /Enable-Feature /FeatureName:NetFx3 /All
 :ENDNET
 %1\bin\7zip\7z.exe x httpd-2.4.38-win32-VC11.zip
 cd %1\bin\php
@@ -147,30 +145,31 @@ xcopy /s /e /h %2\Apache24 %1\bin\apache
 %1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
 rem pause
-%1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize-insecure=on --lower-case-table-names=1
+%1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize --lower-case-table-names=1
+rem
 echo finish init mysql
 rem pause
 echo Installing MySQL Service..
 %1\bin\mysql\bin\mysqld.exe --install
 echo Starting MySQL Service..
-net start MySQL
+C:\Windows\System32\net.exe start MySQL
 
 echo Installing Apache HTTPd Service..
 %1\bin\apache\bin\httpd.exe -k install -n Apache
 echo Starting Apache HTTPd service..
-net start Apache
+C:\Windows\System32\net.exe start Apache
 
 echo Installing Filezilla service..
 "%1\bin\filezilla\Filezilla server.exe" /install auto
 echo Starting Filezilla service..
-net start "FileZilla Server"
+C:\Windows\System32\net.exe start "FileZilla Server"
 
 echo install crond
 "%1\bin\crond\crons.exe" /install
 echo Creating crontab file in 'C:\WINDOWS\System32'
 COPY "%1\bin\crond\temp_crontab.txt" "C:\WINDOWS\System32\crontab"
 echo Starting Cron Service
-net start "Cron Service"
+C:\Windows\System32\net.exe start "Cron Service"
 
 
 echo Installing hMailServer...
@@ -183,19 +182,19 @@ goto ENDHMAIL
 :ENDHMAIL
 
 echo Starting hMailServer
-net stop hMailServer
-net start hMailServer
+C:\Windows\System32\net.exe stop hMailServer
+C:\Windows\System32\net.exe start hMailServer
 
 echo Installing BIND9.9...
 
 
-net start | find "named"
+C:\Windows\System32\net.exe start | find "named"
 if ERRORLEVEL 1 sc create named binpath= %1\bin\bind\bin\named.exe DisplayName= "named" start= auto
-net start | find "named"
+C:\Windows\System32\net.exe start | find "named"
 if ERRORLEVEL 1 %DIR%\bind\bin\sc.exe create named binpath= %1\bin\bind\bin\named.exe DisplayName= "named" start= auto
 echo Starting BIND
-net stop named
-net start named
+C:\Windows\System32\net.exe stop named
+C:\Windows\System32\net.exe start named
 pause
 echo Done installing Services!
 echo All done!
@@ -224,17 +223,17 @@ pause
 echo The installer will now finalise the install...
 echo Restarting services..
 echo Stopping Apache
-net stop Apache 
+C:\Windows\System32\net.exe stop Apache 
 echo Starting Apache
-net start Apache
+C:\Windows\System32\net.exe start Apache
 echo Stopping hMailServer
-net stop hMailServer 
+C:\Windows\System32\net.exe stop hMailServer
 echo Starting hMailServer
-net start hMailServer
+C:\Windows\System32\net.exe start hMailServer
 echo Stopping BIND
-net stop named
+C:\Windows\System32\net.exe stop named
 echo Starting BIND
-net start named
+C:\Windows\System32\net.exe start named
 
 echo Running the daemon for the first time..
 %1\bin\php\php.exe %1\panel\bin\daemon.php
@@ -251,6 +250,6 @@ DEL %1\bin\zpss\*.bat /Q
 DEL %1\bin\zpss\*.php /Q
 DEL %1\configs\bind\zones\*.* /Q
 echo install finish
-net start apache
+C:\Windows\System32\net.exe start apache
 pause
 exit
