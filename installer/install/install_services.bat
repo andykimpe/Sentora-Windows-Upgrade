@@ -147,7 +147,6 @@ C:\Windows\System32\xcopy.exe /s /e /h %2\Apache24 %1\bin\apache
 echo finish configure
 pause
 %1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize-insecure=on --lower-case-table-names=1
-%1\bin\mysql\bin\mysql_ssl_rsa_setup.exe
 echo finish init mysql
 pause
 echo Installing MySQL Service..
