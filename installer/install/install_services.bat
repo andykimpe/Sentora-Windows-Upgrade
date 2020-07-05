@@ -23,6 +23,7 @@ C:\Windows\System32\net.exe stop mysql
 C:\Windows\System32\sc.exe delete mysql
 C:\Windows\System32\net.exe stop hmailserver
 C:\Windows\System32\sc.exe delete hmailserver
+C:\zpanel\bin\hmailserver\unins000.exe /VERYSILENT
 del C:\Windows\zppy.bat
 del C:\Windows\setso.bat
 del C:\Windows\zppy.bat
