@@ -247,7 +247,8 @@ windows use return error
 #1060 - Duplicate column name 'vh_soaserial_vc'                                                                                     
 ALTER TABLE `zpanel_core`.`x_vhosts` 
   ADD COLUMN vh_soaserial_vc char(10) NULL DEFAULT 'AAAAMMDDSS' AFTER vh_portforward_in;*/
-
+DROP TABLE IF EXISTS `zpanel_core`.`x_htpasswd_file`;
+                                                                                    
 CREATE TABLE `zpanel_core`.`x_htpasswd_file` (
   `x_htpasswd_file_id` int(11) NOT NULL AUTO_INCREMENT,
   `x_htpasswd_file_target` varchar(255) NOT NULL,
@@ -260,6 +261,8 @@ CREATE TABLE `zpanel_core`.`x_htpasswd_file` (
   KEY `x_htpasswd_file_x_htpasswd_sentora_user_id_idx` (`x_htpasswd_sentora_user_id`)
 ) DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `zpanel_core`.`x_htpasswd_mapper`;                                                                                    
+                                                                                    
 CREATE TABLE `zpanel_core`.`x_htpasswd_mapper` (
   `x_htpasswd_mapper_id` int(11) NOT NULL AUTO_INCREMENT,
   `x_htpasswd_file_id` int(11) NOT NULL,
@@ -268,6 +271,8 @@ CREATE TABLE `zpanel_core`.`x_htpasswd_mapper` (
   KEY `x_htpasswd_mapper_x_htpasswd_file_id_idx` (`x_htpasswd_file_id`),
   KEY `x_htpasswd_mapper_x_htpasswd_user_id_idx` (`x_htpasswd_user_id`)
 ) DEFAULT CHARSET=utf8;
+                                                                                    
+DROP TABLE IF EXISTS `zpanel_core`.`x_htpasswd_user`;                                                                                    
 
 CREATE TABLE `zpanel_core`.`x_htpasswd_user` (
   `x_htpasswd_user_id` int(11) NOT NULL AUTO_INCREMENT,
