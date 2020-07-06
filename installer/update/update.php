@@ -21,6 +21,18 @@ zadmin password " . $password_for_zadmin . "\r
 arch " . $arch . " bit\r");
 $version = "1.0.3";
 include '' . $install_phpdir ./bk/db.php';
+$hostname_db = "localhost";
+$username_db = "root";
+$password_db = "";
+$db = mysql_pconnect($hostname_db, $username_db, $password_db) or trigger_error('Unable to connect to database server.');
+
+// Set MySQL ROOT password to a random password and display to user!
+fwrite(STDOUT, "\rConfiguring MySQL 'root' password...\r\r");
+$sql = "SET PASSWORD FOR `root`@`localhost`=PASSWORD('" . $pass . "')";
+$resault = @mysql_query($sql, $db) or die(mysql_error());
+$sql = "FLUSH PRIVILEGES;";
+$resault = @mysql_query($sql, $db) or die(mysql_error());
+
 // Set default MySQL account details etc...
 $hostname_db = "localhost";
 $username_db = "root";
