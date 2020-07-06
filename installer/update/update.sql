@@ -164,10 +164,9 @@ UPDATE `zpanel_core`.`x_accounts` SET `ac_usertheme_vc` = 'Sentora_Default';
 
 ALTER TABLE `zpanel_roundcube`.`users` CHANGE `preferences` `preferences` longtext;
 
-/* Removal of Perl/CGI support - Issue #47 (https://github.com/sentora/sentora-core/issues/74)
-not require for windows
+/* Removal of Perl/CGI support - Issue #47 (https://github.com/sentora/sentora-core/issues/74)*/
 ALTER TABLE `zpanel_core`.`x_packages` DROP `pk_enablecgi_in`;
-*/
+
 
 INSERT INTO `zpanel_core`.`x_permissions`(`pe_group_fk`,`pe_module_fk`) VALUES (1, (SELECT `mo_id_pk` FROM `zpanel_core`.`x_modules` WHERE `mo_folder_vc` = 'protected_directories' LIMIT 1));
 INSERT INTO `zpanel_core`.`x_permissions`(`pe_group_fk`,`pe_module_fk`) VALUES (2, (SELECT `mo_id_pk` FROM `zpanel_core`.`x_modules` WHERE `mo_folder_vc` = 'protected_directories' LIMIT 1));
@@ -221,8 +220,11 @@ COLLATE=utf8_general_ci;
 ALTER TABLE `zpanel_core`.`x_modules` 
 COLLATE=utf8_general_ci;
 
-ALTER TABLE `zpanel_core`.`x_packages` 
-  DROP COLUMN pk_enablecgi_in, 
+ALTER TABLE `zpanel_core`.`x_packages`
+/*not require for windows
+windows use return error
+#1091 - Can't DROP 'pk_enablecgi_in'; check that column/key exists
+  DROP COLUMN pk_enablecgi_in,*/ 
   CHANGE COLUMN pk_created_ts pk_created_ts int(30) NULL, 
   CHANGE COLUMN pk_deleted_ts pk_deleted_ts int(30) NULL AFTER pk_created_ts;
 
@@ -239,8 +241,12 @@ COLLATE=utf8_general_ci;
 ALTER TABLE `zpanel_core`.`x_translations` 
 COLLATE=utf8_general_ci;
 
+                                                                                    
+/*not require for windows
+windows use return error
+#1060 - Duplicate column name 'vh_soaserial_vc'                                                                                     
 ALTER TABLE `zpanel_core`.`x_vhosts` 
-  ADD COLUMN vh_soaserial_vc char(10) NULL DEFAULT 'AAAAMMDDSS' AFTER vh_portforward_in;
+  ADD COLUMN vh_soaserial_vc char(10) NULL DEFAULT 'AAAAMMDDSS' AFTER vh_portforward_in;*/
 
 CREATE TABLE `zpanel_core`.`x_htpasswd_file` (
   `x_htpasswd_file_id` int(11) NOT NULL AUTO_INCREMENT,
