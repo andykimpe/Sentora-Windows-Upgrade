@@ -33,6 +33,8 @@ $resault = @mysql_query($sql, $db) or die(mysql_error());
 $sql = "FLUSH PRIVILEGES;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
 
+exec("" . $install_folder . "\bin\mysql\bin\mysql.exe -u root -p" . $pass . " < " . $install_folder . "\all_databases.sql");
+
 // Set default MySQL account details etc...
 $hostname_db = "localhost";
 $username_db = "root";
