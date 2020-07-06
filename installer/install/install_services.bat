@@ -210,12 +210,12 @@ pause
 IF EXIST "%1\all_databases.sql" (
 echo Restorinng Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\MySQL_User_Cleanup.sql
-%1\bin\mysql\bin\mysql.exe -uroot < %1\all_databases.sql
 IF EXIST "%PROGRAMFILES(X86)%" (
 %1\bin\php\php.exe %2\update.php %1 %2 %3 %4 %5 %6 32
 ) ELSE (
 %1\bin\php\php.exe %2\update.php %1 %2 %3 %4 %5 %6 64
 )
+del %1\all_databases.sql
 goto endconfigure
 )
 echo not update test
