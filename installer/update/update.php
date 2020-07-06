@@ -20,7 +20,7 @@ fqdn " . $your_fqdn . "\r
 zadmin password " . $password_for_zadmin . "\r
 arch " . $arch . " bit\r");
 $version = "1.0.3";
-include '' . $install_phpdir ./bk/db.php';
+include '' . $install_phpdir . '/bk/db.php';
 $hostname_db = "localhost";
 $username_db = "root";
 $password_db = "";
