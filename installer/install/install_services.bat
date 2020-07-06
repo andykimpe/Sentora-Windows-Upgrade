@@ -22,7 +22,14 @@ C:\Windows\System32\net.exe stop "Filezilla Server"
 C:\Windows\System32\sc.exe delete "Filezilla Server"
 C:\Windows\System32\net.exe stop hmailserver
 C:\Windows\System32\sc.exe delete hmailserver
-C:\zpanel\bin\hmailserver\unins000.exe /VERYSILENT
+reg query HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer
+if %ERRORLEVEL% EQU 0 (
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer /f
+)
+reg query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer
+if %ERRORLEVEL% EQU 0 (
+reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer /f
+)
 C:\Windows\System32\net.exe start mysql
 C:\zpanel\bin\php\php.exe %2\db.php %1 %2
 C:\Windows\System32\net.exe stop mysql
