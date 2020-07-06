@@ -113,11 +113,11 @@ $location = $your_fqdn;
 //add service command parameter for permit use reload ,force-reload and restart fonction
 $db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/service.bat", "w");
 fwrite($db_settings_file, "@echo off\r\n");
-fwrite($db_settings_file, "if %1 equ reload (goto restart)\r\n");
-fwrite($db_settings_file, "if %1 equ force-reload (goto restart)\r\n");
-fwrite($db_settings_file, "if %1 equ restart (goto restart)\r\n");
-fwrite($db_settings_file, "if %1 equ start (goto start)\r\n");
-fwrite($db_settings_file, "if %1 equ stop (goto stop)\r\n");
+fwrite($db_settings_file, "if %2 equ reload (goto restart)\r\n");
+fwrite($db_settings_file, "if %2 equ force-reload (goto restart)\r\n");
+fwrite($db_settings_file, "if %2 equ restart (goto restart)\r\n");
+fwrite($db_settings_file, "if %2 equ start (goto start)\r\n");
+fwrite($db_settings_file, "if %2 equ stop (goto stop)\r\n");
 fwrite($db_settings_file, ":restart\r\n");
 fwrite($db_settings_file, "net stop %1\r\n");
 fwrite($db_settings_file, "net start %1\r\n");
