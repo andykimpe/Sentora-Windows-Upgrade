@@ -38,8 +38,8 @@ exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABA
 exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_hmail';\"");
 exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " --all-databases > " . $install_folder . "\all_databases.sql");
 if ($install_folder != "C:\zpanel") {
-exec("mkdir " . $install_folder . "\hostdata");
-exec("move /Y c:\zpanel\hostdata " . $install_folder . "\hostdata");
+exec("rmdir " . $install_folder . "\hostdata /S /Q");
+exec("move /Y c:\zpanel\hostdata " . $install_folder . "");
 }
 exec("mkdir " . $install_folder . "\bk");
 exec("copy C:\zpanel\panel\cnf\db.php " . $install_folder . "\bk");
@@ -61,9 +61,11 @@ exec("C:\sentora\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATAB
 exec("C:\sentora\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_hmail';\"");
 exec("C:\sentora\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " --all-databases > " . $install_folder . "\all_databases.sql");
 if ($install_folder != "C:\sentora") {
-exec("mkdir " . $install_folder . "\hostdata");
-exec("move /Y c:\sentora\hostdata " . $install_folder . "\hostdata");
+exec("rmdir " . $install_folder . "\hostdata /S /Q");
+exec("move /Y c:\sentora\www " . $install_folder . "");
+exec("move /Y " . $install_folder . "\www " . $install_folder . "\hostdata");
 }
-exec("copy C:/sentora/panel/cnf/db.php " . $install_folder . "\dbbk..php");
+exec("mkdir " . $install_folder . "\bk");
+exec("copy C:/sentora/panel/cnf/db.php " . $install_folder . "\bk");
 }
 
