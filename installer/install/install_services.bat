@@ -38,8 +38,33 @@ del C:\Windows\zppy.bat
 del C:\Windows\setso.bat
 del C:\Windows\zppy.bat
 del C:\Windows\System32\crontab.txt
+rem remove old path varaible environement
+setlocal EnableDelayedExpansion
+set $line=%path%
+set $line=%$line: =#%
+set $line=%$line:;= %
+for %%a in (%$line%) do echo %%a | find /i "C:\zpanel" || set $newpath=!$newpath!;%%a
+set $newpath=!$newpath:#= !
+set path2=!$newpath:~1!
+C:\Windows\System32\reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v Path /f
+IF %1 = C:\zpanel (
+C:\Windows\System32\reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v Path /t REG_SZ /d  %path2%:C:\zpanel\bin\apache\bin;C:\zpanel\bin\mysql\bin;C:\zpanel\bin\php;C:\zpanel\bin\cygtools\bin;C:\zpanel\bin\bind\bin
+) else (
+C:\Windows\System32\reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v Path /t REG_SZ /d  %path2%
+)
+rem remove old and updated folder
 IF %1 neq C:\zpanel (
 rmdir /S /Q C:\zpanel
+) else (
+rmdir /S /Q C:\zpanel\bin\apache
+rmdir /S /Q C:\zpanel\bin\bind\bin
+rmdir /S /Q C:\zpanel\bin\crond
+rmdir /S /Q C:\zpanel\bin\filezilla
+rmdir /S /Q C:\zpanel\bin\hmailserver
+rmdir /S /Q C:\zpanel\bin\php
+rmdir /S /Q C:\zpanel\bin\vcredist
+rmdir /S /Q C:\zpanel\bin\wget
+rmdir /S /Q C:\zpanel\panel
 )
 pause
 )
