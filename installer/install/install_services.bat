@@ -30,6 +30,26 @@ C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailS
    if %ERRORLEVEL% EQU 0 (
 C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer /f
    )
+   
+C:\Windows\System32\reg.exe query HKEY_CURRENT_USER\Software\hMailServer
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_CURRENT_USER\Software\hMailServer /f
+   )
+C:\Windows\System32\reg.exe query HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\hMailServer
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\hMailServer /f
+   )
+
+C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1 /f
+   )
+
+C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1 /f
+   )
+
  C:\Windows\System32\net.exe stop mysql
  C:\Windows\System32\sc.exe delete mysql
 C:\zpanel\bin\mysql\bin\mysqld.exe --install
