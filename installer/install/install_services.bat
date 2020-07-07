@@ -45,7 +45,7 @@ C:\zpanel\bin\mysql\bin\mysqld.exe --install
 C:\Windows\System32\reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v Path /f
 C:\Windows\System32\reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v Path /t REG_SZ /d  C:\Windows;C:\Windows\System32;%1\bin\apache\bin;%1\bin\mysql\bin;%1\bin\php;%1\bin\cygtools\bin;%1\bin\bind\bin
 rem remove old and updated folder
-pause
+rem pause
 goto dbupdate
 )
 IF EXIST "C:\sentora\panel\cnf\db.php" (
@@ -83,7 +83,7 @@ C:\zpanel\bin\mysql\bin\mysqld.exe --install
 C:\Windows\System32\reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v Path /f
 C:\Windows\System32\reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v Path /t REG_SZ /d  C:\Windows;C:\Windows\System32;%1\bin\apache\bin;%1\bin\mysql\bin;%1\bin\php;%1\bin\cygtools\bin;%1\bin\bind\bin
 rem remove old and updated folder
-pause
+rem pause
 goto dbupdate
 )
 :dbupdate
@@ -203,10 +203,10 @@ cd %2
 C:\Windows\System32\xcopy.exe /s /e /h %2\Apache24 %1\bin\apache
 %1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
-pause
+rem pause
 %1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize-insecure=on --lower-case-table-names=1
 echo finish init mysql
-pause
+rem pause
 echo Installing MySQL Service..
 %1\bin\mysql\bin\mysqld.exe --install
 echo Starting MySQL Service..
@@ -248,7 +248,7 @@ if ERRORLEVEL 1 %DIR%\bind\bin\sc.exe create named binpath= %1\bin\bind\bin\name
 echo Starting BIND
 C:\Windows\System32\net.exe stop named
 C:\Windows\System32\net.exe start named
-pause
+rem pause
 echo Done installing Services!
 echo All done!
 rem pack install finish
@@ -258,7 +258,7 @@ cd %2\
 rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
 C:\Windows\System32\xcopy.exe %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
-pause
+rem pause
 IF EXIST "%1\all_databases.sql" (
 echo Restorinng Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\MySQL_User_Cleanup.sql
@@ -271,7 +271,7 @@ del %1\all_databases.sql
 goto endconfigure
 )
 echo not update test
-pause
+rem pause
 echo Importing Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\sentora_core.sql
 echo Importing hmailserver database..
@@ -287,7 +287,7 @@ echo Cleaning up MySQL users (securing MySQL server)..
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 :endconfigure
-pause
+rem pause
 echo The installer will now finalise the install...
 echo Restarting services..
 echo Stopping Apache
@@ -306,12 +306,12 @@ C:\Windows\System32\net.exe start named
 echo Running the daemon for the first time..
 %1\bin\php\php.exe %1\panel\bin\daemon.php
 echo Done!
-pause
+rem pause
 %1\bin\php\php.exe %1/panel/bin/setzadmin --set %6
 echo Password successfully set!
 echo %6 >>c:\zpanel\login_details.txt
 
-pause
+rem pause
 
 echo Cleaning up..
 DEL %1\bin\zpss\*.bat /Q
@@ -319,11 +319,11 @@ DEL %1\bin\zpss\*.php /Q
 DEL %1\configs\bind\zones\*.* /Q
 echo install finish
 C:\Windows\System32\net.exe start apache
-pause
+rem pause
 exit
 
 rem remove old and updated folder
-pause
+rem pause
 goto dbupdate
 )
 :dbupdate
@@ -443,10 +443,10 @@ cd %2
 C:\Windows\System32\xcopy.exe /s /e /h %2\Apache24 %1\bin\apache
 %1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
-pause
+rem pause
 %1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize-insecure=on --lower-case-table-names=1
 echo finish init mysql
-pause
+rem pause
 echo Installing MySQL Service..
 %1\bin\mysql\bin\mysqld.exe --install
 echo Starting MySQL Service..
@@ -488,7 +488,7 @@ if ERRORLEVEL 1 %DIR%\bind\bin\sc.exe create named binpath= %1\bin\bind\bin\name
 echo Starting BIND
 C:\Windows\System32\net.exe stop named
 C:\Windows\System32\net.exe start named
-pause
+rem pause
 echo Done installing Services!
 echo All done!
 rem pack install finish
@@ -498,7 +498,7 @@ cd %2\
 rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
 C:\Windows\System32\xcopy.exe %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
-pause
+rem pause
 IF EXIST "%1\all_databases.sql" (
 echo Restorinng Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\MySQL_User_Cleanup.sql
@@ -511,7 +511,7 @@ del %1\all_databases.sql
 goto endconfigure
 )
 echo not update test
-pause
+rem pause
 echo Importing Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\sentora_core.sql
 echo Importing hmailserver database..
@@ -527,7 +527,7 @@ echo Cleaning up MySQL users (securing MySQL server)..
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 :endconfigure
-pause
+rem pause
 echo The installer will now finalise the install...
 echo Restarting services..
 echo Stopping Apache
@@ -546,12 +546,12 @@ C:\Windows\System32\net.exe start named
 echo Running the daemon for the first time..
 %1\bin\php\php.exe %1\panel\bin\daemon.php
 echo Done!
-pause
+rem pause
 %1\bin\php\php.exe %1/panel/bin/setzadmin --set %6
 echo Password successfully set!
 echo %6 >>c:\zpanel\login_details.txt
 
-pause
+rem pause
 
 echo Cleaning up..
 DEL %1\bin\zpss\*.bat /Q
@@ -559,5 +559,5 @@ DEL %1\bin\zpss\*.php /Q
 DEL %1\configs\bind\zones\*.* /Q
 echo install finish
 C:\Windows\System32\net.exe start apache
-pause
+rem pause
 exit
