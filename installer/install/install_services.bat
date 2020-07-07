@@ -11,63 +11,45 @@ rem disable Windows Firewall
 C:\windows\System32\netsh.exe Advfirewall set allprofiles state off
 rem code test for backup and update all database
 IF EXIST "C:\zpanel\panel\cnf\db.php" (
-rem test uninstall old zpanel
-C:\Windows\System32\net.exe stop apache
-C:\Windows\System32\sc.exe delete apache
-C:\Windows\System32\net.exe stop named
-C:\Windows\System32\sc.exe delete named
-C:\Windows\System32\net.exe stop cron
-C:\Windows\System32\sc.exe delete cron
-C:\Windows\System32\net.exe stop "Filezilla Server"
-C:\Windows\System32\sc.exe delete "Filezilla Server"
-C:\Windows\System32\net.exe stop hmailserver
-C:\Windows\System32\sc.exe delete hmailserver
-reg query HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer
-if %ERRORLEVEL% EQU 0 (
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer /f
-)
-reg query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer
-if %ERRORLEVEL% EQU 0 (
-reg delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer /f
-)
-C:\Windows\System32\net.exe start mysql
-C:\zpanel\bin\php\php.exe %2\db.php %1 %2
-C:\Windows\System32\net.exe stop mysql
-C:\Windows\System32\sc.exe delete mysql
-del C:\Windows\zppy.bat
-del C:\Windows\setso.bat
-del C:\Windows\zppy.bat
-del C:\Windows\System32\crontab.txt
-rem remove old path varaible environement
-setlocal EnableDelayedExpansion
-set $line=%path%
-set $line=%$line: =#%
-set $line=%$line:;= %
-for %%a in (%$line%) do echo %%a | find /i "C:\zpanel" || set $newpath=!$newpath!;%%a
-set $newpath=!$newpath:#= !
-set path2=!$newpath:~1!
+ rem test uninstall old zpanel
+ C:\Windows\System32\net.exe stop apache
+ C:\Windows\System32\sc.exe delete apache
+ C:\Windows\System32\net.exe stop named
+ C:\Windows\System32\sc.exe delete named
+ C:\Windows\System32\net.exe stop cron
+ C:\Windows\System32\sc.exe delete cron
+ C:\Windows\System32\net.exe stop "Filezilla Server"
+ C:\Windows\System32\sc.exe delete "Filezilla Server"
+ C:\Windows\System32\net.exe stop hmailserver
+ C:\Windows\System32\sc.exe delete hmailserver
+C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer /f
+   )
+C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer /f
+   )
+ C:\Windows\System32\net.exe stop mysql
+ C:\Windows\System32\sc.exe delete mysql
+C:\zpanel\bin\mysql\bin\mysqld.exe --install
+ C:\Windows\System32\net.exe start mysql
+ C:\zpanel\bin\php\php.exe %2\db.php %1 %2
+ C:\Windows\System32\net.exe stop mysql
+ C:\Windows\System32\sc.exe delete mysql
+ del C:\Windows\zppy.bat
+ del C:\Windows\setso.bat
+ del C:\Windows\zppy.bat
+ del C:\Windows\System32\crontab.txt
+ rem remove old path varaible environement
 C:\Windows\System32\reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v Path /f
-IF %1 = C:\zpanel (
-C:\Windows\System32\reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v Path /t REG_SZ /d  %path2%:C:\zpanel\bin\apache\bin;C:\zpanel\bin\mysql\bin;C:\zpanel\bin\php;C:\zpanel\bin\cygtools\bin;C:\zpanel\bin\bind\bin
-) else (
-C:\Windows\System32\reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v Path /t REG_SZ /d  %path2%
-)
+C:\Windows\System32\reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v Path /t REG_SZ /d  C:\Windows;C:\Windows\System32;%1\bin\apache\bin;%1\bin\mysql\bin;%1\bin\php;%1\bin\cygtools\bin;%1\bin\bind\bin
 rem remove old and updated folder
-IF %1 neq C:\zpanel (
-rmdir /S /Q C:\zpanel
-) else (
-rmdir /S /Q C:\zpanel\bin\apache
-rmdir /S /Q C:\zpanel\bin\bind\bin
-rmdir /S /Q C:\zpanel\bin\crond
-rmdir /S /Q C:\zpanel\bin\filezilla
-rmdir /S /Q C:\zpanel\bin\hmailserver
-rmdir /S /Q C:\zpanel\bin\php
-rmdir /S /Q C:\zpanel\bin\vcredist
-rmdir /S /Q C:\zpanel\bin\wget
-rmdir /S /Q C:\zpanel\panel
-)
 pause
+goto dbupdate
 )
+:dbupdate
+rem update.bat %1 %2
 cd %2
 rmdir /S /Q Apache24
 IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BIT) ELSE (GOTO 32BIT)
@@ -221,9 +203,9 @@ C:\Windows\System32\net.exe start hMailServer
 echo Installing BIND9.9...
 
 
-C:\Windows\System32\net.exe start | find "named"
+C:\Windows\System32\net.exe start | C:\Windows\System32\find.exe "named"
 if ERRORLEVEL 1 sc create named binpath= %1\bin\bind\bin\named.exe DisplayName= "named" start= auto
-C:\Windows\System32\net.exe start | find "named"
+C:\Windows\System32\net.exe start | C:\Windows\System32\find.exe "named"
 if ERRORLEVEL 1 %DIR%\bind\bin\sc.exe create named binpath= %1\bin\bind\bin\named.exe DisplayName= "named" start= auto
 echo Starting BIND
 C:\Windows\System32\net.exe stop named
