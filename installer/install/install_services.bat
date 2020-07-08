@@ -112,6 +112,8 @@ C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Micro
  C:\Windows\System32\sc.exe delete mysql
 C:\zpanel\bin\mysql\bin\mysqld.exe --install
  C:\Windows\System32\net.exe start mysql
+C:\Windows\System32\taskkill.exe /f /im apachemonitor.exe
+C:\Windows\System32\taskkill.exe /f /im "filezilla server interface.exe"
  C:\zpanel\bin\php\php.exe %2\db.php %1 %2
  C:\Windows\System32\net.exe stop mysql
  C:\Windows\System32\sc.exe delete mysql
