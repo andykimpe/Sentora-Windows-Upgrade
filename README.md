@@ -11,7 +11,7 @@ News you can now choose the installation folder
 
 and he and everyone made it possible to install it on another hard disk than disk C
 
-<p style="color:#ff0000";>Warning</p>
+# Warning
 
 if your update Zpanel to Sentora
 
@@ -56,16 +56,27 @@ folder for translation
 https://github.com/jrsoftware/issrc/tree/main/Files/Languages
 
 Support System
+
 Windows 7 (extendend Support 2023)
+
 Windows Server 2008 (extendend Support 2023)
+
 Windows 8
+
 Windows Server 2012
+
 Windows 10
+
 Windows Server 2016
+
 not supported (Reason .NET Framework 4.5.2 not compatibility)
+
 Windows Vista
+
 Windows XP
+
 Windows ME
+
 and all old Windows version
 
 Dependency of Pack
@@ -73,10 +84,15 @@ Dependency of Pack
 required for use pack automated installed by installer
 
 Microsoft Visual C++ 2005 redistribuable 64 bit or 32 bit
+
 Microsoft Visual C++ 2008 redistribuable 64 bit or 32 bit
+
 Microsoft Visual C++ 2011 redistribuable 64 bit or 32 bit
+
 Microsoft Visual C++ 2013 redistribuable 64 bit or 32 bit
+
 Microsoft .NET Framework 3.5 MultiArch (Windows 8, Windows server 2012, Windows 10 and Windows Server 2016 auto install using dism)
+
 Microsoft .NET Framework 4.5.2 MultiArch
 
 Content installed by the Pack
