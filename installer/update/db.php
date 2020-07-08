@@ -47,14 +47,33 @@ exec("copy C:\zpanel\panel\cnf\db.php " . $install_folder . "\bk");
 } else if (file_exists($filename2)) {
 // here command for update sentora for windows 1.0.0
 include 'C:/sentora/panel/cnf/db.php';
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \" CREATE DATABASE zpanel_core;\"");
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \" CREATE DATABASE zpanel_hmail;\"");
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \" CREATE DATABASE zpanel_roundcube;\"");
+exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " sentora_core | C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -D zpanel_core_core");
+exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " sentora_hmail | C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -D zpanel_hmail");
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \" DROP DATABASE sentora_core;\"");
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \" DROP DATABASE sentora_hmail;\"");
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \" DROP DATABASE sentora_afterlogic;\"");
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \" CREATE DATABASE zpanel_roundcube;\"");    
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " zpanel_roundcube < " . $temp_dir . "\zpanel_roundcube.sql");
 // file https://github.com/andykimpe/Sentora-Windows-Upgrade/blob/master/installer/update/update.sql
 exec("C:\sentora\bin\mysql\bin\mysql.exe -u root -p" . $pass . " < " . $temp_dir ."\update.sql");
 // change database name command based on linux version line 777
 // just remove proftpd and postfix et adding hmail 
 // https://github.com/sentora/sentora-installers/blob/1.0.3-release/sentora_install.sh
-exec("C:\sentora\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " zpanel_core | C:\sentora\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -D sentora_core");
-exec("C:\sentora\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " zpanel_roundcube | C:\sentora\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -D sentora_roundcube");
-exec("C:\sentora\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " zpanel_hmail | C:\sentora\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -D sentora_hmail");
+// change database name command based on linux version line 777
+// just remove proftpd and postfix et adding hmail 
+// https://github.com/sentora/sentora-installers/blob/1.0.3-release/sentora_install.sh
+exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " zpanel_core | C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -D sentora_core");
+exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " zpanel_roundcube | C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -D sentora_roundcube");
+exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " zpanel_hmail | C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -D sentora_hmail");
+//drop old table
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_core';\"");
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_roundcube';\"");
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_hmail';\"");
+exec("C:\zpanel\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"UPDATE sentora_core.x_accounts SET ac_user_vc = 'zadmin' WHERE x_accounts.ac_id_pk = 1;\"");
+exec("C:\zpanel\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " --all-databases > " . $install_folder . "\all_databases.sql");
 //drop old database
 exec("C:\sentora\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_core';\"");
 exec("C:\sentora\bin\mysql\bin\mysql.exe -u root -p" . $pass . " -e \"DROP DATABASE 'zpanel_roundcube';\"");
@@ -63,7 +82,8 @@ exec("C:\sentora\bin\mysql\bin\mysqldump.exe -u root -p" . $pass . " --all-datab
 if ($install_folder != "C:\sentora") {
 exec("rmdir " . $install_folder . "\hostdata /S /Q");
 exec("move /Y c:\sentora\www " . $install_folder . "");
-exec("move /Y " . $install_folder . "\www " . $install_folder . "\hostdata");
+exec("rename " . $install_folder . "\www " . $install_folder . "\hostdata");
+exec("rename " . $install_folder . "\hostdata\admin " . $install_folder . "\hostdata\zadmin");
 }
 exec("mkdir " . $install_folder . "\bk");
 exec("copy C:/sentora/panel/cnf/db.php " . $install_folder . "\bk");
