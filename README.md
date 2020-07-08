@@ -120,36 +120,67 @@ p7zip (7z.exe) 19.00 32 bit or 64 bit
 cygtools content (minimal cygwin tools) 32 bit or 64 bit
 
 bzip2 1.0.8 
+
 cat (GNU coreutils) 8.26
+
 grep (GNU grep) 3.0
+
 gzip 1.8
+
 gunzip bat file redirect to gzip -d
+
 ls (GNU coreutils) 8.26
+
 sed (GNU sed) 4.4
+
 tar 3.3.2 (bsdtar 3.3.2 - libarchive 3.3.2 zlib/1.2.5.f-ipp)
+
 unzip 6.00
+
 wget GNU Wget 1.19.1 built on cygwin (ssl full working tls 2 ok)
+
 xz (XZ Utils) 5.2.4
+
 zip 3.0
 
+
+
 service bat file convert net command
+
 available option
+
 service start servicename
+
 service stop servicename
+
 service restart servicename
+
 service reload servicename
+
 service force-reload servicename
 
 
+
+
+
 systemctl bat file convert net and sc command
+
 available option
+
 warning dot not use servicename.service
+
 systemctl enable servicename
+
 systemctl disable servicename
+
 systemctl start servicename
+
 systemctl stop servicename
+
 systemctl restart servicename
+
 systemctl reload servicename
+
 systemctl force-reload servicename
 
 
