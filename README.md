@@ -1,23 +1,23 @@
 # Sentora-Windows-Install-and-Upgrade
 This project is designed install or upgrade Sentora 1.0.3 for Windows
 
-for upgrade working ZPanel 10.0.2 or 10.1.1 or Sentora for Windows 1.0.0 MarkDark Version
+for the update it can work with ZPanel 10.0.2 or 10.1.1 or Sentora for Windows 1.0.0 MarkDark Version
 
-Installer Upgrader Version Beta 1
+Installer, Upgrader Version Beta 1
 
 please visite <a href="../../releases/">releases</a> page for download installers file
 
 News you can now choose the installation folder
 
-and he and everyone made it possible to install it on another hard disk than disk C
+it is also possible as many have asked at the time to install in a hard drive other than the C drive
 
 # Warning
 
-if your update Zpanel to Sentora
+if your update Zpanel to Sentora 1.0.3
 
 dot not use install directory C:\zpanel
 
-if for update Sentora 1.0.0 MarkDark Version
+if for update Sentora 1.0.0 MarkDark Version to Sentora 1.0.3
 
 dot not use install directory C:\sentora
 
@@ -31,7 +31,7 @@ so if you are in 64 bit
 
 it will download the dependencies for the 64 bit version
 
-for 32 bit and well it's the opposite
+for the version 32 bit and well it's the opposite
 
 instead of having a pack of almost 4gb it will download less than 2gb
 
@@ -43,11 +43,12 @@ but only English and French are fully translated
 
 for other languages you would have good on the basic translation of inno setup
 
-and participate in the translation of custom messages
+you can participate in the translation of custom messages
 
-a note only the language present in inno setup can be added if you want to add a language that does not exist in inno setup it will be wrong first add that if to the project inno setup
+note only the languages present in inno setup can be added if you want to add a language that does not exist in inno Setup, you will first need to add the language in the inno setup project
 
-default inno setup english language
+
+default file inno setup english language
 
 https://github.com/jrsoftware/issrc/blob/main/Files/Default.isl
 
@@ -55,7 +56,7 @@ folder for translation
 
 https://github.com/jrsoftware/issrc/tree/main/Files/Languages
 
-Support System
+Support next System
 
 Windows 7 (extendend Support 2023)
 
@@ -77,7 +78,7 @@ Windows XP
 
 Windows ME
 
-and all old Windows version
+and all the old version of Windows
 
 Dependency of Pack
 
@@ -182,6 +183,24 @@ systemctl restart servicename
 systemctl reload servicename
 
 systemctl force-reload servicename
+
+Uninstall
+
+compared to the previous version this installer solves the following problem
+
+when uninstalling
+
+service not deleted
+
+PATH variable not uninstall
+
+if you update the PATH variable will be reset to its default variable
+
+on the other hand during a clean installation as well as during the uninstallation the program will add or remove only the sentora files
+
+without modifying your other files present in the variable including if you install it without updating
+
+registery key of hmailserver and bind (named) not unsinstall
 
 
 Any questions, comments or support, please post in our forums here: http://forums.sentora.org/forumdisplay.php?fid=61
