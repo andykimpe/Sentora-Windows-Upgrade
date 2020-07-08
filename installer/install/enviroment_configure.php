@@ -131,6 +131,35 @@ fwrite($db_settings_file, "goto exit\r\n");
 fwrite($db_settings_file, ":exit");
 fclose($db_settings_file);
 
+//add systemctl command parameter for permit use reload ,force-reload, restart enable and disable fonction
+$db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/systemctl.bat", "w");
+fwrite($db_settings_file, "@echo off\r\n");
+fwrite($db_settings_file, "if %1 equ reload (goto restart)\r\n");
+fwrite($db_settings_file, "if %1 equ force-reload (goto restart)\r\n");
+fwrite($db_settings_file, "if %1 equ restart (goto restart)\r\n");
+fwrite($db_settings_file, "if %1 equ start (goto start)\r\n");
+fwrite($db_settings_file, "if %1 equ stop (goto stop)\r\n");
+fwrite($db_settings_file, "if %1 equ enable (goto enable)\r\n");
+fwrite($db_settings_file, "if %1 equ disable (goto disable)\r\n");
+fwrite($db_settings_file, ":enable\r\n");
+fwrite($db_settings_file, "sc config %2 start= auto\r\n");
+fwrite($db_settings_file, "goto exit\r\n");
+fwrite($db_settings_file, ":disable\r\n");
+fwrite($db_settings_file, "sc config %2 start= demand\r\n");
+fwrite($db_settings_file, "goto exit\r\n");
+fwrite($db_settings_file, ":restart\r\n");
+fwrite($db_settings_file, "net stop %2\r\n");
+fwrite($db_settings_file, "net start %2\r\n");
+fwrite($db_settings_file, "goto exit\r\n");
+fwrite($db_settings_file, ":stop\r\n");
+fwrite($db_settings_file, "net stop %2\r\n");
+fwrite($db_settings_file, "goto exit\r\n");
+fwrite($db_settings_file, ":start\r\n");
+fwrite($db_settings_file, "net start %2\r\n");
+fwrite($db_settings_file, "goto exit\r\n");
+fwrite($db_settings_file, ":exit");
+fclose($db_settings_file);
+
 //register zppy
 $db_settings_file = fopen("" . $install_phpdir . "/bin/cygtools/bin/zppy.bat", "w");
 fwrite($db_settings_file, "@echo off\r\n");
