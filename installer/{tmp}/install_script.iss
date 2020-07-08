@@ -123,6 +123,10 @@ Filename: "{win}\System32\sc.exe"; Parameters: "delete named"; WorkingDir: "{win
 Filename: "{win}\System32\cmd.exe"; Parameters: "/c 'timeout /t 30"; WorkingDir: "{win}\System32"; Flags: runhidden
 Filename: "{win}\System32\reg.exe"; Parameters: "delete HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer /f"; WorkingDir: "{win}\System32"; Flags: runhidden
 Filename: "{win}\System32\reg.exe"; Parameters: "delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer /f"; WorkingDir: "{win}\System32"; Flags: runhidden
+Filename: "{win}\System32\reg.exe"; Parameters: "delete HKEY_CURRENT_USER\Software\hMailServer /f"; WorkingDir: "{win}\System32"; Flags: runhidden
+Filename: "{win}\System32\reg.exe"; Parameters: "HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\hMailServer /f"; WorkingDir: "{win}\System32"; Flags: runhidden
+Filename: "{win}\System32\reg.exe"; Parameters: "delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1 /f"; WorkingDir: "{win}\System32"; Flags: runhidden
+Filename: "{win}\System32\reg.exe"; Parameters: "delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1 /f"; WorkingDir: "{win}\System32"; Flags: runhidden
 
 [Icons]
 Name: "{group}\Support\Sentora website"; Filename: "http://www.sentora.org/"; IconFilename: "{app}\bin\zpss\icons\internet.ico"; 
@@ -626,6 +630,7 @@ end;
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/install.php', ExpandConstant('{tmp}\install.php'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/enviroment_configure.php', ExpandConstant('{tmp}\enviroment_configure.php'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/archive/master.zip', ExpandConstant('{tmp}\master.zip'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/update/zpanel_roundcube.sql', ExpandConstant('{tmp}\zpanel_roundcube.sql'));
 
     idpDownloadAfter(wpReady);
 end;
