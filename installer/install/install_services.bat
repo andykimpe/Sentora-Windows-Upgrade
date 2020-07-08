@@ -81,12 +81,32 @@ IF EXIST "C:\sentora\panel\cnf\db.php" (
  C:\Windows\System32\net.exe stop hmailserver
  C:\Windows\System32\sc.exe delete hmailserver
 C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer
+C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer
    if %ERRORLEVEL% EQU 0 (
 C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\hMailServer /f
    )
 C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer
    if %ERRORLEVEL% EQU 0 (
 C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\hMailServer /f
+   )
+   
+C:\Windows\System32\reg.exe query HKEY_CURRENT_USER\Software\hMailServer
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_CURRENT_USER\Software\hMailServer /f
+   )
+C:\Windows\System32\reg.exe query HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\hMailServer
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\hMailServer /f
+   )
+
+C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1 /f
+   )
+
+C:\Windows\System32\reg.exe query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1
+   if %ERRORLEVEL% EQU 0 (
+C:\Windows\System32\reg.exe delete HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1 /f
    )
  C:\Windows\System32\net.exe stop mysql
  C:\Windows\System32\sc.exe delete mysql
@@ -95,10 +115,6 @@ C:\zpanel\bin\mysql\bin\mysqld.exe --install
  C:\zpanel\bin\php\php.exe %2\db.php %1 %2
  C:\Windows\System32\net.exe stop mysql
  C:\Windows\System32\sc.exe delete mysql
- del C:\Windows\zppy.bat
- del C:\Windows\setso.bat
- del C:\Windows\zppy.bat
- del C:\Windows\System32\crontab.txt
  rem remove old path varaible environement
 C:\Windows\System32\reg.exe delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v Path /f
 C:\Windows\System32\reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v Path /t REG_SZ /d  C:\Windows;C:\Windows\System32;%1\bin\apache\bin;%1\bin\mysql\bin;%1\bin\php;%1\bin\cygtools\bin;%1\bin\bind\bin
