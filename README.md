@@ -1,19 +1,13 @@
 # Sentora-Windows-Upgrade
-This project is designed to upgrade ZPanel 10.1.1 to Sentora 1.0.3 on Windows.
+This project is designed install or upgrade Sentora 1.0.3 for Windows
 
-This is for testing ONLY at this stage.
-Do NOT use on a production server, please test on a dev server.
+for upgrade working ZPanel 10.0.2 or 10.1.1 or Sentora for Windows 1.0.0 MarkDark Version
 
-This is a basic conversion script to convert ZPanel 10.1.1 to Sentora 1.0.3 on Windows platforms.
+Installer Upgrader Version Beta 1
 
-***NOTICE***: Make sure you are using ZPanel 10.1.1 - https://github.com/zpanel/zpanelx
+please visite <a href="releases/">releases</a> page for download installers file
 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-Use at your OWN RISK!
 
-Follow the instructions in the /1.0.3/upgrade.txt file.
 
 Any questions, comments or support, please post in our forums here: http://forums.sentora.org/forumdisplay.php?fid=61
