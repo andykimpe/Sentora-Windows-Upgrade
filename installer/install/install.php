@@ -396,7 +396,7 @@ $zone='#########################################################################
 # CronW Debug infomation can be found in this file here:- 
 # C:\WINDOWS\System32\crontab.txt   
 ######################################################################################
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * ' . $install_phpdir . 'bin/php/php.exe ' . $install_phpdir . '/panel/bin/daemon.php
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * ' . $install_phpdir . '/bin/php/php.exe ' . $install_phpdir . '/panel/bin/daemon.php
 ######################################################################################
 # DO NOT MANUALLY REMOVE ANY OF THE CRON ENTRIES FROM THIS FILE, USE ZPANEL
 # INSTEAD! THE ABOVE ENTRIES ARE USED FOR ZPANEL TASKS, DO NOT REMOVE THEM! 
