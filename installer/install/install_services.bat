@@ -507,7 +507,7 @@ C:\Windows\System32\net.exe start cron
 
 echo Installing hMailServer...
 IF EXIST "%PROGRAMFILES(X86)%" (
-%2\hMailServer-5.7.0-B2519-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT
+%2\hMailServer-5.7.0-B2604-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 ) ELSE (
 %2\hMailServer-5.6.7-B2425.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 )
