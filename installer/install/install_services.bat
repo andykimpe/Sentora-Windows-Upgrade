@@ -7,10 +7,10 @@ echo your_full_name %3
 echo your_email %4
 echo your_fqdn %5
 echo password_for_zadmin %6
-timeout /t 60
+rem timeout /t 60
 echo disable Windows Firewall
 C:\windows\System32\netsh.exe Advfirewall set allprofiles state off
-timeout /t 60
+rem timeout /t 60
 rem code test for backup and update all database
 IF EXIST "C:\zpanel\panel\cnf\db.php" (
  rem test uninstall old zpanel
@@ -134,14 +134,14 @@ IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BIT) ELSE (GOTO 32BIT)
 :64BIT
 rem install Visual C++ redistributable 2005 2008 2011 2013 require for apache php and mysql
 echo install Visual C++ redistributable
-timeout /t 60
+rem timeout /t 60
 %2\vcredist5_x64.exe /q
 %2\vcredist8_x64.exe /q /norestart
 %2\vcredist11_x64.exe /q /norestart
 %2\vcredist13_x64.exe /q /norestart
 rem install microsoft net framework 3.5 and 4.5 require for hmailserver
 echo install microsoft net framework 3.5 and 4.5
-timeout /t 60
+rem timeout /t 60
 setlocal
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
 if "%version%" == "10.0" goto W10
@@ -176,7 +176,7 @@ rename %2\Windows8.1-KB2919355-x64.msu %2\updates\Windows8.1-KB2919355-x64.msu
 C:\Windows\System32\dism.exe /online /add-package /packagepath:%2\updates
 :W10
 echo install chocolatey and vcredist-all
-timeout /t 60
+rem timeout /t 60
 powershell "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
 C:\ProgramData\chocolatey\bin\choco.exe feature enable -n=allowGlobalConfirmation
 C:\ProgramData\chocolatey\bin\choco.exe upgrade chocolatey
@@ -185,34 +185,34 @@ C:\ProgramData\chocolatey\bin\choco.exe upgrade vcredist-all
 C:\ProgramData\chocolatey\bin\choco.exe feature disable -n=allowGlobalConfirmation
 rem for windows 8 and 10 net framework 3.5 install online using dism
 echo net framework 3.5 install online using dism
-timeout /t 60
+rem timeout /t 60
 C:\Windows\System32\dism.exe /Online /Enable-Feature /FeatureName:NetFx3 /All
 :ENDNET
 echo extract apache
-timeout /t 60
+rem timeout /t 60
 %1\bin\7zip\7z.exe x httpd-2.4.38-win64-VC11.zip
 echo extract php
-timeout /t 60
+rem timeout /t 60
 cd %1\bin\php
 %1\bin\7zip\7z.exe x %2\php-5.6.40-Win32-VC11-x64.zip
 cd %2
 echo extract mysql
-timeout /t 60
+rem timeout /t 60
 rmdir /S /Q mysql-5.7.29-winx64
 %1\bin\7zip\7z.exe x %2\mysql-5.7.29-winx64.zip
 C:\Windows\System32\xcopy.exe /s /e /h %2\mysql-5.7.29-winx64 %1\bin\mysql
 echo extract bind9
-timeout /t 60
+rem timeout /t 60
 cd %1\bin\bind\bin\
 %1\bin\7zip\7z.exe x %2\BIND9.14.8.x64.zip
 echo extract cygtools
-timeout /t 60
+rem timeout /t 60
 cd %1\bin\cygtools
 %1\bin\7zip\7z.exe x %2\cygtools-64bit.zip
 GOTO END
 :32BIT
 echo install Visual C++ redistributable
-timeout /t 60
+rem timeout /t 60
 %2\vcredist5_x86.exe /q
 %2\vcredist8_x86.exe /q /norestart
 %2\vcredist11_x86.exe /q /norestart
@@ -267,16 +267,15 @@ GOTO END
 cd %2
 
 echo start configure
-timeout /t 60
+rem timeout /t 60
 C:\Windows\System32\xcopy.exe /s /e /h %2\Apache24 %1\bin\apache
 %1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
-timeout /t 60
+rem timeout /t 60
 
-rem pause
 %1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize-insecure=on --lower-case-table-names=1
 echo finish init mysql
-rem pause
+rem timeout /t 60
 echo Installing MySQL Service..
 %1\bin\mysql\bin\mysqld.exe --install
 echo Starting MySQL Service..
@@ -298,7 +297,7 @@ echo Starting Cron Service
 C:\Windows\System32\net.exe start cron
 
 echo Installing hMailServer...
-timeout /t 60
+rem timeout /t 60
 IF EXIST "%PROGRAMFILES(X86)%" (
 %2\hMailServer-5.7.0-B2604-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 ) ELSE (
@@ -309,12 +308,12 @@ del %2\bin\hmailserver\Bin\hMailServer.ini
 rename %2\bin\hmailserver\Bin\hMailServer.ini.sentora %2\bin\hmailserver\Bin\hMailServer.ini
 )
 echo end Installing hMailServer...
-timeout /t 60
+rem timeout /t 60
 
 echo Starting hMailServer
 C:\Windows\System32\net.exe stop hMailServer
 C:\Windows\System32\net.exe start hMailServer
-timeout /t 60
+rem timeout /t 60
 
 
 echo Installing BIND9.9...
@@ -327,7 +326,7 @@ if ERRORLEVEL 1 %DIR%\bind\bin\sc.exe create named binpath= %1\bin\bind\bin\name
 echo Starting BIND
 C:\Windows\System32\net.exe stop named
 C:\Windows\System32\net.exe start named
-rem pause
+rem timeout /t 60
 echo Done installing Services!
 echo All done!
 rem pack install finish
@@ -350,7 +349,7 @@ del %1\all_databases.sql
 goto endconfigure
 )
 echo not update test
-rem pause
+rem timeout /t 60
 echo Importing Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\sentora_core.sql
 echo Importing hmailserver database..
@@ -368,7 +367,7 @@ md "\bin\hmailserver\Bin\"
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 :endconfigure
-rem pause
+rem timeout /t 60
 echo The installer will now finalise the install...
 echo Restarting services..
 echo Stopping Apache
@@ -387,12 +386,12 @@ C:\Windows\System32\net.exe start named
 echo Running the daemon for the first time..
 %1\bin\php\php.exe %1\panel\bin\daemon.php
 echo Done!
-rem pause
+rem timeout /t 60
 %1\bin\php\php.exe %1/panel/bin/setzadmin --set %6
 echo Password successfully set!
 echo %6 >>c:\zpanel\login_details.txt
 
-rem pause
+rem timeout /t 60
 
 echo Cleaning up..
 DEL %1\bin\zpss\*.bat /Q
@@ -400,11 +399,11 @@ DEL %1\bin\zpss\*.php /Q
 DEL %1\configs\bind\zones\*.* /Q
 echo install finish
 C:\Windows\System32\net.exe start apache
-rem pause
+rem timeout /t 60
 exit
 
 rem remove old and updated folder
-rem pause
+rem timeout /t 60
 goto dbupdate
 )
 :dbupdate
@@ -524,10 +523,10 @@ cd %2
 C:\Windows\System32\xcopy.exe /s /e /h %2\Apache24 %1\bin\apache
 %1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
-rem pause
+rem timeout /t 60
 %1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize-insecure=on --lower-case-table-names=1
 echo finish init mysql
-rem pause
+rem timeout /t 60
 echo Installing MySQL Service..
 %1\bin\mysql\bin\mysqld.exe --install
 echo Starting MySQL Service..
@@ -573,7 +572,7 @@ if ERRORLEVEL 1 %DIR%\bind\bin\sc.exe create named binpath= %1\bin\bind\bin\name
 echo Starting BIND
 C:\Windows\System32\net.exe stop named
 C:\Windows\System32\net.exe start named
-rem pause
+rem timeout /t 60
 echo Done installing Services!
 echo All done!
 rem pack install finish
@@ -583,7 +582,7 @@ cd %2\
 rmdir /S /Q %2\Sentora-Windows-Upgrade-master\1.0.3\panel\upgrade
 mkdir %1\panel
 C:\Windows\System32\xcopy.exe %2\Sentora-Windows-Upgrade-master\1.0.3\panel %1\panel /s /e /h
-rem pause
+rem timeout /t 60
 IF EXIST "%1\all_databases.sql" (
 echo Restorinng Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\MySQL_User_Cleanup.sql
@@ -596,7 +595,7 @@ del %1\all_databases.sql
 goto endconfigure
 )
 echo not update test
-rem pause
+rem timeout /t 60
 echo Importing Sentora database..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\sentora_core.sql
 echo Importing hmailserver database..
@@ -612,7 +611,7 @@ echo Cleaning up MySQL users (securing MySQL server)..
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 :endconfigure
-rem pause
+rem timeout /t 60
 echo The installer will now finalise the install...
 echo Restarting services..
 echo Stopping Apache
@@ -631,12 +630,12 @@ C:\Windows\System32\net.exe start named
 echo Running the daemon for the first time..
 %1\bin\php\php.exe %1\panel\bin\daemon.php
 echo Done!
-rem pause
+rem timeout /t 60
 %1\bin\php\php.exe %1/panel/bin/setzadmin --set %6
 echo Password successfully set!
 echo %6 >>c:\zpanel\login_details.txt
 
-rem pause
+rem timeout /t 60
 
 echo Cleaning up..
 DEL %1\bin\zpss\*.bat /Q
@@ -644,5 +643,5 @@ DEL %1\bin\zpss\*.php /Q
 DEL %1\configs\bind\zones\*.* /Q
 echo install finish
 C:\Windows\System32\net.exe start apache
-rem pause
+rem timeout /t 60
 exit
