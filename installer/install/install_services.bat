@@ -362,6 +362,8 @@ md "%1\bin\hmailserver\"
 md "%1\bin\hmailserver\bin\"
 del "%1\bin\hmailserver\bin\hMailServer.ini"
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
+del "%1\bin\hmailserver\bin\libmysql.dll"
+copy "%1\bin\mysql\lib\libmysql.dll" "%1\bin\hmailserver\bin\"
 echo end configure
 :endconfigure
 rem timeout /t 60
@@ -605,6 +607,8 @@ md "%1\bin\hmailserver\"
 md "%1\bin\hmailserver\bin\"
 del "%1\bin\hmailserver\bin\hMailServer.ini"
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
+del "%1\bin\hmailserver\bin\libmysql.dll"
+copy "%1\bin\mysql\lib\libmysql.dll" "%1\bin\hmailserver\bin\"
 echo end configure
 :endconfigure
 rem timeout /t 60
