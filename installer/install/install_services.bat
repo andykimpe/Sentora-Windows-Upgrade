@@ -554,6 +554,10 @@ IF EXIST "%PROGRAMFILES(X86)%" (
 ) ELSE (
 %2\hMailServer-5.6.7-B2425.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 )
+IF EXIST "%2\bin\hmailserver\Bin\hMailServer.ini.sentora" (
+del %2\bin\hmailserver\Bin\hMailServer.ini
+rename %2\bin\hmailserver\Bin\hMailServer.ini.sentora %2\bin\hmailserver\Bin\hMailServer.ini
+)
 
 echo Starting hMailServer
 C:\Windows\System32\net.exe stop hMailServer
