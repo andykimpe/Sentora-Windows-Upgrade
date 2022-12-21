@@ -156,6 +156,7 @@ en.Your_Full_Name=Your Full Name (last name and first name)
 en.Your_Email=Your Email
 en.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 en.Password_For_Zadmin=Password For Zadmin
+en.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ;french manual checked by andykimpe
 fr.Sentora_For_Windows=Sentora Pour Windows
@@ -167,83 +168,98 @@ fr.Your_Full_Name=Votre Nom Complet (Nom et Prénom)
 fr.Your_Email=Votre Email
 fr.Your_FQDN=Votre FQDN (Nom de Domaine Pleinement Qualifié)
 fr.Password_For_Zadmin=Mot de Passe Zadmin
+fr.Your_Sentora_install_Configure=Votre installation Sentora Configurer
 
-; Armenian fork for participate translation
-ar.Sentora_For_Windows=Sentora For Windows
-ar.Installandregisterserver=Installing services and registering applications
-ar.Configure_your_Sentora_Installation=Configure your Sentora Installation
-ar.Information_of_your_installation=Information of your installation
-ar.information_requested=please fill in the information requested to configure your Setora installation
-ar.Your_Full_Name=Your Full Name (last name and first name)
-ar.Your_Email=Your Email
-ar.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-ar.Password_For_Zadmin=Password For Zadmin
+; Armenian (google translate tranlation) fork for participate translation
+; https://translate.google.com/?hl=en&sl=en&tl=hy&op=translate
+ar.Sentora_For_Windows=Sentora Windows-ի համար
+ar.Installandregisterserver=Ծառայությունների տեղադրում և հավելվածների գրանցում
+ar.Configure_your_Sentora_Installation=Կարգավորեք ձեր Sentora տեղադրումը
+ar.Information_of_your_installation=Տեղեկություններ ձեր տեղադրման մասին
+ar.information_requested=խնդրում ենք լրացնել տեղեկատվությունը, որը պահանջվում է ձեր Setora-ի տեղադրումը կարգավորելու համար
+ar.Your_Full_Name=Ձեր լրիվ անունը (ազգանունը և անունը)
+ar.Your_Email=Քո էլէկտրոնային փոստը
+ar.Your_FQDN=Ձեր FQDN (Լրիվ որակավորված տիրույթի անունը)
+ar.Password_For_Zadmin=Գաղտնաբառ Zadmin-ի համար
+ar.Your_Sentora_install_Configure=Ձեր Sentora-ի տեղադրման կարգավորումը
 
-; Brazilian Portuguese fork for participate translation
-pt_br.Sentora_For_Windows=Sentora For Windows
-pt_br.Installandregisterserver=Installing services and registering applications
-pt_br.Configure_your_Sentora_Installation=Configure your Sentora Installation
-pt_br.Information_of_your_installation=Information of your installation
-pt_br.information_requested=please fill in the information requested to configure your Setora installation
-pt_br.Your_Full_Name=Your Full Name (last name and first name)
-pt_br.Your_Email=Your Email
-pt_br.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-pt_br.Password_For_Zadmin=Password For Zadmin
+; Brazilian Portuguese (bing translate tranlation) fork for participate translation
+; https://www.bing.com/translator?setlang=en&from=en&to=pt
+pt_br.Sentora_For_Windows=Sentora para Windows
+pt_br.Installandregisterserver=Instalando serviços e registrando aplicativos
+pt_br.Configure_your_Sentora_Installation=Configure sua instalação do Sentora
+pt_br.Information_of_your_installation=Informações da sua instalação
+pt_br.information_requested=preencha as informações solicitadas para configurar sua instalação do Setora
+pt_br.Your_Full_Name=Seu Nome Completo (sobrenome e nome)
+pt_br.Your_Email=Seu e-mail
+pt_br.Your_FQDN=Seu FQDN (Nome de Domínio Totalmente Qualificado)
+pt_br.Password_For_Zadmin=Senha para Zadmin
+pt_br.Your_Sentora_install_Configure=Sua instalação do Sentora Configure
 
-; Catalan fork for participate translation
-ca.Sentora_For_Windows=Sentora For Windows
-ca.Installandregisterserver=Installing services and registering applications
-ca.Configure_your_Sentora_Installation=Configure your Sentora Installation
-ca.Information_of_your_installation=Information of your installation
-ca.information_requested=please fill in the information requested to configure your Setora installation
-ca.Your_Full_Name=Your Full Name (last name and first name)
-ca.Your_Email=Your Email
-ca.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-ca.Password_For_Zadmin=Password For Zadmin
+; Catalan (google translate tranlation) fork for participate translation
+; https://translate.google.com/?hl=en&sl=en&tl=ca&op=translate
+ca.Sentora_For_Windows=Sentora per a Windows
+ca.Installandregisterserver=Instal·lació de serveis i registre d'aplicacions
+ca.Configure_your_Sentora_Installation=Configura la teva instal·lació de Sentora
+ca.Information_of_your_installation=Informació de la seva instal·lació
+ca.information_requested=ompliu la informació sol·licitada per configurar la vostra instal·lació de Setora
+ca.Your_Full_Name=El teu nom complet (cognoms i nom)
+ca.Your_Email=El teu email
+ca.Your_FQDN=El vostre FQDN (nom de domini complet)
+ca.Password_For_Zadmin=Contrasenya per a Zadmin
+ca.Your_Sentora_install_Configure=La vostra instal·lació de Sentora Configura
 
-; Corsican fork for participate translation
-co.Sentora_For_Windows=Sentora For Windows
-co.Installandregisterserver=Installing services and registering applications
-co.Configure_your_Sentora_Installation=Configure your Sentora Installation
-co.Information_of_your_installation=Information of your installation
-co.information_requested=please fill in the information requested to configure your Setora installation
-co.Your_Full_Name=Your Full Name (last name and first name)
-co.Your_Email=Your Email
-co.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-co.Password_For_Zadmin=Password For Zadmin
+; Corsican (google translate tranlation) fork for participate translation
+; https://translate.google.com/?hl=en&sl=en&tl=co&op=translate
+co.Sentora_For_Windows=Sentora per Windows
+co.Installandregisterserver=Installazione di servizii è registrazione di applicazioni
+co.Configure_your_Sentora_Installation=Configurate a vostra installazione Sentora
+co.Information_of_your_installation=Informazioni di a vostra installazione
+co.information_requested=compie l'infurmazioni dumandate per cunfigurà a vostra installazione Setora
+co.Your_Full_Name=U vostru nome cumpletu (cognome è nome)
+co.Your_Email=U vostru email
+co.Your_FQDN=U vostru FQDN (Nome di duminiu cumpletu)
+co.Password_For_Zadmin=Password per Zadmin
+co.Your_Sentora_install_Configure=U vostru Sentora installate Configure
 
-; Czech fork for participate translation
-cz.Sentora_For_Windows=Sentora For Windows
-cz.Installandregisterserver=Installing services and registering applications
-cz.Configure_your_Sentora_Installation=Configure your Sentora Installation
-cz.Information_of_your_installation=Information of your installation
-cz.information_requested=please fill in the information requested to configure your Setora installation
-cz.Your_Full_Name=Your Full Name (last name and first name)
-cz.Your_Email=Your Email
-cz.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-cz.Password_For_Zadmin=Password For Zadmin
+; Czech (google translate tranlation) fork for participate translation
+; https://translate.google.com/?hl=en&sl=en&tl=cs&op=translate
+cz.Sentora_For_Windows=Sentora pro Windows
+cz.Installandregisterserver=Instalace služeb a registrace aplikací
+cz.Configure_your_Sentora_Installation=Nakonfigurujte svou instalaci Sentora
+cz.Information_of_your_installation=Informace o vaší instalaci
+cz.information_requested=vyplňte prosím informace požadované pro konfiguraci vaší instalace Setora
+cz.Your_Full_Name=Vaše celé jméno (příjmení a jméno)
+cz.Your_Email=Tvůj e-mail
+cz.Your_FQDN=Váš FQDN (úplný kvalifikovaný název domény)
+cz.Password_For_Zadmin=Heslo pro Zadmin
+cz.Your_Sentora_install_Configure=Vaše Sentora nainstalovat Configure
 
-; Danish fork for participate translation
-da.Sentora_For_Windows=Sentora For Windows
-da.Installandregisterserver=Installing services and registering applications
-da.Configure_your_Sentora_Installation=Configure your Sentora Installation
-da.Information_of_your_installation=Information of your installation
-da.information_requested=please fill in the information requested to configure your Setora installation
-da.Your_Full_Name=Your Full Name (last name and first name)
-da.Your_Email=Your Email
-da.Your_FQDN=Your FQDN (Full Qualified Domain Name)
+; Danish (google translate tranlation) fork for participate translation
+; https://translate.google.com/?hl=en&sl=en&tl=da&op=translate
+da.Sentora_For_Windows=Sentora til Windows
+da.Installandregisterserver=Installation af tjenester og registrering af applikationer
+da.Configure_your_Sentora_Installation=Konfigurer din Sentora-installation
+da.Information_of_your_installation=Oplysninger om din installation
+da.information_requested=udfyld venligst de nødvendige oplysninger for at konfigurere din Setora-installation
+da.Your_Full_Name=Dit fulde navn (efternavn og fornavn)
+da.Your_Email=Din email
+da.Your_FQDN=Dit FQDN (fuldt kvalificeret domænenavn)
 da.Password_For_Zadmin=Password For Zadmin
+da.Your_Sentora_install_Configure=Din Sentora-installation Configure
 
 ; Dutch fork for participate translation
-nl.Sentora_For_Windows=Sentora For Windows
-nl.Installandregisterserver=Installing services and registering applications
-nl.Configure_your_Sentora_Installation=Configure your Sentora Installation
-nl.Information_of_your_installation=Information of your installation
-nl.information_requested=please fill in the information requested to configure your Setora installation
-nl.Your_Full_Name=Your Full Name (last name and first name)
-nl.Your_Email=Your Email
-nl.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-nl.Password_For_Zadmin=Password For Zadmin
+; https://translate.google.com/?hl=en&sl=en&tl=nl&op=translate
+nl.Sentora_For_Windows=Sentora voor Windows
+nl.Installandregisterserver=Services installeren en applicaties registreren
+nl.Configure_your_Sentora_Installation=Configureer uw Sentora-installatie
+nl.Information_of_your_installation=Informatie over uw installatie
+nl.information_requested=vul de gevraagde informatie in om uw Setora-installatie te configureren
+nl.Your_Full_Name=Uw volledige naam (achternaam en voornaam)
+nl.Your_Email=Jouw email
+nl.Your_FQDN=Uw FQDN (Full Qualified Domain Name)
+nl.Password_For_Zadmin=Wachtwoord voor Zadmin
+nl.Your_Sentora_install_Configure=Uw Sentora-installatie configureren
 
 ; Finnish fork for participate translation
 fi.Sentora_For_Windows=Sentora For Windows
@@ -255,6 +271,7 @@ fi.Your_Full_Name=Your Full Name (last name and first name)
 fi.Your_Email=Your Email
 fi.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 fi.Password_For_Zadmin=Password For Zadmin
+fi.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; German fork for participate translation
 de.Sentora_For_Windows=Sentora For Windows
@@ -266,6 +283,7 @@ de.Your_Full_Name=Your Full Name (last name and first name)
 de.Your_Email=Your Email
 de.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 de.Password_For_Zadmin=Password For Zadmin
+de.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Hebrew fork for participate translation
 he.Sentora_For_Windows=Sentora For Windows
@@ -277,6 +295,7 @@ he.Your_Full_Name=Your Full Name (last name and first name)
 he.Your_Email=Your Email
 he.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 he.Password_For_Zadmin=Password For Zadmin
+he.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Icelandic fork for participate translation
 ic.Sentora_For_Windows=Sentora For Windows
@@ -288,6 +307,19 @@ ic.Your_Full_Name=Your Full Name (last name and first name)
 ic.Your_Email=Your Email
 ic.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 ic.Password_For_Zadmin=Password For Zadmin
+ic.Your_Sentora_install_Configure=Your Sentora install Configure
+
+; Italian fork for participate translation
+it.Sentora_For_Windows=Sentora For Windows
+it.Installandregisterserver=Installing services and registering applications
+it.Configure_your_Sentora_Installation=Configure your Sentora Installation
+it.Information_of_your_installation=Information of your installation
+it.information_requested=please fill in the information requested to configure your Setora installation
+it.Your_Full_Name=Your Full Name (last name and first name)
+it.Your_Email=Your Email
+it.Your_FQDN=Your FQDN (Full Qualified Domain Name)
+it.Password_For_Zadmin=Password For Zadmin
+it.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Japanese fork for participate translation
 jp.Sentora_For_Windows=Sentora For Windows
@@ -299,6 +331,7 @@ jp.Your_Full_Name=Your Full Name (last name and first name)
 jp.Your_Email=Your Email
 jp.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 jp.Password_For_Zadmin=Password For Zadmin
+jp.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Norwegian fork for participate translation
 no.Sentora_For_Windows=Sentora For Windows
@@ -310,6 +343,7 @@ no.Your_Full_Name=Your Full Name (last name and first name)
 no.Your_Email=Your Email
 no.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 no.Password_For_Zadmin=Password For Zadmin
+no.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Polish fork for participate translation
 pl.Sentora_For_Windows=Sentora For Windows
@@ -321,6 +355,7 @@ pl.Your_Full_Name=Your Full Name (last name and first name)
 pl.Your_Email=Your Email
 pl.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 pl.Password_For_Zadmin=Password For Zadmin
+pl.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Portuguese fork for participate translation
 pt.Sentora_For_Windows=Sentora For Windows
@@ -332,6 +367,7 @@ pt.Your_Full_Name=Your Full Name (last name and first name)
 pt.Your_Email=Your Email
 pt.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 pt.Password_For_Zadmin=Password For Zadmin
+pt.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Russian fork for participate translation
 ru.Sentora_For_Windows=Sentora For Windows
@@ -343,6 +379,7 @@ ru.Your_Full_Name=Your Full Name (last name and first name)
 ru.Your_Email=Your Email
 ru.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 ru.Password_For_Zadmin=Password For Zadmin
+ru.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Slovak fork for participate translation
 sk.Sentora_For_Windows=Sentora For Windows
@@ -354,17 +391,19 @@ sk.Your_Full_Name=Your Full Name (last name and first name)
 sk.Your_Email=Your Email
 sk.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 sk.Password_For_Zadmin=Password For Zadmin
+sk.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Slovenian fork for participate translation
-sk.Sentora_For_Windows=Sentora For Windows
-sk.Installandregisterserver=Installing services and registering applications
-sk.Configure_your_Sentora_Installation=Configure your Sentora Installation
-sk.Information_of_your_installation=Information of your installation
-sk.information_requested=please fill in the information requested to configure your Setora installation
-sk.Your_Full_Name=Your Full Name (last name and first name)
-sk.Your_Email=Your Email
-sk.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-sk.Password_For_Zadmin=Password For Zadmin
+sl.Sentora_For_Windows=Sentora For Windows
+sl.Installandregisterserver=Installing services and registering applications
+sl.Configure_your_Sentora_Installation=Configure your Sentora Installation
+sl.Information_of_your_installation=Information of your installation
+sl.information_requested=please fill in the information requested to configure your Setora installation
+sl.Your_Full_Name=Your Full Name (last name and first name)
+sl.Your_Email=Your Email
+sl.Your_FQDN=Your FQDN (Full Qualified Domain Name)
+sl.Password_For_Zadmin=Password For Zadmin
+sl.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Spanish fork for participate translation
 es.Sentora_For_Windows=Sentora For Windows
@@ -376,6 +415,7 @@ es.Your_Full_Name=Your Full Name (last name and first name)
 es.Your_Email=Your Email
 es.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 es.Password_For_Zadmin=Password For Zadmin
+es.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Turkish fork for participate translation
 tr.Sentora_For_Windows=Sentora For Windows
@@ -387,6 +427,7 @@ tr.Your_Full_Name=Your Full Name (last name and first name)
 tr.Your_Email=Your Email
 tr.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 tr.Password_For_Zadmin=Password For Zadmin
+tr.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ; Ukrainian fork for participate translation
 uk.Sentora_For_Windows=Sentora For Windows
@@ -398,6 +439,7 @@ uk.Your_Full_Name=Your Full Name (last name and first name)
 uk.Your_Email=Your Email
 uk.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 uk.Password_For_Zadmin=Password For Zadmin
+uk.Your_Sentora_install_Configure=Your Sentora install Configure
 
 
 ;for add other language please paticipate to inno setup project translate
@@ -656,7 +698,7 @@ begin
     if MemoTasksInfo <> '' then begin
         Result := Result + MemoTasksInfo + Newline + NewLine;
     end;
-    Result := Result + 'Your Sentora install Configure:' + NewLine + NewLine;	
+    Result := Result + '{cm:Your_Sentora_install_Configure}:' + NewLine + NewLine;	
     Result := Result + 'Your Full Name: ' + PageParam.Values[0] + NewLine;	
     Result := Result + 'Your Email: ' + PageParam.Values[1] + NewLine;	
     Result := Result + 'Your FQDN: ' + PageParamm.Values[0] + NewLine;	
