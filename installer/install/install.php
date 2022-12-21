@@ -420,7 +420,7 @@ AsLoggedUser ON
 DefaultRunMissedTime: 15';
 $write = fwrite($handle, $zone);
 fclose($handle);
-$handle = fopen('' . $install_phpdir . '/bin/hmailserver/hMailServer.ini', 'w');
+$handle = fopen('' . $install_phpdir . '/bin/hmailserver/Bin/hMailServer.ini', 'w');
 	if(!$handle){
 	exit;
 	}
