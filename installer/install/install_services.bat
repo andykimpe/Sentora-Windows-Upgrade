@@ -621,8 +621,9 @@ C:\Windows\System32\net.exe start Apache
 echo Stopping hMailServer
 C:\Windows\System32\net.exe stop hMailServer
 IF EXIST "%2\bin\hmailserver\bin\hMailServer.ini.sentora" (
+cd %2\bin\hmailserver\bin\
 del %2\bin\hmailserver\bin\hMailServer.ini
-rename %2\bin\hmailserver\bin\hMailServer.ini.sentora %2\bin\hmailserver\bin\hMailServer.ini
+rename hMailServer.ini.sentora hMailServer.ini
 )
 echo Starting hMailServer
 C:\Windows\System32\net.exe start hMailServer
