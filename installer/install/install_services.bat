@@ -303,10 +303,6 @@ IF EXIST "%PROGRAMFILES(X86)%" (
 ) ELSE (
 %2\hMailServer-5.6.7-B2425.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 )
-IF EXIST "%2\bin\hmailserver\Bin\hMailServer.ini.sentora" (
-del %2\bin\hmailserver\Bin\hMailServer.ini
-rename %2\bin\hmailserver\Bin\hMailServer.ini.sentora %2\bin\hmailserver\Bin\hMailServer.ini
-)
 echo end Installing hMailServer...
 rem timeout /t 60
 
@@ -362,8 +358,9 @@ goto ENDHMAILDB
 :ENDHMAILDB
 echo Cleaning up MySQL users (securing MySQL server)..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\MySQL_User_Cleanup.sql
-md "\bin\hmailserver\"
-md "\bin\hmailserver\Bin\"
+md "%1\bin\hmailserver\"
+md "%1\bin\hmailserver\bin\"
+del "%1\bin\hmailserver\bin\hMailServer.ini"
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 :endconfigure
@@ -553,10 +550,6 @@ IF EXIST "%PROGRAMFILES(X86)%" (
 ) ELSE (
 %2\hMailServer-5.6.7-B2425.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 )
-IF EXIST "%2\bin\hmailserver\Bin\hMailServer.ini.sentora" (
-del %2\bin\hmailserver\Bin\hMailServer.ini
-rename %2\bin\hmailserver\Bin\hMailServer.ini.sentora %2\bin\hmailserver\Bin\hMailServer.ini
-)
 
 echo Starting hMailServer
 C:\Windows\System32\net.exe stop hMailServer
@@ -608,6 +601,9 @@ goto ENDHMAILDB
 :ENDHMAILDB
 echo Cleaning up MySQL users (securing MySQL server)..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\MySQL_User_Cleanup.sql
+md "%1\bin\hmailserver\"
+md "%1\bin\hmailserver\bin\"
+del "%1\bin\hmailserver\bin\hMailServer.ini"
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 :endconfigure
@@ -620,11 +616,6 @@ echo Starting Apache
 C:\Windows\System32\net.exe start Apache
 echo Stopping hMailServer
 C:\Windows\System32\net.exe stop hMailServer
-cd "%2\bin\hmailserver\bin\"
-IF EXIST "%2\bin\hmailserver\bin\hMailServer.ini.sentora" (
-del hMailServer.ini
-rename hMailServer.ini.sentora hMailServer.ini
-)
 echo Starting hMailServer
 C:\Windows\System32\net.exe start hMailServer
 echo Stopping BIND
