@@ -175,7 +175,17 @@ rename %2\Windows8.1-KB2919442-x64.msu %2\updates\Windows8.1-KB2919442-x64.msu
 rename %2\Windows8.1-KB2919355-x64.msu %2\updates\Windows8.1-KB2919355-x64.msu
 C:\Windows\System32\dism.exe /online /add-package /packagepath:%2\updates
 :W10
+echo install chocolatey and vcredist-all
+timeout /t 60
+powershell "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
+C:\ProgramData\chocolatey\bin\choco.exe feature enable -n=allowGlobalConfirmation
+C:\ProgramData\chocolatey\bin\choco.exe upgrade chocolatey
+C:\ProgramData\chocolatey\bin\choco.exe install vcredist-all
+C:\ProgramData\chocolatey\bin\choco.exe upgrade vcredist-all
+C:\ProgramData\chocolatey\bin\choco.exe feature disable -n=allowGlobalConfirmation
 rem for windows 8 and 10 net framework 3.5 install online using dism
+echo net framework 3.5 install online using dism
+timeout /t 60
 C:\Windows\System32\dism.exe /Online /Enable-Feature /FeatureName:NetFx3 /All
 :ENDNET
 echo extract apache
