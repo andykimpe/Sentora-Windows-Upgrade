@@ -7,8 +7,10 @@ echo your_full_name %3
 echo your_email %4
 echo your_fqdn %5
 echo password_for_zadmin %6
-rem disable Windows Firewall
+timeout /t 60
+echo disable Windows Firewall
 C:\windows\System32\netsh.exe Advfirewall set allprofiles state off
+timeout /t 60
 rem code test for backup and update all database
 IF EXIST "C:\zpanel\panel\cnf\db.php" (
  rem test uninstall old zpanel
@@ -131,11 +133,15 @@ rmdir /S /Q Apache24
 IF EXIST "%PROGRAMFILES(X86)%" (GOTO 64BIT) ELSE (GOTO 32BIT)
 :64BIT
 rem install Visual C++ redistributable 2005 2008 2011 2013 require for apache php and mysql
+echo install Visual C++ redistributable
+timeout /t 60
 %2\vcredist5_x64.exe /q
 %2\vcredist8_x64.exe /q /norestart
 %2\vcredist11_x64.exe /q /norestart
 %2\vcredist13_x64.exe /q /norestart
 rem install microsoft net framework 3.5 and 4.5 require for hmailserver
+echo install microsoft net framework 3.5 and 4.5
+timeout /t 60
 setlocal
 for /f "tokens=4-5 delims=. " %%i in ('ver') do set VERSION=%%i.%%j
 if "%version%" == "10.0" goto W10
@@ -172,19 +178,31 @@ C:\Windows\System32\dism.exe /online /add-package /packagepath:%2\updates
 rem for windows 8 and 10 net framework 3.5 install online using dism
 C:\Windows\System32\dism.exe /Online /Enable-Feature /FeatureName:NetFx3 /All
 :ENDNET
+echo extract apache
+timeout /t 60
 %1\bin\7zip\7z.exe x httpd-2.4.38-win64-VC11.zip
+echo extract php
+timeout /t 60
 cd %1\bin\php
 %1\bin\7zip\7z.exe x %2\php-5.6.40-Win32-VC11-x64.zip
 cd %2
+echo extract mysql
+timeout /t 60
 rmdir /S /Q mysql-5.7.29-winx64
 %1\bin\7zip\7z.exe x %2\mysql-5.7.29-winx64.zip
 C:\Windows\System32\xcopy.exe /s /e /h %2\mysql-5.7.29-winx64 %1\bin\mysql
+echo extract bind9
+timeout /t 60
 cd %1\bin\bind\bin\
 %1\bin\7zip\7z.exe x %2\BIND9.14.8.x64.zip
+echo extract cygtools
+timeout /t 60
 cd %1\bin\cygtools
 %1\bin\7zip\7z.exe x %2\cygtools-64bit.zip
 GOTO END
 :32BIT
+echo install Visual C++ redistributable
+timeout /t 60
 %2\vcredist5_x86.exe /q
 %2\vcredist8_x86.exe /q /norestart
 %2\vcredist11_x86.exe /q /norestart
@@ -238,9 +256,13 @@ GOTO END
 :END
 cd %2
 
+echo start configure
+timeout /t 60
 C:\Windows\System32\xcopy.exe /s /e /h %2\Apache24 %1\bin\apache
 %1\bin\php\php.exe %2\install.php %1 %2 %3 %4 %5 %6
 echo finish configure
+timeout /t 60
+
 rem pause
 %1\bin\mysql\bin\mysqld.exe --defaults-file="%1\bin\mysql\my.ini" --console --initialize-insecure=on --lower-case-table-names=1
 echo finish init mysql
@@ -266,15 +288,20 @@ echo Starting Cron Service
 C:\Windows\System32\net.exe start cron
 
 echo Installing hMailServer...
+timeout /t 60
 IF EXIST "%PROGRAMFILES(X86)%" (
-%2\hMailServer-5.7.0-B2519-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT
+%2\hMailServer-5.7.0-B2604-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 ) ELSE (
 %2\hMailServer-5.6.7-B2425.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 )
+echo end Installing hMailServer...
+timeout /t 60
 
 echo Starting hMailServer
 C:\Windows\System32\net.exe stop hMailServer
 C:\Windows\System32\net.exe start hMailServer
+timeout /t 60
+
 
 echo Installing BIND9.9...
 
@@ -507,7 +534,7 @@ C:\Windows\System32\net.exe start cron
 
 echo Installing hMailServer...
 IF EXIST "%PROGRAMFILES(X86)%" (
-%2\hMailServer-5.7.0-B2604-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT
+%2\hMailServer-5.7.0-B2519-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 ) ELSE (
 %2\hMailServer-5.6.7-B2425.exe /DIR="%1\bin\hmailserver" /VERYSILENT
 )
