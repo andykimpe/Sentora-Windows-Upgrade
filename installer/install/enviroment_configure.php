@@ -270,7 +270,7 @@ fwrite($db_settings_file, "?>");
 fclose($db_settings_file);
 
 // Create hMailServer.INI for hMailServer MySQL configuration:-
-$db_settings_file = @fopen("" . $install_phpdir . "/bin/hmailserver/Bin/hMailServer.ini.sentora", "w");
+$db_settings_file = @fopen("" . $install_phpdir . "/bin/hmailserver/bin/hMailServer.ini", "w");
 fwrite($db_settings_file, "\r
 ################################################################\r
 # hMailServer configuration file                               #\r
