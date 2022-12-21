@@ -612,7 +612,7 @@ begin
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://github.com/Dravion/hmailserver/releases/download/5.7.0-B2519/hMailServer-5.7.0-B2519-x64.exe', ExpandConstant('{tmp}\hMailServer-5.7.0-B2519-x64.exe'))
+    idpAddFile('https://build.hmailserver.com/repository/download/HMailServer_BuildHMailServer57/1722:id/hMailServer-5.7.0-B2604-x64.exe', ExpandConstant('{tmp}\hMailServer-5.7.0-B2604-x64.exe'))
   else
     idpAddFile('https://www.hmailserver.com/files/hMailServer-5.6.7-B2425.exe', ExpandConstant('{tmp}\hMailServer-5.6.7-B2425.exe'));
 end;
