@@ -363,6 +363,8 @@ goto ENDHMAILDB
 :ENDHMAILDB
 echo Cleaning up MySQL users (securing MySQL server)..
 %1\bin\mysql\bin\mysql.exe -uroot < %2\Sentora-Windows-Upgrade-master\installer\{app}\bin\zpss\MySQL_User_Cleanup.sql
+md "\bin\hmailserver\"
+md "\bin\hmailserver\Bin\"
 %1\bin\php\php.exe %2\enviroment_configure.php %1 %2 %3 %4 %5 %6
 echo end configure
 :endconfigure
