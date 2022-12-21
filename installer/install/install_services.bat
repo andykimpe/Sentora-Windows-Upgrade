@@ -620,6 +620,10 @@ echo Starting Apache
 C:\Windows\System32\net.exe start Apache
 echo Stopping hMailServer
 C:\Windows\System32\net.exe stop hMailServer
+IF EXIST "%2\bin\hmailserver\Bin\hMailServer.ini.sentora" (
+del %2\bin\hmailserver\Bin\hMailServer.ini
+rename %2\bin\hmailserver\Bin\hMailServer.ini.sentora %2\bin\hmailserver\Bin\hMailServer.ini
+)
 echo Starting hMailServer
 C:\Windows\System32\net.exe start hMailServer
 echo Stopping BIND
