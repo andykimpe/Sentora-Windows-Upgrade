@@ -220,6 +220,7 @@ exec("" . $install_folder . "\bin\cygtools\bin\setso --set apache_budir " . $ins
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set zsudo " . $install_phpdir . "/panel/bin/zsudo");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_exer " . $install_phpdir . "/panel/bin/daemon.php");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set cron_reload_command ");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_timing '0,5,10,15,20,25,30,35,40,45,50,55 * * * *'");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set server_ip " . GetServerIPFromZWS() . "");
 //update cron config
 $sql = "UPDATE sentora_core.x_settings SET so_name_vc = 'cron_file' WHERE x_settings.so_id_pk =117;";
