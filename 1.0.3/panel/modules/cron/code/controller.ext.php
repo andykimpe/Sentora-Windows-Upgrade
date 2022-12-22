@@ -90,7 +90,7 @@ class module_controller extends ctrl_module
         $line .= "<table class=\"table table-striped\">";
         $line .= "<tr valign=\"top\">";
         $line .= "<th>" . ui_language::translate("Script") . ":</th>";
-        $line .= "<td><input name=\"inScript\" type=\"text\" id=\"inScript\" size=\"50\" /><br />" . ui_language::translate("example") . ": /folder/task.php</td>";
+        $line .= "<td><input name=\"inScript\" type=\"text\" id=\"inScript\" size=\"50\" /><br />" . ui_language::translate("example") . ": public_html/example_com/task.php</td>";
         $line .= "</tr>";
         $line .= "<tr>";
         $line .= "<th>" . ui_language::translate("Comment") . ":</th>";
