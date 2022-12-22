@@ -10,6 +10,9 @@ function WriteCronFile() {
     if ($numrows->fetchColumn() <> 0) {
         $sql = $zdbh->prepare($sql);
         $sql->execute();
+        if (sys_versions::ShowOSPlatformVersion() == "Windows") {
+            $line .= "" . ctrl_options::GetSystemOption('daemon_timing') . " " . ctrl_options::GetSystemOption('php_exer') . " " . ctrl_options::GetSystemOption('daemon_exer') . "" . fs_filehandler::NewLine();
+        } else {  
         $line .= "#################################################################################" . fs_filehandler::NewLine();
         $line .= "# CRONTAB FOR ZPANEL CRON MANAGER MODULE                                         " . fs_filehandler::NewLine();
         $line .= "# Module Developed by Bobby Allen, 17/12/2009                                    " . fs_filehandler::NewLine();
@@ -17,18 +20,10 @@ function WriteCronFile() {
         $line .= "#################################################################################" . fs_filehandler::NewLine();
         $line .= "# WE DO NOT RECOMMEND YOU MODIFY THIS FILE DIRECTLY, PLEASE USE ZPANEL INSTEAD!  " . fs_filehandler::NewLine();
         $line .= "#################################################################################" . fs_filehandler::NewLine();
-
-        if (sys_versions::ShowOSPlatformVersion() == "Windows") {
-            $line .= "# Cron Debug infomation can be found in this file here:-                        " . fs_filehandler::NewLine();
-            $line .= "# C:\WINDOWS\System32\crontab.txt                                                " . fs_filehandler::NewLine();
-            $line .= "#################################################################################" . fs_filehandler::NewLine();
-            $line .= "" . ctrl_options::GetSystemOption('daemon_timing') . " " . ctrl_options::GetSystemOption('php_exer') . " " . ctrl_options::GetSystemOption('daemon_exer') . "" . fs_filehandler::NewLine();
-            $line .= "#################################################################################" . fs_filehandler::NewLine();
-        }
-
         $line .= "# DO NOT MANUALLY REMOVE ANY OF THE CRON ENTRIES FROM THIS FILE, USE ZPANEL      " . fs_filehandler::NewLine();
         $line .= "# INSTEAD! THE ABOVE ENTRIES ARE USED FOR ZPANEL TASKS, DO NOT REMOVE THEM!      " . fs_filehandler::NewLine();
         $line .= "#################################################################################" . fs_filehandler::NewLine();
+        }    
         while ($rowcron = $sql->fetch()) {
             //$rowclient = $zdbh->query("SELECT * FROM x_accounts WHERE ac_id_pk=" . $rowcron['ct_acc_fk'] . " AND ac_deleted_ts IS NULL")->fetch();
             $numrows = $zdbh->prepare("SELECT * FROM x_accounts WHERE ac_id_pk=:userid AND ac_deleted_ts IS NULL");
