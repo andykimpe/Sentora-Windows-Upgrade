@@ -221,13 +221,13 @@ exec("" . $install_folder . "\bin\cygtools\bin\setso --set zsudo " . $install_ph
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_exer " . $install_phpdir . "/panel/bin/daemon.php");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set cron_reload_command ");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set daemon_timing \"0,5,10,15,20,25,30,35,40,45,50,55 * * * *\"");
+exec("" . $install_folder . "\bin\cygtools\bin\setso --set cron_file " . $install_phpdir . "/bin/crond/cron.tab");
 exec("" . $install_folder . "\bin\cygtools\bin\setso --set server_ip " . GetServerIPFromZWS() . "");
 //update cron config
 $sql = "UPDATE sentora_core.x_settings SET so_name_vc = 'cron_file' WHERE x_settings.so_id_pk =117;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
 $sql = "UPDATE sentora_core.x_settings SET so_cleanname_vc = 'Cron File' WHERE x_settings.so_id_pk =117;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
-$sql = "UPDATE sentora_core.x_settings SET so_value_tx = '" . $install_phpdir . "/bin/crond/cron.tab' WHERE x_settings.so_id_pk =117;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
 $sql = "UPDATE sentora_core.x_settings SET so_desc_tx = 'Path to the user cron file' WHERE x_settings.so_id_pk =117;";
 $resault = @mysql_query($sql, $db) or die(mysql_error());
