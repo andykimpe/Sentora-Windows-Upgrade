@@ -494,84 +494,87 @@ end;
 
 
 var
-  PageParam: TInputQueryWizardPage;
+  PageParam1: TInputQueryWizardPage;
 
 
 procedure CreateTheWizardPages;
 
 begin
 
-PageParam := CreateInputQueryPage(wpSelectTasks,
+PageParam1 := CreateInputQueryPage(wpSelectTasks,
   ExpandConstant('{cm:Configure_your_Sentora_Installation}'), ExpandConstant('{cm:Information_of_your_installation}'),
   ExpandConstant('{cm:information_requested}'));
-    PageParam.Add(ExpandConstant('{cm:Your_Full_Name}:'), False);
-    PageParam.Add(ExpandConstant('{cm:Your_Email}:'), False);
+    PageParam1.Add(ExpandConstant('{cm:Your_Full_Name}:'), False);
+    PageParam1.Add(ExpandConstant('{cm:Your_Email}:'), False);
 //	a small dedication to our Boby
-    PageParam.Values[0]:= 'Example Boby Allen';
-    PageParam.Values[1]:= 'Example BobyAlen@example.com';
+    PageParam1.Values[0]:= 'Example Boby Allen';
+    PageParam1.Values[1]:= 'Example BobyAlen@example.com';
 end;
 
-function GetParam1(Param: String): String;
+function GetParam1(Param1: String): String;
 begin
-    Result := PageParam.Values[0];
+    Result := PageParam1.Values[0];
 end;
-function GetParam2(Param: String): String;
+function GetParam2(Param1: String): String;
 begin
-    Result := PageParam.Values[1];
+    Result := PageParam1.Values[1];
 end;
 
 
 var
-  PageParamm: TInputQueryWizardPage;
+  PageParamm2: TInputQueryWizardPage;
 
 procedure CreateTheWizardPages1;
 begin
 // Create the page
-PageParamm := CreateInputQueryPage(PageParam.ID,
+PageParamm2 := CreateInputQueryPage(PageParam1.ID,
   ExpandConstant('{cm:Configure_your_Sentora_Installation}'), ExpandConstant('{cm:Information_of_your_installation}'),
   ExpandConstant('{cm:information_requested}'));
 
 
-    PageParamm.Add(ExpandConstant('{cm:Your_FQDN}:'), False);
-    PageParamm.Add(ExpandConstant('{cm:Password_For_Zadmin}:'), False);
-    PageParamm.Values[0]:= 'Example panel.example.com';
-    PageParamm.Values[1]:= 'Example admin';
+    PageParamm2.Add(ExpandConstant('{cm:Your_FQDN}:'), False);
+    PageParamm2.Add(ExpandConstant('{cm:Password_For_Zadmin}:'), False);
+    PageParamm2.Values[0]:= 'Example panel.example.com';
+    PageParamm2.Values[1]:= 'Example admin';
 end;
 
 
-function GetParam3(Paramm: String): String;
+function GetParam3(Paramm2: String): String;
 begin
-    Result := PageParamm.Values[0];
+    Result := PageParamm2.Values[0];
 end;
-function GetParam4(Paramm: String): String;
+function GetParam4(Paramm2: String): String;
 begin
-    Result := PageParamm.Values[1];
+    Result := PageParamm2.Values[1];
 end;
 
 
+
+var
+  PageParamm3: TInputQueryWizardPage;
 
 procedure CreateTheWizardPages2;
 begin
 // Create the page
-PageParamm := CreateInputQueryPage(PageParam.ID,
+PageParamm3 := CreateInputQueryPage(PageParamm2.ID,
   ExpandConstant('{cm:Configure_your_Sentora_Installation}'), ExpandConstant('{cm:Information_of_your_installation}'),
   ExpandConstant('{cm:information_requested}'));
 
 
-    PageParamm.Add(ExpandConstant('v2 {cm:Your_FQDN}:'), False);
-    PageParamm.Add(ExpandConstant('v2 {cm:Password_For_Zadmin}:'), False);
-    PageParamm.Values[0]:= 'Example panel.example.com';
-    PageParamm.Values[1]:= 'Example admin';
+    PageParamm3.Add(ExpandConstant('v2 {cm:Your_FQDN}:'), False);
+    PageParamm3.Add(ExpandConstant('v2 {cm:Password_For_Zadmin}:'), False);
+    PageParamm3.Values[0]:= 'Example panel.example.com';
+    PageParamm3.Values[1]:= 'Example admin';
 end;
 
 
-function GetParam5(Paramm: String): String;
+function GetParam5(Paramm3: String): String;
 begin
-    Result := PageParamm.Values[0];
+    Result := PageParamm3.Values[0];
 end;
-function GetParam6(Paramm: String): String;
+function GetParam6(Paramm3: String): String;
 begin
-    Result := PageParamm.Values[1];
+    Result := PageParamm3.Values[1];
 end;
 
 //code for uninstall PATH Variable
@@ -726,9 +729,10 @@ begin
     if MemoTasksInfo <> '' then begin
         Result := Result + MemoTasksInfo + Newline + NewLine;
     end;
-    Result := Result + '{cm:Your_Sentora_install_Configure}:' + NewLine + NewLine;	
-    Result := Result + 'Your Full Name: ' + PageParam.Values[0] + NewLine;	
-    Result := Result + 'Your Email: ' + PageParam.Values[1] + NewLine;	
-    Result := Result + 'Your FQDN: ' + PageParamm.Values[0] + NewLine;	
-    Result := Result + 'Password For Zadmin: ' + PageParamm.Values[1] + NewLine;
+    
+    Result := Result + ExpandConstant('{cm:Your_Sentora_install_Configure}:') + NewLine + NewLine;	
+    Result := Result + ExpandConstant('{cm:Your_Full_Name}:') + PageParam1.Values[0] + NewLine;	
+    Result := Result + ExpandConstant('{cm:Your_Email}:') + PageParam1.Values[1] + NewLine;	
+    Result := Result + ExpandConstant('{cm:Your_FQDN}:') + PageParamm2.Values[0] + NewLine;	
+    Result := Result + ExpandConstant('{cm:Password_For_Zadmin}:')  + PageParamm2.Values[1] + NewLine;
 end;
