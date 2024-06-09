@@ -627,52 +627,52 @@ begin
 //end;
 begin
   if IsWin64 then
-    idpAddFile('https://home.apache.org/~steffenal/VC11/binaries/httpd-2.4.38-win64-VC11.zip', ExpandConstant('{tmp}\httpd-2.4.38-win64-VC11.zip'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/httpd-2.4.38-win64-VC11.zip', ExpandConstant('{tmp}\httpd-2.4.38-win64-VC11.zip'))
   else
-    idpAddFile('https://home.apache.org/~steffenal/VC11/binaries/httpd-2.4.38-win32-VC11.zip', ExpandConstant('{tmp}\httpd-2.4.38-win32-VC11.zip'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/httpd-2.4.38-win32-VC11.zip', ExpandConstant('{tmp}\httpd-2.4.38-win32-VC11.zip'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://download.microsoft.com/download/4/F/C/4FC241D7-EF92-46FA-80DE-3DF5841CE00E/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist5_x64.exe'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist5_x64.exe'))
   else
-    idpAddFile('https://download.microsoft.com/download/4/F/C/4FC241D7-EF92-46FA-80DE-3DF5841CE00E/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist5_x86.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist5_x86.exe'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist8_x64.exe'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist8_x64.exe'))
   else
-    idpAddFile('https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist8_x86.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist8_x86.exe'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://download.microsoft.com/download/D/3/B/D3B72629-7D95-49ED-A4EC-7FF105754124/VSU4/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist11_x64.exe'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist11_x64.exe'))
   else
-    idpAddFile('https://download.microsoft.com/download/D/3/B/D3B72629-7D95-49ED-A4EC-7FF105754124/VSU4/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist11_x86.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist11_x86.exe'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://download.microsoft.com/download/A/4/D/A4D9F1D3-6449-49EB-9A6E-902F61D8D14B/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist13_x64.exe'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist13_x64.exe'))
   else
-    idpAddFile('https://download.microsoft.com/download/A/4/D/A4D9F1D3-6449-49EB-9A6E-902F61D8D14B/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist13_x86.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist13_x86.exe'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://windows.php.net/downloads/releases/archives/php-5.6.40-Win32-VC11-x64.zip', ExpandConstant('{tmp}\php-5.6.40-Win32-VC11-x64.zip'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/php-5.6.40-Win32-VC11-x64.zip', ExpandConstant('{tmp}\php-5.6.40-Win32-VC11-x64.zip'))
   else
 
-      idpAddFile('https://windows.php.net/downloads/releases/archives/php-5.6.40-Win32-VC11-x86.zip', ExpandConstant('{tmp}\php-5.6.40-Win32-VC11-x86.zip'));
+      idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/php-5.6.40-Win32-VC11-x86.zip', ExpandConstant('{tmp}\php-5.6.40-Win32-VC11-x86.zip'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.29-winx64.zip', ExpandConstant('{tmp}\mysql-5.7.29-winx64.zip'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/mysql-5.7.29-winx64.zip', ExpandConstant('{tmp}\mysql-5.7.29-winx64.zip'))
   else
-    idpAddFile('https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.29-win32.zip', ExpandConstant('{tmp}\mysql-5.7.29-win32.zip'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/mysql-5.7.29-win32.zip', ExpandConstant('{tmp}\mysql-5.7.29-win32.zip'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x64.zip', ExpandConstant('{tmp}\BIND9.14.8.x64.zip'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/BIND9.14.8.x64.zip', ExpandConstant('{tmp}\BIND9.14.8.x64.zip'))
   else
-    idpAddFile('https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x86.zip', ExpandConstant('{tmp}\BIND9.14.8.x86.zip'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/BIND9.14.8.x86.zip', ExpandConstant('{tmp}\BIND9.14.8.x86.zip'));
 end;
 begin
   if IsWin64 then
@@ -684,18 +684,18 @@ begin
   if IsWin64 then
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/hMailServer-5.7.0-B2604-x64.exe', ExpandConstant('{tmp}\hMailServer-5.7.0-B2604-x64.exe'))
   else
-    idpAddFile('https://www.hmailserver.com/files/hMailServer-5.6.7-B2425.exe', ExpandConstant('{tmp}\hMailServer-5.6.7-B2425.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/hMailServer-5.6.7-B2425.exe', ExpandConstant('{tmp}\hMailServer-5.6.7-B2425.exe'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://download.microsoft.com/download/C/F/8/CF821C31-38C7-4C5C-89BB-B283059269AF/Windows8.1-KB2919442-x64.msu', ExpandConstant('{tmp}\Windows8.1-KB2919442-x64.msu'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/Windows8.1-KB2919442-x64.msu', ExpandConstant('{tmp}\Windows8.1-KB2919442-x64.msu'))
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://download.microsoft.com/download/D/B/1/DB1F29FC-316D-481E-B435-1654BA185DCF/Windows8.1-KB2919355-x64.msu', ExpandConstant('{tmp}\Windows8.1-KB2919355-x64.msu'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/Windows8.1-KB2919355-x64.msu', ExpandConstant('{tmp}\Windows8.1-KB2919355-x64.msu'))
 end;
-    idpAddFile('http://download.microsoft.com/download/2/0/E/20E90413-712F-438C-988E-FDAA79A8AC3D/dotnetfx35.exe', ExpandConstant('{tmp}\dotnetfx35.exe'));
-    idpAddFile('https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe', ExpandConstant('{tmp}\NDP452-KB2901907-x86-x64-AllOS-ENU.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/dotnetfx35.exe', ExpandConstant('{tmp}\dotnetfx35.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/NDP452-KB2901907-x86-x64-AllOS-ENU.exe', ExpandConstant('{tmp}\NDP452-KB2901907-x86-x64-AllOS-ENU.exe'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/install_services.bat', ExpandConstant('{tmp}\install_services.bat'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/install.php', ExpandConstant('{tmp}\install.php'));
     idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/install/enviroment_configure.php', ExpandConstant('{tmp}\enviroment_configure.php'));
