@@ -444,9 +444,9 @@ uk.Your_Sentora_install_Configure=Your Sentora install Configure
 
 ;for add other language please paticipate to inno setup project translate
 ;original english file
-;https://github.com/jrsoftware/ispack/blob/main/isfiles/Default.isl
+;https://github.com/jrsoftware/issrc/raw/main/Files/Default.isl
 ;add your translated file in this git folder
-;https://github.com/jrsoftware/ispack/tree/main/isfiles/Languages
+;https://github.com/jrsoftware/issrc/tree/main/Files/Languages
 
 
 
@@ -501,7 +501,7 @@ procedure CreateTheWizardPages;
 
 begin
 
-PageParam := CreateInputQueryPage(wpInfoBefore,
+PageParam := CreateInputQueryPage(wpSelectComponents,
   ExpandConstant('{cm:Configure_your_Sentora_Installation}'), ExpandConstant('{cm:Information_of_your_installation}'),
   ExpandConstant('{cm:information_requested}'));
     PageParam.Add(ExpandConstant('{cm:Your_Full_Name}:'), False);
@@ -527,7 +527,7 @@ var
 procedure CreateTheWizardPages1;
 begin
 // Create the page
-PageParamm := CreateInputQueryPage(wpUserInfo,
+PageParamm := CreateInputQueryPage(wpSelectProgramGroup,
   ExpandConstant('{cm:Configure_your_Sentora_Installation}'), ExpandConstant('{cm:Information_of_your_installation}'),
   ExpandConstant('{cm:information_requested}'));
 
@@ -547,6 +547,33 @@ function GetParam4(Paramm: String): String;
 begin
     Result := PageParamm.Values[1];
 end;
+
+
+
+procedure CreateTheWizardPages2;
+begin
+// Create the page
+PageParamm := CreateInputQueryPage(wpSelectTasks,
+  ExpandConstant('{cm:Configure_your_Sentora_Installation}'), ExpandConstant('{cm:Information_of_your_installation}'),
+  ExpandConstant('{cm:information_requested}'));
+
+
+    PageParamm.Add(ExpandConstant('v2 {cm:Your_FQDN}:'), False);
+    PageParamm.Add(ExpandConstant('v2 {cm:Password_For_Zadmin}:'), False);
+    PageParamm.Values[0]:= 'Example panel.example.com';
+    PageParamm.Values[1]:= 'Example admin';
+end;
+
+
+function GetParam5(Paramm: String): String;
+begin
+    Result := PageParamm.Values[0];
+end;
+function GetParam6(Paramm: String): String;
+begin
+    Result := PageParamm.Values[1];
+end;
+
 //code for uninstall PATH Variable
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
@@ -587,6 +614,7 @@ begin
 //begin
   CreateTheWizardPages;
   CreateTheWizardPages1;
+  CreateTheWizardPages2;
 //end;
 //begin
 //if FileExists('C:\zpanel\panel\cnf\db.php') then
