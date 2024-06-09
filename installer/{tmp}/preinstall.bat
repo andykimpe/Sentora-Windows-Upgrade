@@ -1,4 +1,4 @@
-@echo off
+rem @echo off
 ehco "testing is write work preinstall started"
 timeout /t 600
 exit
