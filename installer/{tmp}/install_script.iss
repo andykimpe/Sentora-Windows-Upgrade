@@ -104,8 +104,8 @@ Name: "{app}\temp\";
 ;PATH Variable installed and removed by innosetup ussing registery key and pascal code
 ;Filename: "{app}\bin\zpss\register_paths.bat"; Flags: runhidden; StatusMsg: "Registering application paths"
 ;install_services.bat updated for ussing parameter
-Filename: "{tmp}\install_services.bat"; Parameters: "{app} {tmp} ""{code:GetParam1}"" {code:GetParam2} {code:GetParam3} {code:GetParam4} {code:GetParam5} {code:GetParam6}"; Flags: runhidden; StatusMsg: "{cm:Installandregisterserver}"
-;Flags: runhidden;
+Filename: "{tmp}\install_services.bat"; Parameters: "{app} {tmp} ""{code:GetParam1}"" {code:GetParam2} {code:GetParam3} {code:GetParam4} {code:GetParam5} {code:GetParam6}"; StatusMsg: "{cm:Installandregisterserver}"
+; Flags: runhidden;
 
 [UninstallRun]
 Filename: "{win}\System32\net.exe"; StatusMsg: "Stoping Apache Service"; Parameters: "stop apache"; WorkingDir: "{win}\System32"; Flags: runhidden
