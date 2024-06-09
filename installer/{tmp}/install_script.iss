@@ -35,7 +35,7 @@ AllowCancelDuringInstall=False
 ChangesEnvironment=True
 SetupIconFile=embedded\Sentora.ico
 InternalCompressLevel=ultra
-MinVersion=0,6.0sp2
+MinVersion=6.0sp2
 ChangesAssociations=True
 
 [Files]
