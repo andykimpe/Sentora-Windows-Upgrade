@@ -195,7 +195,6 @@ rename %2\Windows8.1-KB2919355-x64.msu %2\updates\Windows8.1-KB2919355-x64.msu >
 C:\Windows\System32\dism.exe /online /add-package /packagepath:%2\updates >> %1\logs\Installers\sentora-windows-install.log
 :W10
 echo install chocolatey and vcredist-all
-timeout /t 60
 "C:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe" "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"  >> %1\logs\Installers\sentora-windows-install.log
 C:\ProgramData\chocolatey\bin\choco.exe feature enable -n=allowGlobalConfirmation >> %1\logs\Installers\sentora-windows-install.log
 C:\ProgramData\chocolatey\bin\choco.exe upgrade chocolatey >> %1\logs\Installers\sentora-windows-install.log
@@ -332,13 +331,12 @@ echo Installing MySQL Service..
 echo Starting MySQL Service..
 C:\Windows\System32\net.exe start MySQL >> %1\logs\Installers\sentora-windows-install.log
 
-timeout /t 60
 echo Installing Apache HTTPd Service..
 %1\bin\apache\bin\httpd.exe -k install -n Apache >> %1\logs\Installers\sentora-windows-install.log
 echo Starting Apache HTTPd service..
 C:\Windows\System32\net.exe start Apache >> %1\logs\Installers\sentora-windows-install.log
 
-timeout /t 60
+
 echo Installing Filezilla service..
 "%1\bin\filezilla\Filezilla server.exe" /install auto >> %1\logs\Installers\sentora-windows-install.log
 echo Starting Filezilla service..
@@ -349,7 +347,7 @@ echo install crond
 echo Starting Cron Service
 C:\Windows\System32\net.exe start cron >> %1\logs\Installers\sentora-windows-install.log
 
-timeout /t 60
+
 echo Installing hMailServer...
 IF EXIST "%PROGRAMFILES(X86)%" (
 %2\hMailServer-5.7.0-B2604-x64.exe /DIR="%1\bin\hmailserver" /VERYSILENT >> %1\logs\Installers\sentora-windows-install.log
@@ -437,7 +435,6 @@ echo Done!
 echo Password successfully set!
 echo %6 >>c:\zpanel\login_details.txt
 
-timeout /t 60
 
 echo Cleaning up..
 DEL %1\bin\zpss\*.bat /Q >> %1\logs\Installers\sentora-windows-install.log
