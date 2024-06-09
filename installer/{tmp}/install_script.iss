@@ -636,27 +636,27 @@ begin
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist5_x64.exe'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist5_x64.exe', ExpandConstant('{tmp}\vcredist5_x64.exe'))
   else
-    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist5_x86.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist5_x86.exe', ExpandConstant('{tmp}\vcredist5_x86.exe'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist8_x64.exe'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist8_x64.exe', ExpandConstant('{tmp}\vcredist8_x64.exe'))
   else
-    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist8_x86.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist8_x86.exe', ExpandConstant('{tmp}\vcredist8_x86.exe'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist11_x64.exe'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist11_x64.exe', ExpandConstant('{tmp}\vcredist11_x64.exe'))
   else
-    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist11_x86.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist11_x86.exe', ExpandConstant('{tmp}\vcredist11_x86.exe'));
 end;
 begin
   if IsWin64 then
-    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x64.exe', ExpandConstant('{tmp}\vcredist13_x64.exe'))
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist13_x64.exe', ExpandConstant('{tmp}\vcredist13_x64.exe'))
   else
-    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist_x86.exe', ExpandConstant('{tmp}\vcredist13_x86.exe'));
+    idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/releases/download/1.0.3-b2/vcredist13_x86.exe', ExpandConstant('{tmp}\vcredist13_x86.exe'));
 end;
 begin
   if IsWin64 then
