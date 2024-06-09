@@ -1,6 +1,6 @@
 @echo off
 ehco "testing is write work preinstall started"
-timeout /t 60
+timeout /t 600
 exit
 mkdir %1\logs\Installers\
 IF EXIST "C:\zpanel\panel\cnf\db.php" (
