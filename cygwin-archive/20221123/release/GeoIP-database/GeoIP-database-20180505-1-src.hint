@@ -1,0 +1,6 @@
+category: Net
+sdesc: "GeoIP Lite (free) databases"
+ldesc: "GeoIP is an API that enables the user to find geographical and
+network information of an IP address.  The free GeoLite databases are similar
+to the commercial GeoIP databases, but are slightly less accurate."
+homepage: https://dev.maxmind.com/geoip/legacy/geolite/

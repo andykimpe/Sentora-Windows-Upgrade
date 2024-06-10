@@ -1,0 +1,13 @@
+category: Base
+requires: dash  
+sdesc: "Incremental autorebase script"
+ldesc: "Incremental autorebase script
+
+This package installs a permanent postinstall script to keep the
+Cygwin installation properly rebased and additionally provides an
+easier interface for triggering a manual full rebase.  The rebaselst
+script uses the rebase database and a cache directory in
+/var/cache/rebase to record state.
+
+"
+
