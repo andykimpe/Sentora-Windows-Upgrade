@@ -1,1 +1,1 @@
-#include AddBackslash(SourcePath) + "\{tmp}\install_script.iss"
+#include "{tmp}\install_script.iss"
