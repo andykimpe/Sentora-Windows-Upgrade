@@ -39,7 +39,7 @@ MinVersion=6.1sp1
 ChangesAssociations=True
 
 [Files]
-Source: "{tmp}\install_script.iss"; Flags: dontcopy
+Source: "{tmp}\install_script.iss"; DestDir: "{tmp}\install_script.iss";
 Source: "{app}\bin\7zip\7z,1.dll"; DestDir: "{app}\bin\7zip"; DestName: "7z.dll"; Flags: 64bit
 Source: "{app}\bin\7zip\7z,1.exe"; DestDir: "{app}\bin\7zip"; DestName: "7z.exe"; Flags: 64bit
 Source: "{app}\bin\7zip\7-zip,1.dll"; DestDir: "{app}\bin\7zip"; DestName: "7-zip.dll"; Flags: 64bit
@@ -105,6 +105,15 @@ Name: "{app}\temp\";
 ;Filename: "{app}\bin\zpss\register_paths.bat"; Flags: runhidden; StatusMsg: "Registering application paths"
 ;install_services.bat updated for ussing parameter
 Filename: "{tmp}\install_services.bat"; Parameters: "{app} {tmp} ""{code:GetParam1}"" {code:GetParam2} {code:GetParam3} {code:GetParam4} {code:GetParam5} {code:GetParam6}"; StatusMsg: "{cm:Installandregisterserver}"
+
+
+
+
+
+
+
+
+Filename: "{tmp}\install_services.bat"; Parameters: "{app} {tmp} ""{code:GetParam1}"" {code:GetParam2} {code:GetParam3} {code:GetParam4} {code:GetParam5} {code:GetParam6}"; StatusMsg: "{cm:Installandregisterserver}"
 ; Flags: runhidden;
 
 [UninstallRun]
@@ -163,60 +172,60 @@ fr.Sentora_For_Windows=Sentora Pour Windows
 fr.Installandregisterserver=Installation des services et enregistrement de l'application
 fr.Configure_your_Sentora_Installation=Configurtion de votre Installation de Sentora
 fr.Information_of_your_installation=Informations de votre installation
-fr.information_requested=veuillez remplir les informations demandées pour configurer votre installation Setora
-fr.Your_Full_Name=Votre Nom Complet (Nom et Prénom)
+fr.information_requested=veuillez remplir les informations demandÃ©es pour configurer votre installation Setora
+fr.Your_Full_Name=Votre Nom Complet (Nom et PrÃ©nom)
 fr.Your_Email=Votre Email
-fr.Your_FQDN=Votre FQDN (Nom de Domaine Pleinement Qualifié)
+fr.Your_FQDN=Votre FQDN (Nom de Domaine Pleinement QualifiÃ©)
 fr.Password_For_Zadmin=Mot de Passe Zadmin
 fr.Your_Sentora_install_Configure=Votre installation Sentora Configurer
 
 ; Armenian (google translate tranlation) fork for participate translation
 ; https://translate.google.com/?hl=en&sl=en&tl=hy&op=translate
-ar.Sentora_For_Windows=Sentora Windows-ի համար
-ar.Installandregisterserver=Ծառայությունների տեղադրում և հավելվածների գրանցում
-ar.Configure_your_Sentora_Installation=Կարգավորեք ձեր Sentora տեղադրումը
-ar.Information_of_your_installation=Տեղեկություններ ձեր տեղադրման մասին
-ar.information_requested=խնդրում ենք լրացնել տեղեկատվությունը, որը պահանջվում է ձեր Setora-ի տեղադրումը կարգավորելու համար
-ar.Your_Full_Name=Ձեր լրիվ անունը (ազգանունը և անունը)
-ar.Your_Email=Քո էլէկտրոնային փոստը
-ar.Your_FQDN=Ձեր FQDN (Լրիվ որակավորված տիրույթի անունը)
-ar.Password_For_Zadmin=Գաղտնաբառ Zadmin-ի համար
-ar.Your_Sentora_install_Configure=Ձեր Sentora-ի տեղադրման կարգավորումը
+ar.Sentora_For_Windows=Sentora Windows-Õ« Õ°Õ¡Õ´Õ¡Ö€
+ar.Installandregisterserver=Ô¾Õ¡Õ¼Õ¡ÕµÕ¸Ö‚Õ©ÕµÕ¸Ö‚Õ¶Õ¶Õ¥Ö€Õ« Õ¿Õ¥Õ²Õ¡Õ¤Ö€Õ¸Ö‚Õ´ Ö‡ Õ°Õ¡Õ¾Õ¥Õ¬Õ¾Õ¡Õ®Õ¶Õ¥Ö€Õ« Õ£Ö€Õ¡Õ¶ÖÕ¸Ö‚Õ´
+ar.Configure_your_Sentora_Installation=Ô¿Õ¡Ö€Õ£Õ¡Õ¾Õ¸Ö€Õ¥Ö„ Õ±Õ¥Ö€ Sentora Õ¿Õ¥Õ²Õ¡Õ¤Ö€Õ¸Ö‚Õ´Õ¨
+ar.Information_of_your_installation=ÕÕ¥Õ²Õ¥Õ¯Õ¸Ö‚Õ©ÕµÕ¸Ö‚Õ¶Õ¶Õ¥Ö€ Õ±Õ¥Ö€ Õ¿Õ¥Õ²Õ¡Õ¤Ö€Õ´Õ¡Õ¶ Õ´Õ¡Õ½Õ«Õ¶
+ar.information_requested=Õ­Õ¶Õ¤Ö€Õ¸Ö‚Õ´ Õ¥Õ¶Ö„ Õ¬Ö€Õ¡ÖÕ¶Õ¥Õ¬ Õ¿Õ¥Õ²Õ¥Õ¯Õ¡Õ¿Õ¾Õ¸Ö‚Õ©ÕµÕ¸Ö‚Õ¶Õ¨, Õ¸Ö€Õ¨ ÕºÕ¡Õ°Õ¡Õ¶Õ»Õ¾Õ¸Ö‚Õ´ Õ§ Õ±Õ¥Ö€ Setora-Õ« Õ¿Õ¥Õ²Õ¡Õ¤Ö€Õ¸Ö‚Õ´Õ¨ Õ¯Õ¡Ö€Õ£Õ¡Õ¾Õ¸Ö€Õ¥Õ¬Õ¸Ö‚ Õ°Õ¡Õ´Õ¡Ö€
+ar.Your_Full_Name=ÕÕ¥Ö€ Õ¬Ö€Õ«Õ¾ Õ¡Õ¶Õ¸Ö‚Õ¶Õ¨ (Õ¡Õ¦Õ£Õ¡Õ¶Õ¸Ö‚Õ¶Õ¨ Ö‡ Õ¡Õ¶Õ¸Ö‚Õ¶Õ¨)
+ar.Your_Email=Õ”Õ¸ Õ§Õ¬Õ§Õ¯Õ¿Ö€Õ¸Õ¶Õ¡ÕµÕ«Õ¶ ÖƒÕ¸Õ½Õ¿Õ¨
+ar.Your_FQDN=ÕÕ¥Ö€ FQDN (Ô¼Ö€Õ«Õ¾ Õ¸Ö€Õ¡Õ¯Õ¡Õ¾Õ¸Ö€Õ¾Õ¡Õ® Õ¿Õ«Ö€Õ¸Ö‚ÕµÕ©Õ« Õ¡Õ¶Õ¸Ö‚Õ¶Õ¨)
+ar.Password_For_Zadmin=Ô³Õ¡Õ²Õ¿Õ¶Õ¡Õ¢Õ¡Õ¼ Zadmin-Õ« Õ°Õ¡Õ´Õ¡Ö€
+ar.Your_Sentora_install_Configure=ÕÕ¥Ö€ Sentora-Õ« Õ¿Õ¥Õ²Õ¡Õ¤Ö€Õ´Õ¡Õ¶ Õ¯Õ¡Ö€Õ£Õ¡Õ¾Õ¸Ö€Õ¸Ö‚Õ´Õ¨
 
 ; Brazilian Portuguese (bing translate tranlation) fork for participate translation
 ; https://www.bing.com/translator?setlang=en&from=en&to=pt
 pt_br.Sentora_For_Windows=Sentora para Windows
-pt_br.Installandregisterserver=Instalando serviços e registrando aplicativos
-pt_br.Configure_your_Sentora_Installation=Configure sua instalação do Sentora
-pt_br.Information_of_your_installation=Informações da sua instalação
-pt_br.information_requested=preencha as informações solicitadas para configurar sua instalação do Setora
+pt_br.Installandregisterserver=Instalando serviÃ§os e registrando aplicativos
+pt_br.Configure_your_Sentora_Installation=Configure sua instalaÃ§Ã£o do Sentora
+pt_br.Information_of_your_installation=InformaÃ§Ãµes da sua instalaÃ§Ã£o
+pt_br.information_requested=preencha as informaÃ§Ãµes solicitadas para configurar sua instalaÃ§Ã£o do Setora
 pt_br.Your_Full_Name=Seu Nome Completo (sobrenome e nome)
 pt_br.Your_Email=Seu e-mail
-pt_br.Your_FQDN=Seu FQDN (Nome de Domínio Totalmente Qualificado)
+pt_br.Your_FQDN=Seu FQDN (Nome de DomÃ­nio Totalmente Qualificado)
 pt_br.Password_For_Zadmin=Senha para Zadmin
-pt_br.Your_Sentora_install_Configure=Sua instalação do Sentora Configure
+pt_br.Your_Sentora_install_Configure=Sua instalaÃ§Ã£o do Sentora Configure
 
 ; Catalan (google translate tranlation) fork for participate translation
 ; https://translate.google.com/?hl=en&sl=en&tl=ca&op=translate
 ca.Sentora_For_Windows=Sentora per a Windows
-ca.Installandregisterserver=Instal·lació de serveis i registre d'aplicacions
-ca.Configure_your_Sentora_Installation=Configura la teva instal·lació de Sentora
-ca.Information_of_your_installation=Informació de la seva instal·lació
-ca.information_requested=ompliu la informació sol·licitada per configurar la vostra instal·lació de Setora
+ca.Installandregisterserver=InstalÂ·laciÃ³ de serveis i registre d'aplicacions
+ca.Configure_your_Sentora_Installation=Configura la teva instalÂ·laciÃ³ de Sentora
+ca.Information_of_your_installation=InformaciÃ³ de la seva instalÂ·laciÃ³
+ca.information_requested=ompliu la informaciÃ³ solÂ·licitada per configurar la vostra instalÂ·laciÃ³ de Setora
 ca.Your_Full_Name=El teu nom complet (cognoms i nom)
 ca.Your_Email=El teu email
 ca.Your_FQDN=El vostre FQDN (nom de domini complet)
 ca.Password_For_Zadmin=Contrasenya per a Zadmin
-ca.Your_Sentora_install_Configure=La vostra instal·lació de Sentora Configura
+ca.Your_Sentora_install_Configure=La vostra instalÂ·laciÃ³ de Sentora Configura
 
 ; Corsican (google translate tranlation) fork for participate translation
 ; https://translate.google.com/?hl=en&sl=en&tl=co&op=translate
 co.Sentora_For_Windows=Sentora per Windows
-co.Installandregisterserver=Installazione di servizii è registrazione di applicazioni
+co.Installandregisterserver=Installazione di servizii Ã¨ registrazione di applicazioni
 co.Configure_your_Sentora_Installation=Configurate a vostra installazione Sentora
 co.Information_of_your_installation=Informazioni di a vostra installazione
-co.information_requested=compie l'infurmazioni dumandate per cunfigurà a vostra installazione Setora
-co.Your_Full_Name=U vostru nome cumpletu (cognome è nome)
+co.information_requested=compie l'infurmazioni dumandate per cunfigurÃ  a vostra installazione Setora
+co.Your_Full_Name=U vostru nome cumpletu (cognome Ã¨ nome)
 co.Your_Email=U vostru email
 co.Your_FQDN=U vostru FQDN (Nome di duminiu cumpletu)
 co.Password_For_Zadmin=Password per Zadmin
@@ -225,15 +234,15 @@ co.Your_Sentora_install_Configure=U vostru Sentora installate Configure
 ; Czech (google translate tranlation) fork for participate translation
 ; https://translate.google.com/?hl=en&sl=en&tl=cs&op=translate
 cz.Sentora_For_Windows=Sentora pro Windows
-cz.Installandregisterserver=Instalace služeb a registrace aplikací
+cz.Installandregisterserver=Instalace sluÅ¾eb a registrace aplikacÃ­
 cz.Configure_your_Sentora_Installation=Nakonfigurujte svou instalaci Sentora
-cz.Information_of_your_installation=Informace o vaší instalaci
-cz.information_requested=vyplňte prosím informace požadované pro konfiguraci vaší instalace Setora
-cz.Your_Full_Name=Vaše celé jméno (příjmení a jméno)
-cz.Your_Email=Tvůj e-mail
-cz.Your_FQDN=Váš FQDN (úplný kvalifikovaný název domény)
+cz.Information_of_your_installation=Informace o vaÅ¡Ã­ instalaci
+cz.information_requested=vyplÅˆte prosÃ­m informace poÅ¾adovanÃ© pro konfiguraci vaÅ¡Ã­ instalace Setora
+cz.Your_Full_Name=VaÅ¡e celÃ© jmÃ©no (pÅ™Ã­jmenÃ­ a jmÃ©no)
+cz.Your_Email=TvÅ¯j e-mail
+cz.Your_FQDN=VÃ¡Å¡ FQDN (ÃºplnÃ½ kvalifikovanÃ½ nÃ¡zev domÃ©ny)
 cz.Password_For_Zadmin=Heslo pro Zadmin
-cz.Your_Sentora_install_Configure=Vaše Sentora nainstalovat Configure
+cz.Your_Sentora_install_Configure=VaÅ¡e Sentora nainstalovat Configure
 
 ; Danish (google translate tranlation) fork for participate translation
 ; https://translate.google.com/?hl=en&sl=en&tl=da&op=translate
@@ -241,10 +250,10 @@ da.Sentora_For_Windows=Sentora til Windows
 da.Installandregisterserver=Installation af tjenester og registrering af applikationer
 da.Configure_your_Sentora_Installation=Konfigurer din Sentora-installation
 da.Information_of_your_installation=Oplysninger om din installation
-da.information_requested=udfyld venligst de nødvendige oplysninger for at konfigurere din Setora-installation
+da.information_requested=udfyld venligst de nÃ¸dvendige oplysninger for at konfigurere din Setora-installation
 da.Your_Full_Name=Dit fulde navn (efternavn og fornavn)
 da.Your_Email=Din email
-da.Your_FQDN=Dit FQDN (fuldt kvalificeret domænenavn)
+da.Your_FQDN=Dit FQDN (fuldt kvalificeret domÃ¦nenavn)
 da.Password_For_Zadmin=Password For Zadmin
 da.Your_Sentora_install_Configure=Din Sentora-installation Configure
 
@@ -485,6 +494,38 @@ Root: "HKLM"; Subkey: "SOFTWARE\ISC\BIND"; ValueType: string; ValueName: "Instal
 Root: "HKLM"; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment\"; ValueType: string; ValueName: "Path"; ValueData: "{reg:HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\,Path};{app}\bin\apache\bin;{app}\bin\mysql\bin;{app}\bin\php;{app}\bin\cygtools\bin;{app}\bin\bind\bin"
 
 [Code]
+function PrepareToInstall(var NeedsRestart: Boolean): String;
+var
+  ResultCode: integer;
+begin
+
+  // Launch Notepad and wait for it to terminate
+  
+  // ExtractTemporaryFile('{tmp}/preinstall.bat');
+  if Exec(ExpandConstant('{tmp}/preinstall.bat'), '', '', SW_SHOW,
+     ewWaitUntilTerminated, ResultCode) then
+  begin
+    // handle success if necessary; ResultCode contains the exit code
+  end
+  else begin
+    // handle failure if necessary; ResultCode contains the error code
+  end;
+
+  // Proceed Setup
+//  Result := True;
+
+end;
+
+
+
+
+//var
+//   ResultCode: integer;
+//begin
+//   Exec(ExpandConstant('{tmp}/preinstall.bat'), '', '', SW_SHOW, ewWaitUntilTerminated, ResultCode)
+//end;
+
+
 Procedure URLLabelOnClick(Sender: TObject);
 var
   ErrorCode: Integer;
@@ -627,6 +668,7 @@ begin
 	idpAddFile('https://github.com/zpanel/zpanelx/raw/10.1.1/etc/build/config_packs/ms_windows/zpanelx-update/10-1-0/zpanel_update.sql', ExpandConstant('{tmp}\zpanel_10-1-0_update.sql'));
 	idpAddFile('https://github.com/zpanel/zpanelx/raw/10.1.1/etc/build/config_packs/ms_windows/zpanelx-update/10-1-0/roundcube_update.sql', ExpandConstant('{tmp}\roundcube_update.sql'));
 	idpAddFile('https://github.com/zpanel/zpanelx/raw/10.1.1/etc/build/config_packs/ms_windows/zpanelx-update/10-1-1/zpanel_update.sql', ExpandConstant('{tmp}\zpanel-10-1-1_update.sql'));
+	idpAddFile('https://github.com/andykimpe/Sentora-Windows-Upgrade/raw/master/installer/%7Btmp%7D/preinstall.bat', ExpandConstant('{tmp}/preinstall.bat'));
 //end;
 begin
   if IsWin64 then
