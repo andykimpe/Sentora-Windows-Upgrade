@@ -16,7 +16,7 @@ cz.Password_For_Zadmin=Password For Zadmin
 cz.Your_Sentora_install_Configure=Your Sentora install Configure
 
 
-; Inno Dowload Plugins Czech extracted (idplang\czech.iss)
+; Inno Dowload Plugins Czech Translation extracted (idplang\czech.iss)
 cz.IDP_FormCaption           =Stahování souborů
 cz.IDP_FormDescription       =Prosím čekejte, než instalátor stáhne dodatečné soubory...
 cz.IDP_TotalProgress         =Celkový průběh stahování
