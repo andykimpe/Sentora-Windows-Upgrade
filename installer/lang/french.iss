@@ -15,7 +15,7 @@ fr.Your_FQDN=Votre FQDN (Nom de Domaine Pleinement Qualifié)
 fr.Password_For_Zadmin=Mot de Passe Zadmin
 fr.Your_Sentora_install_Configure=Configurez votre installation de Sentora
 
-; Inno Dowload Plugins Czech extracted (idplang\czech.iss) updated by andykimpe
+; Inno Dowload Plugins Czech extracted (idplang\french.iss) updated by andykimpe
 fr.IDP_FormCaption           =Téléchargement des fichiers additionnels
 fr.IDP_FormDescription       =Veuillez patienter durant le téléchargement des fichiers additionnels...
 fr.IDP_TotalProgress         =Progression générale:
