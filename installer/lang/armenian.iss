@@ -18,7 +18,7 @@ ar.Your_Sentora_install_Configure=Your Sentora install Configure
 
 
 
-; Inno Dowload Plugins Finnish Translation fork for participate translation
+; Inno Dowload Plugins Armenian Translation fork for participate translation
 ar.IDP_FormCaption           =Downloading additional files
 ar.IDP_FormDescription       =Please wait while Setup is downloading additional files...
 ar.IDP_TotalProgress         =Total progress
