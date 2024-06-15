@@ -16,7 +16,7 @@ pt_br.Password_For_Zadmin=Password For Zadmin
 pt_br.Your_Sentora_install_Configure=Your Sentora install Configure
 
 
-; Inno Dowload Plugins Brazilian Portugues extracted (idplang\brazilianPortuguese.iss)
+; Inno Dowload Plugins Brazilian Portugues Translation extracted (idplang\brazilianPortuguese.iss)
 pt_br.IDP_FormCaption           =Baixando arquivos
 pt_br.IDP_FormDescription       =Por favor aguarde, enquanto recebe arquivos adicionais...
 pt_br.IDP_TotalProgress         =Progresso total
