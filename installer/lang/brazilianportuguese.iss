@@ -14,6 +14,8 @@ pt_br.Your_Email=Your Email
 pt_br.Your_FQDN=Your FQDN (Full Qualified Domain Name)
 pt_br.Password_For_Zadmin=Password For Zadmin
 pt_br.Your_Sentora_install_Configure=Your Sentora install Configure
+
+
 ; Inno Dowload Plugins Brazilian Portugues extracted (idplang\brazilianPortuguese.iss)
 pt_br.IDP_FormCaption           =Baixando arquivos
 pt_br.IDP_FormDescription       =Por favor aguarde, enquanto recebe arquivos adicionais...
