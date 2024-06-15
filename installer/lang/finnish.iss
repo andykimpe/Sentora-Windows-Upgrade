@@ -3,7 +3,7 @@ Name: "fi"; MessagesFile: "compiler:Languages\Finnish.isl"
 
 [CustomMessages]
 
-; Finnish  Sentora Installers Translation fork for participate translation
+; Finnish Sentora Installers Translation fork for participate translation
 fi.Sentora_For_Windows=Sentora For Windows
 fi.Installandregisterserver=Installing services and registering applications
 fi.Configure_your_Sentora_Installation=Configure your Sentora Installation
