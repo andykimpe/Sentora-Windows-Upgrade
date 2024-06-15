@@ -1,5 +1,4 @@
 [Languages]
-
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"; LicenseFile: "embedded\License-french.rtf"; InfoBeforeFile: "embedded\InfoBefore-french.rtf"
 
 [CustomMessages]
