@@ -3,18 +3,20 @@ Name: "cz"; MessagesFile: "compiler:Languages\Czech.isl"
 
 [CustomMessages]
 
-; Czech (google translate tranlation) fork for participate translation
-; https://translate.google.com/?hl=en&sl=en&tl=cs&op=translate
-cz.Sentora_For_Windows=Sentora pro Windows
-cz.Installandregisterserver=Instalace sluÅ¾eb a registrace aplikacÃ­
-cz.Configure_your_Sentora_Installation=Nakonfigurujte svou instalaci Sentora
-cz.Information_of_your_installation=Informace o vaÅ¡Ã­ instalaci
-cz.information_requested=vyplÅˆte prosÃ­m informace poÅ¾adovanÃ© pro konfiguraci vaÅ¡Ã­ instalace Setora
-cz.Your_Full_Name=VaÅ¡e celÃ© jmÃ©no (pÅ™Ã­jmenÃ­ a jmÃ©no)
-cz.Your_Email=TvÅ¯j e-mail
-cz.Your_FQDN=VÃ¡Å¡ FQDN (ÃºplnÃ½ kvalifikovanÃ½ nÃ¡zev domÃ©ny)
-cz.Password_For_Zadmin=Heslo pro Zadmin
-cz.Your_Sentora_install_Configure=VaÅ¡e Sentora nainstalovat Configure
+; Czech Sentora Installers Translation fork for participate translation
+cz.Sentora_For_Windows=Sentora For Windows
+cz.Installandregisterserver=Installing services and registering applications
+cz.Configure_your_Sentora_Installation=Configure your Sentora Installation
+cz.Information_of_your_installation=Information of your installation
+cz.information_requested=please fill in the information requested to configure your Setora installation
+cz.Your_Full_Name=Your Full Name (last name and first name)
+cz.Your_Email=Your Email
+cz.Your_FQDN=Your FQDN (Full Qualified Domain Name)
+cz.Password_For_Zadmin=Password For Zadmin
+cz.Your_Sentora_install_Configure=Your Sentora install Configure
+
+
+; Inno Dowload Plugins Czech extracted (idplang\czech.iss)
 cz.IDP_FormCaption           =Stahování souborů
 cz.IDP_FormDescription       =Prosím čekejte, než instalátor stáhne dodatečné soubory...
 cz.IDP_TotalProgress         =Celkový průběh stahování
