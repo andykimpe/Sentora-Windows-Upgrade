@@ -2,7 +2,8 @@
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"; LicenseFile: "embedded\License-french.rtf"; InfoBeforeFile: "embedded\InfoBefore-french.rtf"
 
 [CustomMessages]
-;french manual checked by andykimpe
+
+;French Sentora Installers Translation by andykimpe
 fr.Sentora_For_Windows=Sentora Pour Windows
 fr.Installandregisterserver=Installation des services et enregistrement de l'application
 fr.Configure_your_Sentora_Installation=Configurtion de votre Installation de Sentora
@@ -13,6 +14,8 @@ fr.Your_Email=Votre Email
 fr.Your_FQDN=Votre FQDN (Nom de Domaine Pleinement Qualifié)
 fr.Password_For_Zadmin=Mot de Passe Zadmin
 fr.Your_Sentora_install_Configure=Configurez votre installation de Sentora
+
+; Inno Dowload Plugins Czech extracted (idplang\czech.iss) updated by andykimpe
 fr.IDP_FormCaption           =Téléchargement des fichiers additionnels
 fr.IDP_FormDescription       =Veuillez patienter durant le téléchargement des fichiers additionnels...
 fr.IDP_TotalProgress         =Progression générale:
