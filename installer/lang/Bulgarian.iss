@@ -1,5 +1,5 @@
 [Languages]
-Name: "Bulgarian.isl"; MessagesFile: "compiler:Languages\Bulgarian.isl"
+Name: "Bulgarian"; MessagesFile: "compiler:Languages\Bulgarian.isl"
 
 
 [CustomMessages]
