@@ -18,7 +18,7 @@ German.Your_Sentora_install_Configure=Your Sentora install Configure
 
 
 
-; Inno Dowload Plugins German Translation fork for participate translation
+; Inno Dowload Plugins German Translation extracted (idplang\german.iss) 
 German.IDP_FormCaption           =Download zusätzlicher Dateien
 German.IDP_FormDescription       =Bitte warten, das Setup lädt nun zusätzliche Dateien...
 German.IDP_TotalProgress         =Gesamter Fortschritt:
