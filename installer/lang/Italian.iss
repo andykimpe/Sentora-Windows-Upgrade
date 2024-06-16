@@ -1,34 +1,34 @@
 [Languages]
-Name: "Italian.isl"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "Italian"; MessagesFile: "compiler:Languages\Italian.isl"
 
 
 [CustomMessages]
 
-; Italian.isl Sentora Installers Translation fork for participate translation
-Italian.isl.Sentora_For_Windows=Sentora For Windows
-Italian.isl.Installandregisterserver=Installing services and registering applications
-Italian.isl.Configure_your_Sentora_Installation=Configure your Sentora Installation
-Italian.isl.Information_of_your_installation=Information of your installation
-Italian.isl.information_requested=please fill in the information requested to configure your Setora installation
-Italian.isl.Your_Full_Name=Your Full Name (last name and first name)
-Italian.isl.Your_Email=Your Email
-Italian.isl.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-Italian.isl.Password_For_Zadmin=Password For Zadmin
-Italian.isl.Your_Sentora_install_Configure=Your Sentora install Configure
+; Italian Sentora Installers Translation fork for participate translation
+Italian.Sentora_For_Windows=Sentora For Windows
+Italian.Installandregisterserver=Installing services and registering applications
+Italian.Configure_your_Sentora_Installation=Configure your Sentora Installation
+Italian.Information_of_your_installation=Information of your installation
+Italian.information_requested=please fill in the information requested to configure your Setora installation
+Italian.Your_Full_Name=Your Full Name (last name and first name)
+Italian.Your_Email=Your Email
+Italian.Your_FQDN=Your FQDN (Full Qualified Domain Name)
+Italian.Password_For_Zadmin=Password For Zadmin
+Italian.Your_Sentora_install_Configure=Your Sentora install Configure
 
 
 
-; Inno Dowload Plugins Italian.isl Translation fork for participate translation
-Italian.isl.IDP_FormCaption           =Downloading additional files
-Italian.isl.IDP_FormDescription       =Please wait while Setup is downloading additional files...
-Italian.isl.IDP_TotalProgress         =Total progress
-Italian.isl.IDP_CurrentFile           =Current file
-Italian.isl.IDP_File                  =File:
-Italian.isl.IDP_Speed                 =Speed:
-Italian.isl.IDP_Status                =Status:
-Italian.isl.IDP_ElapsedTime           =Elapsed time:
-Italian.isl.IDP_RemainingTime         =Remaining time:
-Italian.isl.IDP_DetailsButton         =Details
+; Inno Dowload Plugins Italian Translation extracted (idplang\italian.iss)
+Italian.IDP_FormCaption           =Downloading additional files
+Italian.IDP_FormDescription       =Please wait while Setup is downloading additional files...
+Italian.IDP_TotalProgress         =Total progress
+Italian.IDP_CurrentFile           =Current file
+Italian.IDP_File                  =File:
+Italian.IDP_Speed                 =Speed:
+Italian.IDP_Status                =Status:
+Italian.IDP_ElapsedTime           =Elapsed time:
+Italian.IDP_RemainingTime         =Remaining time:
+Italian.IDP_DetailsButton         =Details
 Italian.isl.IDP_HideButton            =Hide
 Italian.isl.IDP_RetryButton           =Retry
 Italian.isl.IDP_IgnoreButton          =Ignore
