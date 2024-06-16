@@ -1,7 +1,7 @@
 [Languages]
 ; require add file https://github.com/jrsoftware/issrc/blob/main/Files/Languages/Unofficial/ChineseSimplified.isl
 ; to C:\Program Files (x86)\Inno Setup 6\Languages\Unofficial\ChineseSimplified.isl
-Name: "Bosnian"; MessagesFile: "compiler:Languages\Unofficial\ChineseSimplified.isl"
+Name: "ChineseSimplified"; MessagesFile: "compiler:Languages\Unofficial\ChineseSimplified.isl"
 
 
 [CustomMessages]
