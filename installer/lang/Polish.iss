@@ -1,62 +1,62 @@
 [Languages]
-Name: "Polish.isl"; MessagesFile: "compiler:Languages\Polish.isl"
+Name: "Polish"; MessagesFile: "compiler:Languages\Polish.isl"
 
 
 [CustomMessages]
 
-; Polish.isl Sentora Installers Translation fork for participate translation
-Polish.isl.Sentora_For_Windows=Sentora For Windows
-Polish.isl.Installandregisterserver=Installing services and registering applications
-Polish.isl.Configure_your_Sentora_Installation=Configure your Sentora Installation
-Polish.isl.Information_of_your_installation=Information of your installation
-Polish.isl.information_requested=please fill in the information requested to configure your Setora installation
-Polish.isl.Your_Full_Name=Your Full Name (last name and first name)
-Polish.isl.Your_Email=Your Email
-Polish.isl.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-Polish.isl.Password_For_Zadmin=Password For Zadmin
-Polish.isl.Your_Sentora_install_Configure=Your Sentora install Configure
+; Polish Sentora Installers Translation fork for participate translation
+Polish.Sentora_For_Windows=Sentora For Windows
+Polish.Installandregisterserver=Installing services and registering applications
+Polish.Configure_your_Sentora_Installation=Configure your Sentora Installation
+Polish.Information_of_your_installation=Information of your installation
+Polish.information_requested=please fill in the information requested to configure your Setora installation
+Polish.Your_Full_Name=Your Full Name (last name and first name)
+Polish.Your_Email=Your Email
+Polish.Your_FQDN=Your FQDN (Full Qualified Domain Name)
+Polish.Password_For_Zadmin=Password For Zadmin
+Polish.Your_Sentora_install_Configure=Your Sentora install Configure
 
 
 
-; Inno Dowload Plugins Polish.isl Translation fork for participate translation
-Polish.isl.IDP_FormCaption           =Downloading additional files
-Polish.isl.IDP_FormDescription       =Please wait while Setup is downloading additional files...
-Polish.isl.IDP_TotalProgress         =Total progress
-Polish.isl.IDP_CurrentFile           =Current file
-Polish.isl.IDP_File                  =File:
-Polish.isl.IDP_Speed                 =Speed:
-Polish.isl.IDP_Status                =Status:
-Polish.isl.IDP_ElapsedTime           =Elapsed time:
-Polish.isl.IDP_RemainingTime         =Remaining time:
-Polish.isl.IDP_DetailsButton         =Details
-Polish.isl.IDP_HideButton            =Hide
-Polish.isl.IDP_RetryButton           =Retry
-Polish.isl.IDP_IgnoreButton          =Ignore
-Polish.isl.IDP_KBs                   =KB/s
-Polish.isl.IDP_MBs                   =MB/s
-Polish.isl.IDP_X_of_X                =%.2f of %.2f
-Polish.isl.IDP_KB                    =KB
-Polish.isl.IDP_MB                    =MB
-Polish.isl.IDP_GB                    =GB
-Polish.isl.IDP_Initializing          =Initializing...
-Polish.isl.IDP_GettingFileInformation=Getting file information...
-Polish.isl.IDP_StartingDownload      =Starting download...
-Polish.isl.IDP_Connecting            =Connecting...
-Polish.isl.IDP_Downloading           =Downloading...
-Polish.isl.IDP_DownloadComplete      =Download complete
-Polish.isl.IDP_DownloadFailed        =Download failed
-Polish.isl.IDP_CannotConnect         =Cannot connect
-Polish.isl.IDP_CancellingDownload    =Cancelling download...
-Polish.isl.IDP_Unknown               =Unknown
-Polish.isl.IDP_DownloadCancelled     =Download cancelled
-Polish.isl.IDP_RetryNext             =Check your connection and click 'Retry' to try downloading the files again, or click 'Next' to continue installing anyway.
-Polish.isl.IDP_RetryCancel           =Check your connection and click 'Retry' to try downloading the files again, or click 'Cancel' to terminate setup.
-Polish.isl.IDP_FilesNotDownloaded    =The following files were not downloaded:
-Polish.isl.IDP_HTTPError_X           =HTTP error %d
-Polish.isl.IDP_400                   =Bad request (400)
-Polish.isl.IDP_401                   =Access denied (401)
-Polish.isl.IDP_404                   =File not found (404)
+; Inno Dowload Plugins Polish Translation extracted (idplang\polish.iss)
+Polish.IDP_FormCaption           =Pobieranie dodatkowych plików
+Polish.IDP_FormDescription       =Proszę czekać, instalator pobiera dodatkowe pliki...
+Polish.IDP_TotalProgress         =Postęp całkowity
+Polish.IDP_CurrentFile           =Bieżący plik
+Polish.IDP_File                  =Plik:
+Polish.IDP_Speed                 =Transfer:
+Polish.IDP_Status                =Status:
+Polish.IDP_ElapsedTime           =Czas pobierania:
+Polish.IDP_RemainingTime         =Czas pozostały:
+Polish.IDP_DetailsButton         =Szczegóły
+Polish.IDP_HideButton            =Ukryj
+Polish.IDP_RetryButton           =Powtórz
+Polish.IDP_IgnoreButton          =
+Polish.IDP_KBs                   =KB/s
+Polish.IDP_MBs                   =MB/s
+Polish.IDP_X_of_X                =%.2f z %.2f
+Polish.IDP_MB                    =KB
+Polish.IDP_MB                    =MB
+Polish.IDP_MB                    =GB
+Polish.IDP_Initializing          =Trwa inicjalizacja...
+Polish.IDP_GettingFileInformation=Pobieranie informacji o pliku...
+Polish.IDP_StartingDownload      =Rozpoczęcie pobierania...
+Polish.IDP_Connecting            =Nawiązywanie połączenia...
+Polish.IDP_Downloading           =Pobieranie...
+Polish.IDP_DownloadComplete      =Pobieranie zakończone
+Polish.IDP_DownloadFailed        =Pobieranie nieudane
+Polish.IDP_CannotConnect         =Nie można nazwiązać połączenia
+Polish.IDP_CancellingDownload    =Anulowanie pobierania...
+Polish.IDP_Unknown               =Nieznany
+Polish.IDP_DownloadCancelled     =Pobieranie anulowane
+Polish.IDP_RetryNext             =Sprawdź połączenie sieciowe i kliknij 'Powtórz' aby pobrać pliki ponownie lub kliknij 'Dalej' aby kontynuować instalację.
+Polish.IDP_RetryCancel           =Sprawdź połączenie sieciowe i kliknij 'Powtórz' aby pobrać pliki ponownie lub kliknij 'Anuluj' aby przerwać instalację.
+Polish.IDP_FilesNotDownloaded    =
+Polish.IDP_HTTPError_X           =Błąd HTTP %d
+Polish.IDP_400                   =Nieprawidłowe żądanie (400)
+Polish.IDP_401                   =Dostęp zabroniony (401)
+Polish.IDP_404                   =Plik nie został znaleziony (404)
 Polish.isl.IDP_407                   =Proxy authentication required (407)
-Polish.isl.IDP_500                   =Server internal error (500)
-Polish.isl.IDP_502                   =Bad gateway (502)
-Polish.isl.IDP_503                   =Service temporaily unavailable (503)
+Polish.IDP_500                   =Błąd wewnętrzny serwera (500)
+Polish.IDP_502                   =Błąd bramy sieciowej (502)
+Polish.IDP_503                   =Usługa czasowo niedostępna (503)
