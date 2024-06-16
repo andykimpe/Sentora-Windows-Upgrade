@@ -1,62 +1,62 @@
 [Languages]
-Name: "German.isl"; MessagesFile: "compiler:Languages\German.isl"
+Name: "German"; MessagesFile: "compiler:Languages\German.isl"
 
 
 [CustomMessages]
 
-; German.isl Sentora Installers Translation fork for participate translation
-German.isl.Sentora_For_Windows=Sentora For Windows
-German.isl.Installandregisterserver=Installing services and registering applications
-German.isl.Configure_your_Sentora_Installation=Configure your Sentora Installation
-German.isl.Information_of_your_installation=Information of your installation
-German.isl.information_requested=please fill in the information requested to configure your Setora installation
-German.isl.Your_Full_Name=Your Full Name (last name and first name)
-German.isl.Your_Email=Your Email
-German.isl.Your_FQDN=Your FQDN (Full Qualified Domain Name)
-German.isl.Password_For_Zadmin=Password For Zadmin
-German.isl.Your_Sentora_install_Configure=Your Sentora install Configure
+; German Sentora Installers Translation fork for participate translation
+German.Sentora_For_Windows=Sentora For Windows
+German.Installandregisterserver=Installing services and registering applications
+German.Configure_your_Sentora_Installation=Configure your Sentora Installation
+German.Information_of_your_installation=Information of your installation
+German.information_requested=please fill in the information requested to configure your Setora installation
+German.Your_Full_Name=Your Full Name (last name and first name)
+German.Your_Email=Your Email
+German.Your_FQDN=Your FQDN (Full Qualified Domain Name)
+German.Password_For_Zadmin=Password For Zadmin
+German.Your_Sentora_install_Configure=Your Sentora install Configure
 
 
 
-; Inno Dowload Plugins German.isl Translation fork for participate translation
-German.isl.IDP_FormCaption           =Downloading additional files
-German.isl.IDP_FormDescription       =Please wait while Setup is downloading additional files...
-German.isl.IDP_TotalProgress         =Total progress
-German.isl.IDP_CurrentFile           =Current file
-German.isl.IDP_File                  =File:
-German.isl.IDP_Speed                 =Speed:
-German.isl.IDP_Status                =Status:
-German.isl.IDP_ElapsedTime           =Elapsed time:
-German.isl.IDP_RemainingTime         =Remaining time:
-German.isl.IDP_DetailsButton         =Details
-German.isl.IDP_HideButton            =Hide
-German.isl.IDP_RetryButton           =Retry
-German.isl.IDP_IgnoreButton          =Ignore
-German.isl.IDP_KBs                   =KB/s
-German.isl.IDP_MBs                   =MB/s
-German.isl.IDP_X_of_X                =%.2f of %.2f
-German.isl.IDP_KB                    =KB
-German.isl.IDP_MB                    =MB
-German.isl.IDP_GB                    =GB
-German.isl.IDP_Initializing          =Initializing...
-German.isl.IDP_GettingFileInformation=Getting file information...
-German.isl.IDP_StartingDownload      =Starting download...
-German.isl.IDP_Connecting            =Connecting...
-German.isl.IDP_Downloading           =Downloading...
-German.isl.IDP_DownloadComplete      =Download complete
-German.isl.IDP_DownloadFailed        =Download failed
-German.isl.IDP_CannotConnect         =Cannot connect
-German.isl.IDP_CancellingDownload    =Cancelling download...
-German.isl.IDP_Unknown               =Unknown
-German.isl.IDP_DownloadCancelled     =Download cancelled
-German.isl.IDP_RetryNext             =Check your connection and click 'Retry' to try downloading the files again, or click 'Next' to continue installing anyway.
-German.isl.IDP_RetryCancel           =Check your connection and click 'Retry' to try downloading the files again, or click 'Cancel' to terminate setup.
-German.isl.IDP_FilesNotDownloaded    =The following files were not downloaded:
-German.isl.IDP_HTTPError_X           =HTTP error %d
-German.isl.IDP_400                   =Bad request (400)
-German.isl.IDP_401                   =Access denied (401)
-German.isl.IDP_404                   =File not found (404)
-German.isl.IDP_407                   =Proxy authentication required (407)
-German.isl.IDP_500                   =Server internal error (500)
-German.isl.IDP_502                   =Bad gateway (502)
-German.isl.IDP_503                   =Service temporaily unavailable (503)
+; Inno Dowload Plugins German Translation fork for participate translation
+German.IDP_FormCaption           =Download zusätzlicher Dateien
+German.IDP_FormDescription       =Bitte warten, das Setup lädt nun zusätzliche Dateien...
+German.IDP_TotalProgress         =Gesamter Fortschritt:
+German.IDP_CurrentFile           =Aktuelle Datei:
+German.IDP_File                  =Datei:
+German.IDP_Speed                 =Geschwindigkeit:
+German.IDP_Status                =Status:
+German.IDP_ElapsedTime           =Vergangene Zeit:
+German.IDP_RemainingTime         =Verbleibende Zeit:
+German.IDP_DetailsButton         =Details
+German.IDP_HideButton            =Verstecken
+German.IDP_RetryButton           =Wiederholen
+German.IDP_IgnoreButton          =
+German.IDP_KBs                   =kB/s
+German.IDP_MBs                   =MB/s
+German.IDP_X_of_X                =%.2f von %.2f
+German.IDP_KB                    =KB
+German.IDP_MB                    =MB
+German.IDP_GB                    =GB
+German.IDP_Initializing          =Initialisieren...
+German.IDP_GettingFileInformation=Empfange Dateiinformationen...
+German.IDP_StartingDownload      =Starte Download...
+German.IDP_Connecting            =Verbinde...
+German.IDP_Downloading           =Downloade...
+German.IDP_DownloadComplete      =Download abgeschlossen
+German.IDP_DownloadFailed        =Download fehlgeschlagen
+German.IDP_CannotConnect         =Die Verbindung konnte nicht hergestellt werden
+German.IDP_CancellingDownload    =Download wird abgebrochen...
+German.IDP_Unknown               =Unbekannt
+German.IDP_DownloadCancelled     =Download abgebrochen
+German.IDP_RetryNext             =Prüfen Sie Ihre Verbindung und klicken Sie auf 'Wiederholen' für einen erneuten Versuch oder klicken Sie auf 'Weiter' um dennoch fortzusetzen.
+German.IDP_RetryCancel           =Prüfen Sie Ihre Verbindung und klicken Sie auf 'Wiederholen' für einen erneuten Versuch oder klicken Sie auf 'Abbrechen' um das Setup zu verlassen.
+German.IDP_FilesNotDownloaded    =
+German.IDP_HTTPError_X           =HTTP Fehler %d
+German.IDP_400                   =Ungültige Anforderung (400)
+German.IDP_401                   =Nicht autorisiert (401)
+German.IDP_404                   =Datei nicht gefunden (404)
+German.IDP_407                   =Proxy authentication required (407)
+German.IDP_500                   =Interner Serverfehler (500)
+German.IDP_502                   =Falsches Gateway (502)
+German.IDP_503                   =Service nicht verfügbar (503)
