@@ -1,1 +1,1 @@
-#include "{tmp}\install_script.iss"
+#include "include\install_script.iss"
